@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Letters of Presence — One month. One practice.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+/* ── CSS VARIABLES ─────────────────────────────────────────── */
+:root {
+  --cream:      #F5EFF0;
+  --warm-white: #FBF7F8;
+  --paper:      #F0E8EC;
+  --orange:     #EF6715;
+  --apricot:    #FEAF68;
+  --rose:       #DBA1C2;
+  --mauve:      #CA649F;
+  --berry:      #972956;
+  --periwinkle: #9293C3;
+  --purple:     #4B2A52;
+  --navy:       #1F2A4A;
+  --ink:        #1F1018;
+  --mid:        #4A2840;
+  --mute:       #9A6880;
+  --faint:      #D4B0C0;
+}
+
+/* ── RESET & BASE ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink);
+  background: var(--warm-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+p { font-weight: 300; }
+
+a { text-decoration: none; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+/* ── UTILITY ────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity .2s, background .2s;
+  border: 1px solid transparent;
+}
+.btn:hover { opacity: .82; }
+
+.btn-filled {
+  background: var(--mauve);
+  color: #fff;
+  border-color: var(--mauve);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+.section-divider {
+  border: none;
+  border-top: 0.5px solid rgba(75,42,82,.1);
+}
+
+/* ── PAGES ──────────────────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── NAV ────────────────────────────────────────────────────── */
+nav {
+  background: var(--warm-white);
+  border-bottom: 0.5px solid rgba(75,42,82,.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 52px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E8C8B0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--purple);
+  flex-shrink: 0;
+}
+
+.logo-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(75,42,82,.2);
+  flex-shrink: 0;
+}
+
+.logo-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.logo-sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  line-height: 1;
+}
+
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.logo-name em {
+  font-style: italic;
+  color: var(--mauve);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-top: 0.5px solid rgba(75,42,82,.1);
+  background: var(--warm-white);
+}
+
+.tab-btn {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  background: none;
+  border: none;
+  padding: 10px 28px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  position: relative;
+  top: 0.5px;
+}
+
+.tab-btn:hover { color: var(--purple); }
+
+.tab-btn.active {
+  color: var(--purple);
+  border-bottom-color: var(--mauve);
+}
+
+/* ── HOME PAGE ──────────────────────────────────────────────── */
+
+/* Hero */
+.hero {
+  padding: 80px 52px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-left h1 {
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.hero-left h1 em {
+  font-style: italic;
+  color: var(--purple);
+}
+
+.hero-left p {
+  font-size: 15px;
+  color: var(--mid);
+  max-width: 400px;
+  margin-bottom: 32px;
+  line-height: 2;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-right {
+  background: var(--apricot);
+  border-radius: 2px;
+  min-height: 420px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .28;
+}
+.blob-1 {
+  width: 240px; height: 240px;
+  background: #F0C080;
+  top: -40px; right: -40px;
+}
+.blob-2 {
+  width: 180px; height: 180px;
+  background: #E89050;
+  bottom: -30px; left: -30px;
+}
+
+.hero-card {
+  background: #fff;
+  border-radius: 2px;
+  padding: 32px 28px;
+  width: 280px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(31,10,24,.12);
+}
+
+.hero-card-eyebrow {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.hero-card-date {
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.hero-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--purple);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.hero-card h3 em { font-style: italic; }
+
+.hero-card p {
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.hero-card-divider {
+  height: 0.5px;
+  background: rgba(75,42,82,.1);
+  margin: 16px 0;
+}
+
+.hero-card-tag {
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  font-weight: 400;
+}
+
+/* Dark strip */
+.dark-strip {
+  background: var(--purple);
+  padding: 28px 52px;
+  text-align: center;
+}
+
+.dark-strip p {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--cream);
+  letter-spacing: .04em;
+}
+
+/* What's inside */
+.whats-inside {
+  padding: 80px 52px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whats-inside > .eyebrow { margin-bottom: 8px; }
+.whats-inside > h2 {
+  font-size: 28px;
+  color: var(--purple);
+  margin-bottom: 48px;
+}
+
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.inside-card {
+  background: var(--paper);
+  border-radius: 2px;
+  padding: 32px 28px;
+  border: 0.5px solid rgba(75,42,82,.08);
+}
+
+.inside-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.inside-card h3 {
+  font-size: 17px;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+
+.inside-card .size-label {
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.inside-card p {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.9;
+}
+
+/* Letter section */
+.letter-section {
+  background: var(--navy);
+  padding: 80px 52px;
+}
+
+.letter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.letter-left .eyebrow { color: var(--rose); }
+.letter-left h2 {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.letter-left p {
+  color: rgba(251,247,248,.7);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.btn-ghost-light {
+  background: transparent;
+  color: var(--faint);
+  border: 1px solid rgba(212,176,192,.4);
+}
+
+.letter-preview {
+  background: #fff;
+  border-radius: 2px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 60px rgba(31,10,24,.22);
+}
+
+.letter-preview-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid rgba(75,42,82,.1);
+}
+
+.letter-preview-header .lp-eyebrow {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.letter-preview-header h4 {
+  font-size: 18px;
+  color: var(--purple);
+  margin-bottom: 2px;
+}
+
+.letter-preview-header .lp-date {
+  font-size: 10px;
+  color: var(--faint);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.letter-preview p {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 2;
+  margin-bottom: 14px;
+}
+
+.letter-preview p:last-child { margin-bottom: 0; }
+
+/* Numbers */
+.numbers-section {
+  padding: 80px 52px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.numbers-left .eyebrow { color: var(--mauve); }
+.numbers-left h2 {
+  font-size: 28px;
+  color: var(--purple);
+  line-height: 1.3;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--paper);
+  border-radius: 2px;
+  padding: 28px 24px;
+  border: 0.5px solid rgba(75,42,82,.08);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--mauve);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── THEMES PAGE ────────────────────────────────────────────── */
+.themes-header {
+  padding: 80px 52px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.themes-header h2 {
+  font-size: 34px;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+
+.themes-header p {
+  color: var(--mute);
+  max-width: 480px;
+  font-size: 14px;
+}
+
+.themes-grid {
+  padding: 0 52px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.theme-card {
+  border-radius: 2px;
+  overflow: hidden;
+  border: 0.5px solid rgba(75,42,82,.1);
+  background: var(--warm-white);
+}
+
+.theme-card-header {
+  padding: 28px 28px 22px;
+}
+
+.theme-card-header h3 {
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.theme-card-header .sanskrit {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.65);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.theme-card-body {
+  padding: 24px 28px 28px;
+}
+
+.theme-card-body p {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.theme-badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+
+/* ── ABOUT PAGE ─────────────────────────────────────────────── */
+.about-section {
+  padding: 80px 52px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about-left h2 {
+  font-size: 30px;
+  color: var(--purple);
+  margin-bottom: 20px;
+}
+
+.about-left p {
+  font-size: 14px;
+  color: var(--mid);
+  margin-bottom: 18px;
+  line-height: 2;
+}
+
+.pull-quote {
+  border-left: 2.5px solid var(--orange);
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--purple);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.pull-quote .attribution {
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+}
+
+.about-right-box {
+  border: 1px solid var(--cream);
+  border-radius: 2px;
+  background: var(--cream);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.about-logo-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #E8C8B0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--purple);
+}
+
+.about-wordmark {
+  text-align: center;
+}
+
+.about-wordmark .sub {
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+
+.about-wordmark .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.about-wordmark .name em {
+  font-style: italic;
+  color: var(--mauve);
+}
+
+.about-tagline {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+}
+
+.values-grid {
+  padding: 0 52px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.value-card {
+  background: var(--paper);
+  border-radius: 2px;
+  padding: 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  border: 0.5px solid rgba(75,42,82,.08);
+}
+
+.value-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.value-card h4 {
+  font-size: 15px;
+  color: var(--purple);
+  margin-bottom: 6px;
+}
+
+.value-card p {
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.8;
+}
+
+/* ── SUBSCRIBE PAGE ─────────────────────────────────────────── */
+.subscribe-header {
+  padding: 80px 52px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscribe-header h2 {
+  font-size: 34px;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+
+.subscribe-header p {
+  color: var(--mute);
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.pricing-wrapper {
+  padding: 0 52px 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-container {
+  border: 1px solid rgba(75,42,82,.14);
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: hidden;
+}
+
+.pricing-col {
+  padding: 40px 32px;
+  border-right: 0.5px solid rgba(75,42,82,.1);
+  position: relative;
+}
+
+.pricing-col:last-child { border-right: none; }
+
+.pricing-col.featured {
+  background: var(--purple);
+}
+
+.pricing-label {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.pricing-col.featured .pricing-label { color: rgba(255,255,255,.5); }
+
+.pricing-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: var(--purple);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.pricing-col.featured .pricing-price { color: #fff; }
+
+.pricing-per {
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.pricing-col.featured .pricing-per { color: rgba(255,255,255,.5); }
+
+.pricing-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.pricing-col.featured .pricing-desc { color: rgba(251,247,248,.7); }
+
+.pricing-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: var(--mauve);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.pricing-btn-ghost-light {
+  background: transparent;
+  color: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.3);
+}
+
+.pricing-btn-ghost-light:hover { opacity: .75; }
+
+/* Form section */
+.form-section {
+  padding: 0 52px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.form-context .eyebrow { color: var(--mauve); }
+
+.form-context h3 {
+  font-size: 22px;
+  color: var(--purple);
+  margin-bottom: 14px;
+}
+
+.form-context p {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.theme-highlight {
+  background: var(--paper);
+  border-left: 2.5px solid var(--orange);
+  padding: 20px 20px;
+  border-radius: 0 2px 2px 0;
+}
+
+.theme-highlight .th-eyebrow {
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.theme-highlight h4 {
+  font-size: 16px;
+  color: var(--purple);
+  margin-bottom: 2px;
+}
+
+.theme-highlight .th-sub {
+  font-size: 11px;
+  color: var(--mute);
+  font-weight: 300;
+}
+
+/* Form */
+.sub-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: var(--paper);
+  border: 0.5px solid rgba(75,42,82,.18);
+  border-radius: 2px;
+  padding: 11px 14px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 13.5px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .18s;
+  -webkit-appearance: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--periwinkle);
+  background: var(--warm-white);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.field select {
+  cursor: pointer;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 64px 52px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 0.5px solid rgba(212,176,192,.12);
+  margin-bottom: 28px;
+}
+
+.footer-brand .fb-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--faint);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.footer-brand .fb-name em {
+  color: var(--mauve);
+}
+
+.footer-brand p {
+  font-size: 12px;
+  color: rgba(212,176,192,.55);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer-col h5 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(212,176,192,.45);
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  font-size: 13px;
+  color: rgba(212,176,192,.65);
+  font-weight: 300;
+  transition: color .18s;
+}
+
+.footer-col ul li a:hover { color: var(--faint); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 10px;
+  color: rgba(212,176,192,.35);
+  font-weight: 300;
+  letter-spacing: .06em;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero, .letter-inner, .numbers-section, .about-section,
+  .form-section, .inside-grid, .themes-grid, .values-grid,
+  .stats-grid, .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero { padding: 52px 28px; gap: 40px; }
+  .hero-right { min-height: 320px; }
+  nav .nav-inner, .dark-strip, .whats-inside,
+  .letter-section, .themes-header, .themes-grid,
+  .subscribe-header, .pricing-wrapper, .form-section,
+  .numbers-section, .about-section, .values-grid { padding-left: 28px; padding-right: 28px; }
+  .pricing-container { grid-template-columns: 1fr; }
+  .pricing-col.featured { order: -1; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 48px 28px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ─────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-avatar">L</div>
+      <div class="logo-divider"></div>
+      <div class="logo-wordmark">
+        <span class="logo-sub">Monthly physical mail</span>
+        <span class="logo-name">Letters of <em>Presence</em></span>
+      </div>
+    </div>
+  </div>
+  <div class="tabs" style="max-width:1200px;margin:0 auto;padding:0 52px;">
+    <button class="tab-btn active" onclick="showPage('home')" data-page="home">Home</button>
+    <button class="tab-btn" onclick="showPage('themes')" data-page="themes">Themes</button>
+    <button class="tab-btn" onclick="showPage('about')" data-page="about">About</button>
+    <button class="tab-btn" onclick="showPage('subscribe')" data-page="subscribe">Subscribe</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Monthly physical mail · Est. 2025</span>
+      <h1>One theme.<br><em>One month.</em><br>No screen.</h1>
+      <p>A handcrafted card set arrives through your letterbox every month — built around one practice, written by a qualified yoga instructor and therapist. No app. No notifications. Just paper.</p>
+      <div class="hero-btns">
+        <button class="btn btn-filled" onclick="showPage('subscribe')">Start receiving</button>
+        <button class="btn btn-ghost" onclick="showPage('themes')">See the themes</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="hero-card">
+        <div class="hero-card-eyebrow">Current theme</div>
+        <div class="hero-card-date">May 2026 · Pranayama</div>
+        <h3>Nadi Shodhana —<br><em>The Breath That Balances</em></h3>
+        <div class="hero-card-divider"></div>
+        <p>Alternate nostril breathing as a daily anchor. Three pieces of printed practice, sent to your door.</p>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-tag">Shipping now</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+
+  <!-- Dark strip -->
+  <div class="dark-strip">
+    <p>One theme. Explored completely.</p>
+  </div>
+
+  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+
+  <!-- What's inside -->
+  <section class="whats-inside">
+    <span class="eyebrow">What arrives in your envelope</span>
+    <h2>Three pieces. One practice.</h2>
+    <div class="inside-grid">
+      <div class="inside-card">
+        <div class="inside-swatch" style="background:var(--orange);"></div>
+        <h3>A4 Letter</h3>
+        <span class="size-label">21 × 29.7 cm</span>
+        <p>A long-form letter written directly to you. The history, the anatomy, the lived experience of this month's theme — in full, unhurried prose.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-swatch" style="background:var(--periwinkle);"></div>
+        <h3>A5 Reflection Card</h3>
+        <span class="size-label">14.8 × 21 cm</span>
+        <p>Prompts for sitting with the theme. Questions to return to across the month, with space to observe what arises.</p>
+      </div>
+      <div class="inside-card">
+        <div class="inside-swatch" style="background:var(--purple);"></div>
+        <h3>A6 Practice Card</h3>
+        <span class="size-label">10.5 × 14.8 cm</span>
+        <p>Step-by-step guidance for the practice itself. Prop it on your mat, your windowsill, your bedside table.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Letter section -->
+  <section class="letter-section">
+    <div class="letter-inner">
+      <div class="letter-left">
+        <span class="eyebrow" style="color:var(--rose);">From the May 2026 letter</span>
+        <h2>A letter worth reading slowly.</h2>
+        <p>Each A4 letter is written as if it were a personal correspondence — thoughtful, unhurried, rooted in practice. Here is a passage from this month's Nadi Shodhana letter.</p>
+        <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Receive this month's set</button>
+      </div>
+      <div class="letter-right">
+        <div class="letter-preview">
+          <div class="letter-preview-header">
+            <div class="lp-eyebrow">Letters of Presence · May 2026</div>
+            <h4>Nadi Shodhana — The Breath That Balances</h4>
+            <div class="lp-date">Pranayama series · Vol. 01</div>
+          </div>
+          <p>There is a passage in the Hatha Yoga Pradipika that describes the breath as a bird held in the hand. Hold too tightly and it suffocates. Open your hand entirely and it flies away. The practice is the middle distance — present, attentive, not grasping.</p>
+          <p>Nadi Shodhana, alternate nostril breathing, teaches exactly this. The left nostril cools; the right warms. To move between them deliberately — to seal one and open the other — is to learn that balance is not a fixed point but a continuous, conscious returning.</p>
+          <p>This month, I invite you to practise for just five minutes each morning. Not as discipline. As curiosity. What does it feel like to begin the day having already offered your full attention to something?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Numbers -->
+  <section class="numbers-section">
+    <div class="numbers-left">
+      <span class="eyebrow">The shape of the subscription</span>
+      <h2>Yoga practitioners. Curious beginners. Intentional humans.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">01</div>
+        <div class="stat-label">Physical only.<br>No digital version.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Themes per year, each fully explored.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">03</div>
+        <div class="stat-label">Pieces per envelope, every month.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Depth available in a single breath.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     THEMES PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div id="page-themes" class="page">
+
+  <div class="themes-header">
+    <span class="eyebrow">The curriculum</span>
+    <h2>One theme per month.</h2>
+    <p>Each set is created by a qualified yoga instructor and therapist. No two months cover the same ground. Each stands alone as a complete practice.</p>
+  </div>
+
+  <div class="themes-grid">
+
+    <div class="theme-card">
+      <div class="theme-card-header" style="background:var(--purple);">
+        <h3>Pranayama</h3>
+        <div class="sanskrit">Nadi Shodhana — The Breath That Balances</div>
+      </div>
+      <div class="theme-card-body">
+        <p>The science and art of conscious breathing. This month focuses on Nadi Shodhana — alternate nostril breathing — as a daily anchor for nervous system regulation and mental clarity.</p>
+        <span class="theme-badge" style="background:rgba(75,42,82,.08);color:var(--purple);">Shipping May 2026</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <div class="theme-card-header" style="background:var(--mauve);">
+        <h3>Meditation</h3>
+        <div class="sanskrit">Dharana — The Act of Holding Attention</div>
+      </div>
+      <div class="theme-card-body">
+        <p>A deep exploration of concentration and seated practice. Moving from restlessness to steadiness — not through force, but through the gradual training of where we choose to look.</p>
+        <span class="theme-badge" style="background:rgba(202,100,159,.1);color:var(--mauve);">Shipping June 2026</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <div class="theme-card-header" style="background:var(--orange);">
+        <h3>Body Awareness</h3>
+        <div class="sanskrit">Pratyahara — Turning the Senses Inward</div>
+      </div>
+      <div class="theme-card-body">
+        <p>Learning to inhabit the body rather than just occupy it. Practices drawn from somatic awareness, interoception, and the yoga nidra tradition — meeting the body without judgement.</p>
+        <span class="theme-badge" style="background:rgba(239,103,21,.1);color:var(--orange);">Shipping July 2026</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <div class="theme-card-header" style="background:var(--navy);">
+        <h3>Intentional Living</h3>
+        <div class="sanskrit">Sankalpa — The Resolve That Grows Quietly</div>
+      </div>
+      <div class="theme-card-body">
+        <p>Intention-setting rooted in yogic philosophy, not productivity culture. The difference between a resolution and a sankalpa — and how a single honest sentence can reshape a month.</p>
+        <span class="theme-badge" style="background:rgba(31,42,74,.08);color:var(--navy);">Shipping August 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /page-themes -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     ABOUT PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <section class="about-section">
+    <div class="about-left">
+      <span class="eyebrow">The practice behind the practice</span>
+      <h2>Letters of Presence began with a single question.</h2>
+      <p>What if the thing that helps people most with their yoga and meditation practice isn't a better app — it's a letter through the door? Something physical, deliberate, and completely free of the medium that fractures attention in the first place.</p>
+      <p>Created by a qualified yoga instructor and therapist, each set is written from direct practice rather than accumulated theory. The aim is simple: to give practitioners — new and experienced alike — something worth returning to throughout the month.</p>
+      <div class="pull-quote">
+        <p>"The most profound practices are not complicated. They are simply done consistently, with care."</p>
+        <span class="attribution">— Letters of Presence, founding principle</span>
+      </div>
+      <p>We ship once a month. We print on paper that feels good to hold. We write as if we were writing to one person.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-right-box">
+        <div class="about-logo-lockup">
+          <div class="about-avatar">L</div>
+          <div class="about-wordmark">
+            <div class="sub">Monthly physical mail</div>
+            <div class="name">Letters of <em>Presence</em></div>
+          </div>
+          <div class="about-tagline">One month. One practice.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+
+  <div style="padding: 48px 52px 12px; max-width:1200px; margin:0 auto;">
+    <span class="eyebrow">What guides us</span>
+    <h2 style="font-size:24px;color:var(--purple);margin-bottom:32px;">Four values. Applied to every set.</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-dot" style="background:var(--orange);"></div>
+      <div>
+        <h4>One thing at a time</h4>
+        <p>We do not ask you to practise six things this month. We ask you to practise one thing — well, and with full attention.</p>
+      </div>
+    </div>
+    <div class="value-card">
+      <div class="value-dot" style="background:var(--periwinkle);"></div>
+      <div>
+        <h4>Offline by design</h4>
+        <p>There is no app. No member portal. No push notifications. A letter arrives. You open it. That is the whole experience.</p>
+      </div>
+    </div>
+    <div class="value-card">
+      <div class="value-dot" style="background:var(--mauve);"></div>
+      <div>
+        <h4>Qualified, not commercial</h4>
+        <p>Every set is written by a trained practitioner, not by a content calendar. We will not ship a theme we haven't lived with first.</p>
+      </div>
+    </div>
+    <div class="value-card">
+      <div class="value-dot" style="background:var(--purple);"></div>
+      <div>
+        <h4>For everyone curious</h4>
+        <p>You do not need a yoga background to benefit from these letters. You need only a willingness to pay attention to something, once a month.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-about -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SUBSCRIBE PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div id="page-subscribe" class="page">
+
+  <div class="subscribe-header">
+    <span class="eyebrow">Pricing</span>
+    <h2>Choose your subscription.</h2>
+    <p>All plans include three printed pieces per month, shipped to your door anywhere in Europe.</p>
+  </div>
+
+  <div class="pricing-wrapper">
+    <div class="pricing-container">
+
+      <!-- Monthly -->
+      <div class="pricing-col">
+        <span class="pricing-label">Monthly</span>
+        <div class="pricing-price">€14</div>
+        <span class="pricing-per">per month</span>
+        <p class="pricing-desc">Month-to-month subscription. Cancel any time before the 20th. Your first set ships within five working days.</p>
+        <button class="btn btn-ghost" style="width:100%;text-align:center;">Choose monthly</button>
+      </div>
+
+      <!-- Annual -->
+      <div class="pricing-col featured">
+        <span class="pricing-badge">Best value</span>
+        <span class="pricing-label">Annual</span>
+        <div class="pricing-price">€11</div>
+        <span class="pricing-per">per month · billed yearly</span>
+        <p class="pricing-desc">Twelve sets, committed. One complete year of practice — and a saving of €36 compared to monthly.</p>
+        <button class="btn btn-filled" style="width:100%;text-align:center;background:var(--mauve);border-color:var(--mauve);">Choose annual</button>
+      </div>
+
+      <!-- Gift -->
+      <div class="pricing-col">
+        <span class="pricing-label">Gift</span>
+        <div class="pricing-price">€39</div>
+        <span class="pricing-per">three months · one payment</span>
+        <p class="pricing-desc">A considered gift for someone you know could use a little more stillness. Includes a handwritten card from us explaining the subscription.</p>
+        <button class="btn btn-ghost" style="width:100%;text-align:center;">Choose gift</button>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+
+  <!-- Form section -->
+  <div class="form-section">
+    <div class="form-context">
+      <span class="eyebrow">Start here</span>
+      <h3>Your first set is almost on its way.</h3>
+      <p>Fill in your details below and we'll get your first envelope prepared. Subscriptions received before the 20th of the month ship with the current theme.</p>
+      <div class="theme-highlight">
+        <div class="th-eyebrow">Current theme — May 2026</div>
+        <h4>Nadi Shodhana</h4>
+        <div class="th-sub">The Breath That Balances · Pranayama</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sub-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Anna" />
+          </div>
+          <div class="field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Müller" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="anna@example.com" />
+        </div>
+        <div class="field">
+          <label for="plan">Subscription</label>
+          <select id="plan">
+            <option value="">Select a plan</option>
+            <option value="monthly">Monthly — €14 / month</option>
+            <option value="annual">Annual — €11 / month (€132 / year)</option>
+            <option value="gift">Gift — €39 for 3 months</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="address">Shipping address</label>
+          <input type="text" id="address" placeholder="Lange Voorhout 12" />
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Den Haag" />
+          </div>
+          <div class="field">
+            <label for="postal">Postal code</label>
+            <input type="text" id="postal" placeholder="2514 EA" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="country">Country</label>
+          <select id="country">
+            <option value="">Select country</option>
+            <option>Netherlands</option>
+            <option>Belgium</option>
+            <option>Germany</option>
+            <option>France</option>
+            <option>United Kingdom</option>
+            <option>Denmark</option>
+            <option>Sweden</option>
+            <option>Norway</option>
+            <option>Austria</option>
+            <option>Switzerland</option>
+            <option>Spain</option>
+            <option>Portugal</option>
+            <option>Italy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="note">Optional note</label>
+          <textarea id="note" placeholder="A note for us — gift message, accessibility needs, anything you'd like us to know."></textarea>
+        </div>
+        <button class="btn btn-filled" style="width:100%;text-align:center;padding:16px;">Begin subscription</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-subscribe -->
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="fb-name">Letters of <em>Presence</em></span>
+      <p>Monthly physical mail for yoga practitioners and curious humans. One theme. One month. Three pieces of paper, sent with care.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('themes');return false;">Themes</a></li>
+        <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+        <li><a href="#" onclick="showPage('subscribe');return false;">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@lettersofpresence.com">hello@lettersofpresence.com</a></li>
+        <li><a href="#">Shipping &amp; returns</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Letters of Presence. Handcrafted in the Netherlands.</p>
+    <p>One month. One practice.</p>
+  </div>
+</footer>
+
+
+<script>
+  function showPage(name) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Show target
+    document.getElementById('page-' + name).classList.add('active');
+    // Update tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.page === name);
+    });
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
