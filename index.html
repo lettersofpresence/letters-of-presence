@@ -1842,7 +1842,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="264e434a4a49664a435252435455494056544355434845430845494b">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe969b929291be929b8a8a9b8c8d91988e8c9b8d9b909d9bd09d9193">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -1874,7 +1874,7 @@ footer {
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#99f1fcf5f5f6d9f5fcededfcebeaf6ffe9ebfceafcf7fafcb7faf6f4"><span class="__cf_email__" data-cfemail="f49c9198989bb4989180809186879b9284869187919a9791da979b99">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#630b060f0f0c230f0617170611100c0513110610060d00064d000c0e"><span class="__cf_email__" data-cfemail="264e434a4a49664a435252435455494056544355434845430845494b">[email&#160;protected]</span></a></li>
         <li><a href="#">Shipping &amp; returns</a></li>
         <li><a href="#">Privacy policy</a></li>
         <li><a href="#">FAQ</a></li>
@@ -1889,28 +1889,12 @@ footer {
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  /* ── GOOGLE FORM CONFIG ───────────────────────────────────────
-     To wire this up to your Google Form:
-     1. Create a Google Form with fields: First name, Last name,
-        Email, Phone, Address, Note.
-     2. Open the live form, right-click any field → Inspect.
-        Find the input's `name` attribute — it looks like
-        `entry.1234567890`. Copy each one into the map below.
-     3. Open the form, click "Send", copy the share URL. Replace
-        `/viewform` at the end with `/formResponse` and paste it
-        as `url` below.
+  /* ── SHEET ENDPOINT ─────────────────────────────────────────────────────────────
+     Form submissions POST to a Google Apps Script web app which
+     appends a row to the linked Google Sheet. The script reads
+     e.postData.contents as JSON.
      ─────────────────────────────────────────────────────────── */
-  const GOOGLE_FORM = {
-    url: 'https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/formResponse',
-    fields: {
-      firstName: 'entry.REPLACE_ME_1',
-      lastName:  'entry.REPLACE_ME_2',
-      email:     'entry.REPLACE_ME_3',
-      phone:     'entry.REPLACE_ME_4',
-      address:   'entry.REPLACE_ME_5',
-      note:      'entry.REPLACE_ME_6',
-    },
-  };
+  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxVd9AV9-56NxG5-OmSz0vnZ4cGdVXyPrbWS3q_7f27qqldQXC7U6ILdMOWJjeZaqEV/exec';
 
   function openSummerForm() {
     showPage('subscribe');
@@ -1923,7 +1907,7 @@ footer {
     }, 60);
   }
 
-  function submitSummerForm(e) {
+  async function submitSummerForm(e) {
     e.preventDefault();
     const form = document.getElementById('summer-form-el');
     const success = document.getElementById('summer-form-success');
@@ -1940,56 +1924,28 @@ footer {
       note:      document.getElementById('snote').value.trim(),
     };
 
-    const configured = GOOGLE_FORM.url.indexOf('REPLACE_WITH') === -1;
-
-    if (!configured) {
-      // Dev mode — log to console so the user can verify the data is collected
-      console.log('[Summer Series signup — Google Form not yet wired up]', data);
-      submitBtn.textContent = 'Sending…';
-      setTimeout(() => {
-        form.style.display = 'none';
-        success.classList.add('visible');
-      }, 400);
-      return false;
-    }
-
-    // Real submission — POST to Google Forms via hidden iframe (avoids CORS)
-    const hidden = document.createElement('form');
-    hidden.action = GOOGLE_FORM.url;
-    hidden.method = 'POST';
-    hidden.target = 'summer-hidden-iframe';
-    Object.keys(data).forEach(k => {
-      const entryId = GOOGLE_FORM.fields[k];
-      if (!entryId) return;
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = entryId;
-      input.value = data[k];
-      hidden.appendChild(input);
-    });
-    document.body.appendChild(hidden);
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
 
-    // Google Forms always returns opaque response — assume success on load
-    const iframe = document.getElementById('summer-hidden-iframe');
-    const onDone = () => {
-      iframe.removeEventListener('load', onDone);
+    try {
+      // Use no-cors + text/plain to avoid CORS preflight — Apps Script
+      // still receives the JSON in e.postData.contents.
+      await fetch(SHEET_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data),
+      });
+      // no-cors response is opaque — we can't read it, so we assume
+      // success if fetch didn't throw a network error.
       form.style.display = 'none';
       success.classList.add('visible');
-      hidden.remove();
-    };
-    iframe.addEventListener('load', onDone);
-    hidden.submit();
-
-    // Safety fallback if iframe never fires (e.g. blocked)
-    setTimeout(() => {
-      if (!success.classList.contains('visible')) {
-        submitBtn.textContent = 'Reserve my Summer Series';
-        submitBtn.disabled = false;
-        errorEl.classList.add('visible');
-      }
-    }, 8000);
+    } catch (err) {
+      console.error('Sheet submission failed:', err);
+      submitBtn.textContent = 'Reserve my Summer Series';
+      submitBtn.disabled = false;
+      errorEl.classList.add('visible');
+    }
 
     return false;
   }
