@@ -1842,7 +1842,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef6fbf2f2f1def2fbeaeafbecedf1f8eeecfbedfbf0fdfbb0fdf1f3">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="731b161f1f1c331f1607071601001c1503011600161d10165d101c1e">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -1874,7 +1874,7 @@ footer {
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#ef878a838380af838a9b9b8a9d9c80899f9d8a9c8a818c8ac18c8082"><span class="__cf_email__" data-cfemail="234b464f4f4c634f4657574651504c4553514650464d40460d404c4e">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#026a676e6e6d426e6776766770716d6472706771676c61672c616d6f"><span class="__cf_email__" data-cfemail="e28a878e8e8da28e8796968790918d8492908791878c8187cc818d8f">[email&#160;protected]</span></a></li>
         <li><a href="#">Shipping &amp; returns</a></li>
         <li><a href="#">Privacy policy</a></li>
         <li><a href="#">FAQ</a></li>
@@ -1889,12 +1889,22 @@ footer {
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  /* ── SHEET ENDPOINT ─────────────────────────────────────────────────────────────
-     Form submissions POST to a Google Apps Script web app which
-     appends a row to the linked Google Sheet. The script reads
-     e.postData.contents as JSON.
+  /* ── GOOGLE FORM CONFIG ─────────────────────────────────────────────────────────
+     Submissions are POSTed to a Google Form via a hidden iframe.
+     The Form has "Send responses to Sheet" enabled, so each submission
+     auto-appends a row to the linked Google Sheet.
      ─────────────────────────────────────────────────────────── */
-  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzdCjN0JF2YD_8C647BOUsY7ArUBwDM9VKjIirGQPlbnj1eW5LzgZparkK_2-zEScaE/exec';
+  const GOOGLE_FORM = {
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLScdq0C56qpW6zvbHTE8G-ZIWc3IBM_F-qOAYzfw8ZbejKPtag/formResponse',
+    fields: {
+      firstName: 'entry.1126220411',
+      lastName:  'entry.9673159',
+      email:     'entry.436095380',
+      phone:     'entry.488768750',
+      address:   'entry.1571242677',
+      note:      'entry.1034122484',
+    },
+  };
 
   function openSummerForm() {
     showPage('subscribe');
@@ -1907,7 +1917,7 @@ footer {
     }, 60);
   }
 
-  async function submitSummerForm(e) {
+  function submitSummerForm(e) {
     e.preventDefault();
     const form = document.getElementById('summer-form-el');
     const success = document.getElementById('summer-form-success');
@@ -1924,28 +1934,47 @@ footer {
       note:      document.getElementById('snote').value.trim(),
     };
 
+    // Build a real form element and POST it through a hidden iframe.
+    // This is the only reliable way to talk to Google Forms from the browser
+    // because their endpoint blocks cross-origin fetch.
+    const hidden = document.createElement('form');
+    hidden.action = GOOGLE_FORM.url;
+    hidden.method = 'POST';
+    hidden.target = 'summer-hidden-iframe';
+    Object.keys(data).forEach(k => {
+      const entryId = GOOGLE_FORM.fields[k];
+      if (!entryId) return;
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = entryId;
+      input.value = data[k];
+      hidden.appendChild(input);
+    });
+    document.body.appendChild(hidden);
+
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
 
-    try {
-      // Use no-cors + text/plain to avoid CORS preflight — Apps Script
-      // still receives the JSON in e.postData.contents.
-      await fetch(SHEET_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(data),
-      });
-      // no-cors response is opaque — we can't read it, so we assume
-      // success if fetch didn't throw a network error.
+    // Google Forms returns an opaque response — we can't read it.
+    // Show success once the iframe finishes loading.
+    const iframe = document.getElementById('summer-hidden-iframe');
+    const onDone = () => {
+      iframe.removeEventListener('load', onDone);
       form.style.display = 'none';
       success.classList.add('visible');
-    } catch (err) {
-      console.error('Sheet submission failed:', err);
-      submitBtn.textContent = 'Reserve my Summer Series';
-      submitBtn.disabled = false;
-      errorEl.classList.add('visible');
-    }
+      hidden.remove();
+    };
+    iframe.addEventListener('load', onDone);
+    hidden.submit();
+
+    // Safety fallback if the iframe never fires (e.g. blocked by a browser extension)
+    setTimeout(() => {
+      if (!success.classList.contains('visible')) {
+        submitBtn.textContent = 'Reserve my Summer Series';
+        submitBtn.disabled = false;
+        errorEl.classList.add('visible');
+      }
+    }, 8000);
 
     return false;
   }
