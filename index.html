@@ -1842,7 +1842,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="731b161f1f1c331f1607071601001c1503011600161d10165d101c1e">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="157d7079797a55797061617067667a7365677066707b76703b767a78">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -1874,7 +1874,7 @@ footer {
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#026a676e6e6d426e6776766770716d6472706771676c61672c616d6f"><span class="__cf_email__" data-cfemail="e28a878e8e8da28e8796968790918d8492908791878c8187cc818d8f">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#076f626b6b68476b627373627574686177756274626964622964686a"><span class="__cf_email__" data-cfemail="0b636e6767644b676e7f7f6e7978646d7b796e786e65686e25686466">[email&#160;protected]</span></a></li>
         <li><a href="#">Shipping &amp; returns</a></li>
         <li><a href="#">Privacy policy</a></li>
         <li><a href="#">FAQ</a></li>
@@ -1979,18 +1979,41 @@ footer {
     return false;
   }
 
-  function showPage(name) {
+  function showPage(name, opts) {
+    opts = opts || {};
     // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     // Show target
-    document.getElementById('page-' + name).classList.add('active');
+    const target = document.getElementById('page-' + name);
+    if (!target) { return showPage('home', opts); }
+    target.classList.add('active');
     // Update tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.page === name);
     });
+    // Sync URL hash — Home gets a clean URL (no hash); other tabs get /#themes etc.
+    if (!opts.fromHash) {
+      const desired = (name === 'home') ? ' ' : '#' + name;
+      if (name === 'home' && window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else if (name !== 'home' && window.location.hash !== '#' + name) {
+        history.pushState({ page: name }, '', '#' + name);
+      }
+    }
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // Route on initial load + when the user uses back/forward
+  function applyHashRoute() {
+    const hash = window.location.hash.replace(/^#/, '');
+    const valid = ['home', 'themes', 'about', 'subscribe'];
+    const page = valid.indexOf(hash) !== -1 ? hash : 'home';
+    showPage(page, { fromHash: true });
+  }
+
+  window.addEventListener('hashchange', applyHashRoute);
+  window.addEventListener('DOMContentLoaded', applyHashRoute);
 </script>
 
 </body>
