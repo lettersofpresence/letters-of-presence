@@ -869,6 +869,374 @@ nav {
 
 .pricing-btn-ghost-light:hover { opacity: .75; }
 
+/* ── SUMMER SERIES FEATURED ────────────────────────────────── */
+.summer-feature {
+  background: var(--apricot);
+  border-radius: 2px;
+  padding: 56px 56px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.summer-feature::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #F0C080;
+  opacity: .35;
+  top: -120px;
+  right: -100px;
+}
+
+.summer-feature::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--orange);
+  opacity: .14;
+  bottom: -80px;
+  left: -60px;
+}
+
+.summer-feature > * { position: relative; z-index: 2; }
+
+.summer-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.summer-feature h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  color: var(--purple);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.summer-feature h3 em {
+  font-style: italic;
+  color: var(--berry);
+}
+
+.summer-feature .summer-lede {
+  font-size: 14.5px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 24px;
+  max-width: 420px;
+}
+
+.summer-months {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.summer-month {
+  background: rgba(255,255,255,.55);
+  border: 0.5px solid rgba(151,41,86,.18);
+  border-radius: 2px;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 84px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.summer-month .sm-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: var(--berry);
+  line-height: 1;
+}
+
+.summer-month .sm-theme {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--purple);
+  line-height: 1.2;
+}
+
+.summer-month .sm-label {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+}
+
+.summer-right {
+  background: var(--warm-white);
+  border-radius: 2px;
+  padding: 40px 36px;
+  box-shadow: 0 24px 60px rgba(31,10,24,.16);
+  text-align: center;
+}
+
+.summer-right .price-label {
+  font-size: 9px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.summer-right .price {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  color: var(--berry);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.summer-right .price-per {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.summer-right .price-divider {
+  height: 0.5px;
+  background: rgba(75,42,82,.14);
+  margin: 0 -36px 24px;
+}
+
+.summer-right .price-includes {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.summer-right .price-includes em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--purple);
+}
+
+.btn-summer {
+  background: var(--berry);
+  color: #fff;
+  border-color: var(--berry);
+  width: 100%;
+  text-align: center;
+  padding: 16px 28px;
+}
+
+.btn-summer:hover { opacity: .9; background: #7d1f47; }
+
+/* Coming soon row */
+.coming-soon-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+  margin: 40px 0 16px;
+  text-align: center;
+}
+
+.coming-soon-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.coming-soon-card {
+  background: var(--paper);
+  border: 0.5px solid rgba(75,42,82,.1);
+  border-radius: 2px;
+  padding: 28px 28px;
+  position: relative;
+  opacity: .55;
+  cursor: not-allowed;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.cs-label {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.cs-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--mid);
+  line-height: 1;
+}
+
+.cs-per {
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-top: 4px;
+  display: block;
+}
+
+.cs-desc {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.cs-tag {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--berry);
+  padding: 6px 12px;
+  border: 0.5px solid rgba(151,41,86,.3);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* ── SUMMER FORM ────────────────────────────────────────────── */
+.summer-form-section {
+  padding: 64px 52px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+  scroll-margin-top: 120px;
+}
+
+.summer-form-context .eyebrow { color: var(--berry); }
+
+.summer-form-context h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--purple);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.summer-form-context h3 em {
+  font-style: italic;
+  color: var(--berry);
+}
+
+.summer-form-context p {
+  font-size: 13.5px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.summer-detail {
+  background: var(--paper);
+  border-left: 2.5px solid var(--orange);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.summer-detail .sd-eyebrow {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.summer-detail h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+
+.summer-detail .sd-sub {
+  font-size: 11.5px;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Success state */
+.form-success {
+  background: var(--paper);
+  border: 0.5px solid rgba(151,41,86,.2);
+  border-radius: 2px;
+  padding: 40px 36px;
+  text-align: center;
+  display: none;
+}
+
+.form-success.visible { display: block; }
+
+.form-success h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--purple);
+  margin-bottom: 10px;
+}
+
+.form-success h4 em { font-style: italic; color: var(--berry); }
+
+.form-success p {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.9;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.form-error {
+  font-size: 12px;
+  color: var(--berry);
+  margin-top: 8px;
+  display: none;
+}
+
+.form-error.visible { display: block; }
+
+@media (max-width: 900px) {
+  .summer-feature { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+  .summer-feature h3 { font-size: 34px; }
+  .coming-soon-row { grid-template-columns: 1fr; }
+  .coming-soon-card { grid-template-columns: 1fr; gap: 12px; }
+  .summer-form-section { grid-template-columns: 1fr; padding: 40px 28px 64px; gap: 32px; }
+}
+
 /* Form section */
 .form-section {
   padding: 0 52px 80px;
@@ -1363,125 +1731,124 @@ footer {
 <div id="page-subscribe" class="page">
 
   <div class="subscribe-header">
-    <span class="eyebrow">Pricing</span>
-    <h2>Choose your subscription.</h2>
-    <p>All plans include three printed pieces per month, shipped to your door anywhere in Europe.</p>
+    <span class="eyebrow">A summer of practice</span>
+    <h2>The Summer Series.</h2>
+    <p>Three months. Three themes. One envelope at the start of each — July, August, September. One payment.</p>
   </div>
 
   <div class="pricing-wrapper">
-    <div class="pricing-container">
 
-      <!-- Monthly -->
-      <div class="pricing-col">
-        <span class="pricing-label">Monthly</span>
-        <div class="pricing-price">€14</div>
-        <span class="pricing-per">per month</span>
-        <p class="pricing-desc">Month-to-month subscription. Cancel any time before the 20th. Your first set ships within five working days.</p>
-        <button class="btn btn-ghost" style="width:100%;text-align:center;">Choose monthly</button>
+    <!-- Summer Series featured -->
+    <div class="summer-feature">
+      <div class="summer-left">
+        <span class="summer-eyebrow">Summer Series · 2026</span>
+        <h3>Three months of practice,<br><em>one envelope at a time.</em></h3>
+        <p class="summer-lede">A complete summer of presence — one curated set arriving in July, August, and September. Cool the body, steady the breath, end the season more settled than you began.</p>
+        <div class="summer-months">
+          <div class="summer-month">
+            <div class="sm-num">July</div>
+            <div class="sm-theme">Nadi Shodhana</div>
+            <div class="sm-label">Set 01</div>
+          </div>
+          <div class="summer-month">
+            <div class="sm-num">August</div>
+            <div class="sm-theme">The Eight Limbs</div>
+            <div class="sm-label">Set 02</div>
+          </div>
+          <div class="summer-month">
+            <div class="sm-num">September</div>
+            <div class="sm-theme">Autumn Intentions</div>
+            <div class="sm-label">Set 03</div>
+          </div>
+        </div>
       </div>
-
-      <!-- Annual -->
-      <div class="pricing-col featured">
-        <span class="pricing-badge">Best value</span>
-        <span class="pricing-label">Annual</span>
-        <div class="pricing-price">€11</div>
-        <span class="pricing-per">per month · billed yearly</span>
-        <p class="pricing-desc">Twelve sets, committed. One complete year of practice — and a saving of €36 compared to monthly.</p>
-        <button class="btn btn-filled" style="width:100%;text-align:center;background:var(--mauve);border-color:var(--mauve);">Choose annual</button>
+      <div class="summer-right">
+        <div class="price-label">One payment</div>
+        <div class="price">€30</div>
+        <span class="price-per">three months · all in</span>
+        <div class="price-divider"></div>
+        <p class="price-includes">Three printed sets, posted to your door — anywhere we ship. Shipping <em>included.</em> No renewal, no auto-charge.</p>
+        <button class="btn btn-summer" onclick="openSummerForm()">Reserve your place</button>
       </div>
+    </div>
 
-      <!-- Gift -->
-      <div class="pricing-col">
-        <span class="pricing-label">Gift</span>
-        <div class="pricing-price">€39</div>
-        <span class="pricing-per">three months · one payment</span>
-        <p class="pricing-desc">A considered gift for someone you know could use a little more stillness. Includes a handwritten card from us explaining the subscription.</p>
-        <button class="btn btn-ghost" style="width:100%;text-align:center;">Choose gift</button>
+    <!-- Coming soon: Monthly + Annual -->
+    <span class="coming-soon-label">— Other plans, coming later this year —</span>
+    <div class="coming-soon-row">
+      <div class="coming-soon-card" aria-disabled="true">
+        <div>
+          <span class="cs-label">Monthly</span>
+          <div class="cs-price">€14</div>
+          <span class="cs-per">per month</span>
+        </div>
+        <p class="cs-desc">Month-to-month, ongoing. Cancel any time before the 20th.</p>
+        <span class="cs-tag">Not yet open</span>
       </div>
-
+      <div class="coming-soon-card" aria-disabled="true">
+        <div>
+          <span class="cs-label">Annual</span>
+          <div class="cs-price">€132</div>
+          <span class="cs-per">billed yearly</span>
+        </div>
+        <p class="cs-desc">Twelve sets across a full year of practice.</p>
+        <span class="cs-tag">Not yet open</span>
+      </div>
     </div>
   </div>
 
   <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
 
-  <!-- Form section -->
-  <div class="form-section">
-    <div class="form-context">
-      <span class="eyebrow">Start here</span>
-      <h3>Your first set is almost on its way.</h3>
-      <p>Fill in your details below and we'll get your first envelope prepared. Subscriptions received before the 20th of the month ship with the current theme.</p>
-      <div class="theme-highlight">
-        <div class="th-eyebrow">Current theme — May 2026</div>
-        <h4>Nadi Shodhana</h4>
-        <div class="th-sub">The Breath That Balances · Pranayama</div>
+  <!-- Summer Series signup form -->
+  <div class="summer-form-section" id="summer-form">
+    <div class="summer-form-context">
+      <span class="eyebrow">Reserve your place</span>
+      <h3>Begin in <em>July.</em></h3>
+      <p>Leave your details below and we'll prepare your first envelope. Once we've received your sign-up, we'll send you a payment link by email to complete your subscription.</p>
+      <div class="summer-detail">
+        <div class="sd-eyebrow">What you'll receive</div>
+        <h4>Three sets · €30 · shipping included</h4>
+        <div class="sd-sub">July, August, September 2026 — shipped at the beginning of each month.</div>
       </div>
     </div>
 
     <div>
-      <div class="sub-form">
+      <form class="sub-form" id="summer-form-el" onsubmit="return submitSummerForm(event)">
         <div class="form-row">
           <div class="field">
-            <label for="fname">First name</label>
-            <input type="text" id="fname" placeholder="Anna" />
+            <label for="sfname">First name</label>
+            <input type="text" id="sfname" name="firstName" required placeholder="Anna" />
           </div>
           <div class="field">
-            <label for="lname">Last name</label>
-            <input type="text" id="lname" placeholder="Müller" />
+            <label for="slname">Last name</label>
+            <input type="text" id="slname" name="lastName" required placeholder="Müller" />
           </div>
         </div>
         <div class="field">
-          <label for="email">Email address</label>
-          <input type="email" id="email" placeholder="anna@example.com" />
+          <label for="semail">Email address</label>
+          <input type="email" id="semail" name="email" required placeholder="anna@example.com" />
         </div>
         <div class="field">
-          <label for="plan">Subscription</label>
-          <select id="plan">
-            <option value="">Select a plan</option>
-            <option value="monthly">Monthly — €14 / month</option>
-            <option value="annual">Annual — €11 / month (€132 / year)</option>
-            <option value="gift">Gift — €39 for 3 months</option>
-          </select>
+          <label for="sphone">Phone number</label>
+          <input type="tel" id="sphone" name="phone" required placeholder="+31 6 12 34 56 78" />
         </div>
         <div class="field">
-          <label for="address">Shipping address</label>
-          <input type="text" id="address" placeholder="Lange Voorhout 12" />
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="city">City</label>
-            <input type="text" id="city" placeholder="Den Haag" />
-          </div>
-          <div class="field">
-            <label for="postal">Postal code</label>
-            <input type="text" id="postal" placeholder="2514 EA" />
-          </div>
+          <label for="saddress">Full shipping address</label>
+          <textarea id="saddress" name="address" required placeholder="Street &amp; number&#10;Apartment / floor / extra info&#10;Postal code &amp; city&#10;Region or state (if applicable)&#10;Country" style="min-height: 140px;"></textarea>
+          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">Anywhere — we'll work out the best route to you.</span>
         </div>
         <div class="field">
-          <label for="country">Country</label>
-          <select id="country">
-            <option value="">Select country</option>
-            <option>Netherlands</option>
-            <option>Belgium</option>
-            <option>Germany</option>
-            <option>France</option>
-            <option>United Kingdom</option>
-            <option>Denmark</option>
-            <option>Sweden</option>
-            <option>Norway</option>
-            <option>Austria</option>
-            <option>Switzerland</option>
-            <option>Spain</option>
-            <option>Portugal</option>
-            <option>Italy</option>
-            <option>Other</option>
-          </select>
+          <label for="snote">Anything we should know? <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
+          <textarea id="snote" name="note" placeholder="Accessibility needs, a delivery instruction, a note about why you're joining — anything at all."></textarea>
         </div>
-        <div class="field">
-          <label for="note">Optional note</label>
-          <textarea id="note" placeholder="A note for us — gift message, accessibility needs, anything you'd like us to know."></textarea>
-        </div>
-        <button class="btn btn-filled" style="width:100%;text-align:center;padding:16px;">Begin subscription</button>
+        <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
+        <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="264e434a4a49664a435252435455494056544355434845430845494b">[email&#160;protected]</a>.</span>
+      </form>
+      <div class="form-success" id="summer-form-success">
+        <h4>Your place is <em>reserved.</em></h4>
+        <p>We've received your details. A <strong style="font-weight:400;color:var(--berry);">payment link</strong> will arrive in your inbox shortly — once it's settled, your first envelope ships at the beginning of July.</p>
       </div>
+      <iframe name="summer-hidden-iframe" id="summer-hidden-iframe" style="display:none;"></iframe>
     </div>
   </div>
 
@@ -1507,7 +1874,7 @@ footer {
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="mailto:hello@lettersofpresence.com">hello@lettersofpresence.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#99f1fcf5f5f6d9f5fcededfcebeaf6ffe9ebfceafcf7fafcb7faf6f4"><span class="__cf_email__" data-cfemail="f49c9198989bb4989180809186879b9284869187919a9791da979b99">[email&#160;protected]</span></a></li>
         <li><a href="#">Shipping &amp; returns</a></li>
         <li><a href="#">Privacy policy</a></li>
         <li><a href="#">FAQ</a></li>
@@ -1521,7 +1888,112 @@ footer {
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* ── GOOGLE FORM CONFIG ───────────────────────────────────────
+     To wire this up to your Google Form:
+     1. Create a Google Form with fields: First name, Last name,
+        Email, Phone, Address, Note.
+     2. Open the live form, right-click any field → Inspect.
+        Find the input's `name` attribute — it looks like
+        `entry.1234567890`. Copy each one into the map below.
+     3. Open the form, click "Send", copy the share URL. Replace
+        `/viewform` at the end with `/formResponse` and paste it
+        as `url` below.
+     ─────────────────────────────────────────────────────────── */
+  const GOOGLE_FORM = {
+    url: 'https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/formResponse',
+    fields: {
+      firstName: 'entry.REPLACE_ME_1',
+      lastName:  'entry.REPLACE_ME_2',
+      email:     'entry.REPLACE_ME_3',
+      phone:     'entry.REPLACE_ME_4',
+      address:   'entry.REPLACE_ME_5',
+      note:      'entry.REPLACE_ME_6',
+    },
+  };
+
+  function openSummerForm() {
+    showPage('subscribe');
+    setTimeout(() => {
+      const el = document.getElementById('summer-form');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 60);
+  }
+
+  function submitSummerForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('summer-form-el');
+    const success = document.getElementById('summer-form-success');
+    const errorEl = document.getElementById('summer-form-error');
+    const submitBtn = document.getElementById('summer-submit');
+    errorEl.classList.remove('visible');
+
+    const data = {
+      firstName: document.getElementById('sfname').value.trim(),
+      lastName:  document.getElementById('slname').value.trim(),
+      email:     document.getElementById('semail').value.trim(),
+      phone:     document.getElementById('sphone').value.trim(),
+      address:   document.getElementById('saddress').value.trim(),
+      note:      document.getElementById('snote').value.trim(),
+    };
+
+    const configured = GOOGLE_FORM.url.indexOf('REPLACE_WITH') === -1;
+
+    if (!configured) {
+      // Dev mode — log to console so the user can verify the data is collected
+      console.log('[Summer Series signup — Google Form not yet wired up]', data);
+      submitBtn.textContent = 'Sending…';
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.classList.add('visible');
+      }, 400);
+      return false;
+    }
+
+    // Real submission — POST to Google Forms via hidden iframe (avoids CORS)
+    const hidden = document.createElement('form');
+    hidden.action = GOOGLE_FORM.url;
+    hidden.method = 'POST';
+    hidden.target = 'summer-hidden-iframe';
+    Object.keys(data).forEach(k => {
+      const entryId = GOOGLE_FORM.fields[k];
+      if (!entryId) return;
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = entryId;
+      input.value = data[k];
+      hidden.appendChild(input);
+    });
+    document.body.appendChild(hidden);
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    // Google Forms always returns opaque response — assume success on load
+    const iframe = document.getElementById('summer-hidden-iframe');
+    const onDone = () => {
+      iframe.removeEventListener('load', onDone);
+      form.style.display = 'none';
+      success.classList.add('visible');
+      hidden.remove();
+    };
+    iframe.addEventListener('load', onDone);
+    hidden.submit();
+
+    // Safety fallback if iframe never fires (e.g. blocked)
+    setTimeout(() => {
+      if (!success.classList.contains('visible')) {
+        submitBtn.textContent = 'Reserve my Summer Series';
+        submitBtn.disabled = false;
+        errorEl.classList.add('visible');
+      }
+    }, 8000);
+
+    return false;
+  }
+
   function showPage(name) {
     // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
