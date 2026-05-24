@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Letters of Presence — One month. One practice.</title>
-<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -2021,8 +2020,30 @@ footer {
           <input type="tel" id="sphone" name="phone" required placeholder="+31 6 12 34 56 78" />
         </div>
         <div class="field">
-          <label for="saddress">Full shipping address</label>
-          <textarea id="saddress" name="address" required placeholder="Street &amp; number&#10;Apartment / floor / extra info&#10;Postal code &amp; city&#10;Region or state (if applicable)&#10;Country" style="min-height: 140px;"></textarea>
+          <label for="saddress_street">Street &amp; number</label>
+          <input type="text" id="saddress_street" name="addressStreet" required placeholder="Prinsengracht 263" />
+        </div>
+        <div class="field">
+          <label for="saddress_apt">Apartment, floor, extra info <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
+          <input type="text" id="saddress_apt" name="addressApt" placeholder="Apt 3B · second floor · c/o…" />
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="saddress_postal">Postal code</label>
+            <input type="text" id="saddress_postal" name="addressPostal" required placeholder="1016 GV" />
+          </div>
+          <div class="field">
+            <label for="saddress_city">City</label>
+            <input type="text" id="saddress_city" name="addressCity" required placeholder="Amsterdam" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="saddress_region">Region or state <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(if applicable)</span></label>
+          <input type="text" id="saddress_region" name="addressRegion" placeholder="Noord-Holland" />
+        </div>
+        <div class="field">
+          <label for="saddress_country">Country</label>
+          <input type="text" id="saddress_country" name="addressCountry" required placeholder="Netherlands" />
           <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">Anywhere — we'll work out the best route to you.</span>
         </div>
         <div class="field">
@@ -2031,7 +2052,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d55585151527d51584949584f4e525b4d4f584e58535e58135e5250">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bcd4d9d0d0d3fcd0d9c8c8d9cecfd3daccced9cfd9d2dfd992dfd3d1">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -2058,13 +2079,13 @@ footer {
             <circle cx="4" cy="4" r="2" />
           </svg>
         </a>
-        <span class="footer-social-soon" aria-label="Instagram (coming soon)" title="Instagram — coming soon">
+        <a href="https://www.instagram.com/lettersofpresence" target="_blank" rel="noopener noreferrer" aria-label="Letters of Presence on Instagram" title="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
           </svg>
-        </span>
+        </a>
       </div>
     </div>
     <div class="footer-col">
@@ -2079,7 +2100,7 @@ footer {
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#93fbf6fffffcd3fff6e7e7f6e1e0fcf5e3e1f6e0f6fdf0f6bdf0fcfe"><span class="__cf_email__" data-cfemail="d6beb3babab996bab3a2a2b3a4a5b9b0a6a4b3a5b3b8b5b3f8b5b9bb">[email&#160;protected]</span></a></li>
+        <li><a href="#" id="footer-email" data-u="hello" data-d="lettersofpresence.com">hello at lettersofpresence dot com</a></li>
         <li><span class="footer-soon" aria-disabled="true">Shipping &amp; returns</span></li>
         <li><span class="footer-soon" aria-disabled="true">Privacy policy</span></li>
         <li><span class="footer-soon" aria-disabled="true">FAQ</span></li>
@@ -2102,12 +2123,17 @@ footer {
   const GOOGLE_FORM = {
     url: 'https://docs.google.com/forms/d/e/1FAIpQLScdq0C56qpW6zvbHTE8G-ZIWc3IBM_F-qOAYzfw8ZbejKPtag/formResponse',
     fields: {
-      firstName: 'entry.1126220411',
-      lastName:  'entry.9673159',
-      email:     'entry.436095380',
-      phone:     'entry.488768750',
-      address:   'entry.1571242677',
-      note:      'entry.1034122484',
+      firstName:      'entry.1126220411',
+      lastName:       'entry.9673159',
+      email:          'entry.436095380',
+      phone:          'entry.488768750',
+      addressStreet:  'entry.1571242677',
+      addressApt:     'entry.391596614',
+      addressPostal:  'entry.1664215609',
+      addressCity:    'entry.942854070',
+      addressRegion:  'entry.1021023417',
+      addressCountry: 'entry.47026378',
+      note:           'entry.1034122484',
     },
   };
 
@@ -2131,12 +2157,17 @@ footer {
     errorEl.classList.remove('visible');
 
     const data = {
-      firstName: document.getElementById('sfname').value.trim(),
-      lastName:  document.getElementById('slname').value.trim(),
-      email:     document.getElementById('semail').value.trim(),
-      phone:     document.getElementById('sphone').value.trim(),
-      address:   document.getElementById('saddress').value.trim(),
-      note:      document.getElementById('snote').value.trim(),
+      firstName:      document.getElementById('sfname').value.trim(),
+      lastName:       document.getElementById('slname').value.trim(),
+      email:          document.getElementById('semail').value.trim(),
+      phone:          document.getElementById('sphone').value.trim(),
+      addressStreet:  document.getElementById('saddress_street').value.trim(),
+      addressApt:     document.getElementById('saddress_apt').value.trim(),
+      addressPostal:  document.getElementById('saddress_postal').value.trim(),
+      addressCity:    document.getElementById('saddress_city').value.trim(),
+      addressRegion:  document.getElementById('saddress_region').value.trim(),
+      addressCountry: document.getElementById('saddress_country').value.trim(),
+      note:           document.getElementById('snote').value.trim(),
     };
 
     // Build a real form element and POST it through a hidden iframe.
@@ -2219,6 +2250,16 @@ footer {
 
   window.addEventListener('hashchange', applyHashRoute);
   window.addEventListener('DOMContentLoaded', applyHashRoute);
+
+  // ── Footer email — assembled at runtime so scanners/proxies don't see a
+  //    raw mailto: link in the source. Real users get a clickable address.
+  window.addEventListener('DOMContentLoaded', function () {
+    var a = document.getElementById('footer-email');
+    if (!a) return;
+    var addr = a.dataset.u + '\u0040' + a.dataset.d;
+    a.href = 'mai' + 'lto:' + addr;
+    a.textContent = addr;
+  });
 </script>
 
 </body>
