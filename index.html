@@ -7,7 +7,6 @@
 <link rel="shortcut icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="favicon.png" />
 <title>Letters of Presence — One month. One practice.</title>
-  
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -967,6 +966,288 @@ nav {
 
 .pricing-btn-ghost-light:hover { opacity: .75; }
 
+/* ── CURRENCY TOGGLE (Subscribe page header) ───────────────── */
+.currency-row {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.currency-row-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.currency-toggle,
+.billing-toggle {
+  display: inline-flex;
+  border: 0.5px solid rgba(75,42,82,.22);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--warm-white);
+}
+.currency-toggle .seg,
+.billing-toggle .seg {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  border-right: 0.5px solid rgba(75,42,82,.12);
+  color: var(--mute);
+  cursor: pointer;
+  padding: 11px 18px;
+  transition: background .2s, color .2s;
+  line-height: 1;
+}
+.currency-toggle .seg:last-child,
+.billing-toggle .seg:last-child { border-right: none; }
+.currency-toggle .seg:hover,
+.billing-toggle .seg:hover { color: var(--purple); }
+.currency-toggle .seg.active,
+.billing-toggle .seg.active {
+  background: var(--purple);
+  color: var(--cream);
+}
+.seg-aside {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: none;
+  margin-left: 4px;
+  opacity: .85;
+}
+
+/* ── SUBSCRIPTIONS SECTION ─────────────────────────────────── */
+.subs-divider {
+  margin: 56px 0 40px;
+  text-align: center;
+}
+.subs-divider-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.subs-intro {
+  text-align: center;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.subs-intro h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--purple);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.subs-intro h3 em { font-style: italic; color: var(--berry); }
+.subs-intro p {
+  font-size: 13.5px;
+  color: var(--mute);
+  max-width: 460px;
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+
+.billing-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.billing-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.subs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sub-card {
+  background: var(--warm-white);
+  border: 0.5px solid rgba(75,42,82,.14);
+  border-radius: 2px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.sub-card-zoom {
+  background: var(--paper);
+  border-color: rgba(146,147,195,.32);
+}
+
+.sub-card-meta {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 10px;
+  display: block;
+}
+.sub-card-zoom .sub-card-meta { color: var(--periwinkle); }
+
+.sub-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--purple);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.sub-card-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+
+.sub-card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 0 18px;
+  border-top: 0.5px solid rgba(75,42,82,.12);
+  border-bottom: 0.5px solid rgba(75,42,82,.12);
+  margin-bottom: 20px;
+  min-height: 78px;
+}
+.sub-card-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  color: var(--purple);
+  line-height: 1;
+  transition: opacity .25s;
+}
+.sub-card-zoom .sub-card-amount { color: var(--berry); }
+
+.sub-card-per {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  transition: opacity .25s;
+}
+
+.sub-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.sub-card-list li {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.7;
+  padding: 6px 0 6px 18px;
+  position: relative;
+}
+.sub-card-list li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  color: var(--mauve);
+  font-size: 16px;
+  line-height: 1;
+}
+.sub-card-list em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--purple);
+}
+
+.sub-card-btn {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.subs-foot {
+  font-size: 12px;
+  color: var(--mute);
+  text-align: center;
+  margin-top: 28px;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Price-change pulse */
+.price-pulse {
+  animation: price-pulse .35s ease;
+}
+@keyframes price-pulse {
+  0%   { opacity: .3; transform: translateY(-1px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* "Coming soon" state for Envelope + Zoom subscription cards */
+.subs-row.is-coming-soon .sub-card {
+  opacity: .62;
+  background: var(--paper);
+  border-style: dashed;
+  border-color: rgba(75,42,82,.22);
+}
+.subs-row.is-coming-soon .sub-card-zoom {
+  background: var(--paper);
+}
+.sub-card-flag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--berry);
+  border: 0.5px solid rgba(151,41,86,.35);
+  padding: 4px 9px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.55);
+}
+.subs-row.is-coming-soon .sub-card-btn {
+  background: transparent;
+  color: var(--mute);
+  border: 0.5px solid rgba(75,42,82,.22);
+  cursor: not-allowed;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: .02em;
+  font-size: 14px;
+  padding: 12px 28px;
+}
+.subs-row.is-coming-soon .sub-card-btn:hover {
+  opacity: 1;
+}
+/* The billing toggle stays interactive (so they can preview pricing),
+   but visually mute it so it doesn't compete with the Summer Series CTA */
+.billing-toggle { opacity: .85; }
+
 /* ── SUMMER SERIES FEATURED ────────────────────────────────── */
 .summer-feature {
   background: var(--apricot);
@@ -1080,15 +1361,24 @@ nav {
   font-weight: 300;
 }
 
-/* Closing live session — visually marked as different from the printed sets */
-.summer-month.is-live {
-  background: rgba(151,41,86,.06);
-  border-color: rgba(151,41,86,.28);
-  border-left: 2.5px solid var(--berry);
-  padding-left: 16px;
+/* Inline 'live zoom' marker on each month row */
+.summer-month .sm-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: right;
+  line-height: 1.4;
 }
-.summer-month.is-live .sm-num { color: var(--berry); font-style: italic; }
-.summer-month.is-live .sm-label { color: var(--berry); }
+.summer-month .sm-live {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: .02em;
+  text-transform: none;
+  color: var(--berry);
+  white-space: nowrap;
+}
 
 .summer-right {
   background: var(--warm-white);
@@ -1340,8 +1630,9 @@ nav {
 @media (max-width: 900px) {
   .summer-feature { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
   .summer-feature h3 { font-size: 34px; }
-  .coming-soon-row { grid-template-columns: 1fr; }
-  .coming-soon-card { grid-template-columns: 1fr; gap: 12px; }
+  .subs-row { grid-template-columns: 1fr; }
+  .currency-row, .billing-row { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .subs-intro { align-items: stretch; }
   .summer-form-section { grid-template-columns: 1fr; padding: 40px 28px 64px; gap: 32px; }
 }
 
@@ -1723,7 +2014,7 @@ footer {
       <div class="letter-left">
         <span class="eyebrow" style="color:var(--rose);">Preview of the July 2026 letter</span>
         <h2>A letter worth reading slowly.</h2>
-        <p>A passage from the July letter, focusing on Nadi Shodhana — the breath that balances. Each is written as a slow correspondence: thoughtful, unhurried, rooted in practice.</p>
+        <p>A passage from the July letter, focusing on Nadi Shodhana — the breath that balances. The Summer Series also includes a practice card guiding alternate nostril breathing, and journal prompts around the theme so you have room to reflect across the month.</p>
         <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Join the Summer Series</button>
       </div>
       <div class="letter-right">
@@ -1763,8 +2054,8 @@ footer {
         <div class="stat-label">Pieces per envelope, every month.</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">Live</div>
-        <div class="stat-label">Zoom to close each Series.<br>Yoga, breath, integration &amp; community.</div>
+        <div class="stat-number">03</div>
+        <div class="stat-label">Live Zoom gatherings.<br>One per theme — yoga, breath &amp; community.</div>
       </div>
     </div>
   </section>
@@ -1779,7 +2070,7 @@ footer {
 
   <div class="themes-header">
     <span class="eyebrow">The Summer Series · 2026</span>
-    <h2>Three themes. One season.<br>One closing gathering.</h2>
+    <h2>Three themes. One season.<br>Three live gatherings.</h2>
     <p>Each set is created by a qualified yoga therapist and a long-term teacher and practitioner of yoga — two lifelong friends, writing from direct practice. No two months cover the same ground. Each is a complete invitation to slow down, deepen, and integrate.</p>
   </div>
 
@@ -1801,12 +2092,12 @@ footer {
     <div class="theme-card">
       <div class="theme-card-header" style="background:var(--navy);">
         <span class="theme-card-meta">August 2026 · Set 02</span>
-        <h3>The Eight Limbs</h3>
-        <div class="sanskrit">Ashtanga — The Eight-Limbed Path</div>
+        <h3>Svadhyaya</h3>
+        <div class="sanskrit">The Practice of Turning Inward</div>
       </div>
       <div class="theme-card-body">
-        <p>Long before yoga became a posture practice, Patanjali described it as an eight-limbed path: ethical observances, physical practice, breath, withdrawal of the senses, concentration, meditation, and absorption.</p>
-        <p>August unfolds the full map — what each limb means, how they support one another, and where to begin without trying to do everything at once. The theme to return to whether you have practised for years, or are starting clean.</p>
+        <p>Svadhyaya — literally “one's own study” — is the quiet observation of what is already here. Not analysis, not self-improvement. The patient noticing of how you meet your day: what you reach for, what you avoid, what arrives unbidden.</p>
+        <p>Across August you'll receive a long letter on svadhyaya in the yogic tradition, a folded reflection card with prompts to observe across the month, and a practice card for a short evening sit — five minutes, eyes closed, simply listening.</p>
         <span class="theme-badge" style="background:rgba(31,42,74,.08);color:var(--navy);">Shipping August 2026</span>
       </div>
     </div>
@@ -1814,29 +2105,29 @@ footer {
     <div class="theme-card">
       <div class="theme-card-header" style="background:var(--orange);">
         <span class="theme-card-meta">September 2026 · Set 03</span>
-        <h3>Autumn Intentions</h3>
-        <div class="sanskrit">Sankalpa — The Resolve That Grows Quietly</div>
+        <h3>Asana</h3>
+        <div class="sanskrit">The Body as a Place to Begin</div>
       </div>
       <div class="theme-card-body">
-        <p>Where summer expands, autumn turns inward. September is a month for sankalpa — an intention, quietly held, that shapes how you meet the season ahead. Not a resolution, not a goal. A single honest sentence to keep with you as the days shorten.</p>
-        <p>You'll receive a letter on sankalpa in the yogic tradition, a folded card to draft and revise your own across the month, and a practice card for an evening sit to return to it.</p>
+        <p>Long before yoga became a posture practice, asana meant “seat” — a place steady enough to settle into. The body is the most immediate ground we have. To return to it, again and again, is to come back to the only moment we ever practise in.</p>
+        <p>September approaches asana as it was first meant — not a sequence to perfect, but a way of arriving. You'll receive a letter on the roots and intention of the posture, a folded card to follow the body's responses across the month, and a practice card for three quiet shapes to return to each morning.</p>
         <span class="theme-badge" style="background:rgba(239,103,21,.1);color:var(--orange);">Shipping September 2026</span>
       </div>
     </div>
 
   </div>
 
-  <!-- Closing Zoom session — the live gathering that closes the series -->
+  <!-- Three live Zoom gatherings — one for each theme -->
   <div class="themes-closing">
     <div class="themes-closing-inner">
       <div>
-        <span class="themes-closing-meta">After September · Live on Zoom</span>
-        <h3>Integration &amp; <em>community</em></h3>
-        <div class="sanskrit-closing">A closing gathering for the Summer Series</div>
+        <span class="themes-closing-meta">Each month · Live on Zoom</span>
+        <h3>Three live <em>gatherings</em></h3>
+        <div class="sanskrit-closing">One per theme · July, August, September</div>
       </div>
       <div>
-        <p>To close the series, we gather on Zoom — a guided yoga and breathing integration session, followed by an open community chat. A chance to land what the three months have built, and to share what surfaced with the people who walked the same season.</p>
-        <p class="themes-closing-note">Date and time confirmed by email closer to the time.</p>
+        <p>Alongside the printed sets, we gather on Zoom once a month — a guided yoga and breathing practice rooted in that month's theme, followed by an open community chat. A chance to land what the cards have built, and to share what surfaced with the people who walked the same season.</p>
+        <p class="themes-closing-note">Dates and times confirmed by email closer to each session.</p>
       </div>
     </div>
   </div>
@@ -1890,7 +2181,7 @@ footer {
       <div class="value-dot" style="background:var(--periwinkle);"></div>
       <div>
         <h4>Offline by design</h4>
-        <p data-comment-anchor="fa4c3e02-p">There is no app, no member portal, no push notifications. A letter arrives, you open it — that is the practice. The one exception: a single live Zoom gathering at the close of each Series, because integration and community are worth meeting for.</p>
+        <p data-comment-anchor="fa4c3e02-p">There is no app, no member portal, no push notifications. A letter arrives, you open it — that is the practice. The one exception: a live Zoom gathering each month of the Series, because integration and community are worth meeting for.</p>
       </div>
     </div>
     <div class="value-card">
@@ -1920,7 +2211,17 @@ footer {
   <div class="subscribe-header">
     <span class="eyebrow">A summer of practice</span>
     <h2>The Summer Series.</h2>
-    <p>Three months. Three themes. One envelope at the start of each — July, August, September. One payment.</p>
+    <p>Three months. Three themes. One envelope at the beginning of each — July, August, September. One payment.</p>
+
+    <!-- Currency toggle — controls every price on this page -->
+    <div class="currency-row">
+      <span class="currency-row-label">Show prices in</span>
+      <div class="currency-toggle" role="tablist" aria-label="Currency">
+        <button type="button" class="seg active" data-currency="EUR" role="tab" aria-selected="true">EUR €</button>
+        <button type="button" class="seg" data-currency="CHF" role="tab" aria-selected="false">CHF</button>
+        <button type="button" class="seg" data-currency="USD" role="tab" aria-selected="false">USD $</button>
+      </div>
+    </div>
   </div>
 
   <div class="pricing-wrapper">
@@ -1930,62 +2231,94 @@ footer {
       <div class="summer-left">
         <span class="summer-eyebrow">Summer Series · 2026</span>
         <h3>Three months of practice,<br><em>one envelope at a time.</em></h3>
-        <p class="summer-lede">A complete summer of presence — three curated sets arriving in July, August, and September, then a live closing gathering on Zoom to integrate the season together. Cool the body, steady the breath, end summer more settled than you began.</p>
+        <p class="summer-lede">A complete summer of presence — three curated sets arriving in July, August, and September, each paired with a live Zoom gathering to practise together. Cool the body, steady the breath, end summer more settled than you began.</p>
         <div class="summer-months">
           <div class="summer-month">
             <div class="sm-num">July</div>
             <div class="sm-theme">Nadi Shodhana</div>
-            <div class="sm-label">Set 01</div>
+            <div class="sm-label">Set 01 <span class="sm-live">+ Live Zoom</span></div>
           </div>
           <div class="summer-month">
             <div class="sm-num">August</div>
-            <div class="sm-theme">The Eight Limbs</div>
-            <div class="sm-label">Set 02</div>
+            <div class="sm-theme">Svadhyaya</div>
+            <div class="sm-label">Set 02 <span class="sm-live">+ Live Zoom</span></div>
           </div>
           <div class="summer-month">
             <div class="sm-num">September</div>
-            <div class="sm-theme">Autumn Intentions</div>
-            <div class="sm-label">Set 03</div>
-          </div>
-          <div class="summer-month is-live">
-            <div class="sm-num">Closing</div>
-            <div class="sm-theme">Integration &amp; community</div>
-            <div class="sm-label">Live · Zoom</div>
+            <div class="sm-theme">Asana</div>
+            <div class="sm-label">Set 03 <span class="sm-live">+ Live Zoom</span></div>
           </div>
         </div>
       </div>
       <div class="summer-right">
         <div class="price-label">One payment</div>
-        <div class="price">€39</div>
+        <div class="price" data-price="summer">€39</div>
         <span class="price-per">three months · all in</span>
         <div class="price-divider"></div>
-        <p class="price-includes">Three printed sets, posted to your door — anywhere we ship. Plus a live <em>closing Zoom session</em> together: a guided yoga &amp; breathing integration, followed by an open community chat. Shipping <em>included.</em> No renewal, no auto-charge.</p>
+        <p class="price-includes">Three printed sets, posted to your door — we currently ship to addresses in the <em>EU</em> and the <em>USA.</em> Plus three live <em>Zoom sessions</em> with us: one per month, each pairing a guided yoga &amp; breathing practice with an open community chat. Shipping <em>included.</em> No renewal, no auto-charge.</p>
         <button class="btn btn-summer" onclick="openSummerForm()">Reserve your place</button>
       </div>
     </div>
 
-    <!-- Coming soon: Monthly + Annual -->
-    <span class="coming-soon-label">— Other plans, coming later this year —</span>
-    <div class="coming-soon-row">
-      <div class="coming-soon-card" aria-disabled="true">
-        <div>
-          <span class="cs-label">Monthly</span>
-          <div class="cs-price">€14</div>
-          <span class="cs-per">per month</span>
+    <!-- Continuing subscriptions: Envelope + Zoom -->
+    <div class="subs-divider">
+      <span class="subs-divider-label">— Or continue beyond the series —</span>
+    </div>
+
+    <div class="subs-intro">
+      <h3>One envelope a month. One live class to match.</h3>
+      <p>Two separate subscriptions — take either, or both. Opening later this year.</p>
+
+      <div class="billing-row">
+        <span class="billing-label">Billing</span>
+        <div class="billing-toggle" role="tablist" aria-label="Billing period">
+          <button type="button" class="seg active" data-billing="monthly" role="tab" aria-selected="true">Monthly</button>
+          <button type="button" class="seg" data-billing="annual" role="tab" aria-selected="false">
+            Annual <span class="seg-aside">· 2 months free</span>
+          </button>
         </div>
-        <p class="cs-desc">Month-to-month, ongoing. Cancel any time before the 20th.</p>
-        <span class="cs-tag">Not yet open</span>
-      </div>
-      <div class="coming-soon-card" aria-disabled="true">
-        <div>
-          <span class="cs-label">Annual</span>
-          <div class="cs-price">€132</div>
-          <span class="cs-per">billed yearly</span>
-        </div>
-        <p class="cs-desc">Twelve sets across a full year of practice.</p>
-        <span class="cs-tag">Not yet open</span>
       </div>
     </div>
+
+    <div class="subs-row is-coming-soon">
+
+      <div class="sub-card" aria-disabled="true">
+        <span class="sub-card-flag">Coming soon</span>
+        <span class="sub-card-meta">Subscription · paper</span>
+        <h4>The Envelope</h4>
+        <p class="sub-card-desc">A handcrafted set arrives at the start of every month — long letter, folded reflection card, practice card. Shipped flat, sealed with care.</p>
+        <div class="sub-card-price">
+          <span class="sub-card-amount" data-price="envelope">€14</span>
+          <span class="sub-card-per" data-per>per month</span>
+        </div>
+        <ul class="sub-card-list">
+          <li>One complete set, posted to your door</li>
+          <li>New theme every month, no repeats</li>
+          <li>Shipping <em>included</em> — EU &amp; USA for now</li>
+        </ul>
+        <button class="btn btn-filled sub-card-btn" disabled aria-disabled="true">Opening later this year</button>
+      </div>
+
+      <div class="sub-card sub-card-zoom" aria-disabled="true">
+        <span class="sub-card-flag">Coming soon</span>
+        <span class="sub-card-meta">Subscription · live</span>
+        <h4>The Zoom Class</h4>
+        <p class="sub-card-desc">A live yoga and breathing class for each month's theme, taught by Anna and Isabella. Replay sent the next day if you can't be there.</p>
+        <div class="sub-card-price">
+          <span class="sub-card-amount" data-price="zoom">€12</span>
+          <span class="sub-card-per" data-per>per month</span>
+        </div>
+        <ul class="sub-card-list">
+          <li>One live session each month</li>
+          <li>Guided practice, then quiet Q&amp;A</li>
+          <li>Replay link the following day</li>
+        </ul>
+        <button class="btn btn-filled sub-card-btn" disabled aria-disabled="true">Opening later this year</button>
+      </div>
+
+    </div>
+
+    <p class="subs-foot">For now, the Summer Series above is the way in. We'll email when monthly &amp; annual plans open.</p>
   </div>
 
   <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
@@ -1998,8 +2331,8 @@ footer {
       <p>Leave your details below and we'll prepare your first envelope. Once we've received your sign-up, we'll send you a payment link by email to complete your subscription.</p>
       <div class="summer-detail">
         <div class="sd-eyebrow">What you'll receive</div>
-        <h4>Three sets + a live Zoom · €39 · shipping included</h4>
-        <div class="sd-sub">July, August, September 2026 — shipped at the beginning of each month. A closing Zoom session follows at the end of the series, with date and time confirmed by email closer to the time.</div>
+        <h4>Three sets + three live Zooms · <span data-price="summer">€39</span> · shipping included</h4>
+        <div class="sd-sub">July, August, September 2026 — shipped at the beginning of each month. A live Zoom gathering follows each set, with dates and times confirmed by email closer to each session.</div>
       </div>
     </div>
 
@@ -2048,7 +2381,7 @@ footer {
         <div class="field">
           <label for="saddress_country">Country</label>
           <input type="text" id="saddress_country" name="addressCountry" required placeholder="Netherlands" />
-          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">Anywhere — we'll work out the best route to you.</span>
+          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">For now, we ship to addresses in the EU and the USA.</span>
         </div>
         <div class="field">
           <label for="snote">Anything we should know? <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
@@ -2056,7 +2389,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="28404d44444768444d5c5c4d5a5b474e585a4d5b4d464b4d064b4745">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3159545d5d5e715d5445455443425e5741435442545f52541f525e5c">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -2119,6 +2452,95 @@ footer {
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  /* ── PRICING TABLE ──────────────────────────────────────────────────────────
+     Three currencies × monthly/annual for the two subscriptions,
+     plus a fixed Summer Series price per currency.
+     ─────────────────────────────────────────────────────────── */
+  const PRICES = {
+    envelope: {
+      CHF: { monthly: 18, annual: 180 },
+      USD: { monthly: 19, annual: 190 },
+      EUR: { monthly: 14, annual: 140 },
+    },
+    zoom: {
+      CHF: { monthly: 14, annual: 140 },
+      USD: { monthly: 14, annual: 140 },
+      EUR: { monthly: 12, annual: 120 },
+    },
+    summer: { CHF: 45, USD: 45, EUR: 39 },
+  };
+  // Symbol & placement per currency — €/$ lead, CHF trails (Swiss convention).
+  function formatPrice(amount, currency) {
+    if (currency === 'EUR') return '€' + amount;
+    if (currency === 'USD') return '$' + amount;
+    return amount + '\u202F' + 'CHF'; // narrow no-break space
+  }
+
+  let currentCurrency = 'EUR';
+  let currentBilling  = 'monthly';
+
+  function applyPrices() {
+    // Summer Series — always a single payment, currency only
+    document.querySelectorAll('[data-price="summer"]').forEach(el => {
+      el.textContent = formatPrice(PRICES.summer[currentCurrency], currentCurrency);
+      pulse(el);
+    });
+
+    // Envelope + Zoom — currency × billing
+    ['envelope', 'zoom'].forEach(product => {
+      document.querySelectorAll('[data-price="' + product + '"]').forEach(el => {
+        const amount = PRICES[product][currentCurrency][currentBilling];
+        el.textContent = formatPrice(amount, currentCurrency);
+        pulse(el);
+      });
+    });
+
+    // Per-label ("per month" / "per year")
+    document.querySelectorAll('[data-per]').forEach(el => {
+      el.textContent = currentBilling === 'monthly' ? 'per month' : 'per year';
+    });
+  }
+
+  function pulse(el) {
+    el.classList.remove('price-pulse');
+    // Force reflow so the animation restarts on every change
+    void el.offsetWidth;
+    el.classList.add('price-pulse');
+  }
+
+  // Wire up the segmented toggles
+  window.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.currency-toggle .seg').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const c = this.dataset.currency;
+        if (c === currentCurrency) return;
+        currentCurrency = c;
+        document.querySelectorAll('.currency-toggle .seg').forEach(b => {
+          const on = b.dataset.currency === c;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        applyPrices();
+      });
+    });
+    document.querySelectorAll('.billing-toggle .seg').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const b = this.dataset.billing;
+        if (b === currentBilling) return;
+        currentBilling = b;
+        document.querySelectorAll('.billing-toggle .seg').forEach(el => {
+          const on = el.dataset.billing === b;
+          el.classList.toggle('active', on);
+          el.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        applyPrices();
+      });
+    });
+    applyPrices();
+  });
+</script>
+
+<script>
   /* ── GOOGLE FORM CONFIG ─────────────────────────────────────────────────────────
      Submissions are POSTed to a Google Form via a hidden iframe.
      The Form has "Send responses to Sheet" enabled, so each submission
