@@ -2389,7 +2389,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7018151c1c1f301c1504041502031f1600021503151e13155e131f1d">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49c9198989bb4989180809186879b9284869187919a9791da979b99">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -2563,6 +2563,11 @@ footer {
     },
   };
 
+  // ── Reliable endpoint (Google Apps Script Web App) ──────────────────
+  //    Paste your deployed Web App URL here (it ends in /exec).
+  //    See google-apps-script.gs for the one-time setup steps.
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbfhVHoYgeyw7rW7PyHorgBrwgVINZWOEnaKkRcWNwFO8zqJUCJeVF1fde_iGqqyVMsA/exec';
+
   function openSummerForm() {
     showPage('subscribe');
     setTimeout(() => {
@@ -2611,13 +2616,6 @@ footer {
       return false;
     }
 
-    // Map the data onto the Google Form entry IDs.
-    const fd = new FormData();
-    Object.keys(data).forEach(k => {
-      const entryId = GOOGLE_FORM.fields[k];
-      if (entryId && data[k]) fd.append(entryId, data[k]);
-    });
-
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
 
@@ -2628,53 +2626,25 @@ footer {
     const showError = (msg) => {
       submitBtn.textContent = 'Reserve my Summer Series';
       submitBtn.disabled = false;
-      errorEl.textContent = msg || 'We couldn’t reach our sign-up service. This is usually a privacy browser, an ad-blocker/shield, or a restricted network blocking the request. Please turn off shields/extensions or try another network — or email hello@lettersofpresence.com.';
+      errorEl.textContent = msg || 'Something went wrong sending your sign-up. Please try again in a moment, or email hello@lettersofpresence.com.';
       errorEl.classList.add('visible');
     };
 
-    // ── Primary transport: no-cors fetch ───────────────────────────────
-    //    The request is still recorded by Google even though we can't read
-    //    the cross-origin response. Unlike the iframe trick, fetch REJECTS
-    //    when a browser/extension/network blocks the request — so a blocked
-    //    submission shows an honest error rather than a fake success.
-    fetch(GOOGLE_FORM.url, { method: 'POST', mode: 'no-cors', body: fd })
-      .then(showSuccess)
-      .catch(() => {
-        // ── Last-ditch fallback: hidden-iframe POST ─────────────────────
-        try {
-          const hidden = document.createElement('form');
-          hidden.action = GOOGLE_FORM.url;
-          hidden.method = 'POST';
-          hidden.target = 'summer-hidden-iframe';
-          Object.keys(data).forEach(k => {
-            const entryId = GOOGLE_FORM.fields[k];
-            if (!entryId || !data[k]) return;
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = entryId;
-            input.value = data[k];
-            hidden.appendChild(input);
-          });
-          document.body.appendChild(hidden);
-          const iframe = document.getElementById('summer-hidden-iframe');
-          let done = false;
-          const onLoad = () => {
-            if (done) return; done = true;
-            iframe.removeEventListener('load', onLoad);
-            hidden.remove();
-            showSuccess();
-          };
-          iframe.addEventListener('load', onLoad);
-          hidden.submit();
-          setTimeout(() => {
-            if (done) return; done = true;
-            hidden.remove();
-            showError();
-          }, 8000);
-        } catch (_) {
-          showError();
-        }
-      });
+    // ── Reliable transport: Google Apps Script Web App ──────────────────
+    //    Unlike the Google Forms POST, this returns a REAL ok/error we can
+    //    read, so a submission either lands in the Sheet or shows an honest
+    //    error — no silent drops. Sent as URL-encoded form data so it stays
+    //    a "simple" CORS request (no preflight).
+    const params = new URLSearchParams();
+    Object.keys(data).forEach(k => { if (data[k]) params.append(k, data[k]); });
+
+    fetch(APPS_SCRIPT_URL, { method: 'POST', body: params })
+      .then(r => r.json())
+      .then(res => {
+        if (res && res.ok) showSuccess();
+        else showError(res && res.error ? res.error : null);
+      })
+      .catch(() => showError());
 
     return false;
   }
