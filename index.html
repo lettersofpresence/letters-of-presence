@@ -17,7 +17,7 @@
   --warm-white: #FBF7F8;
   --paper:      #F0E8EC;
   --orange:     #EF6715;
-  --apricot:    #FEAF68;  
+  --apricot:    #FEAF68;
   --rose:       #DBA1C2;
   --mauve:      #CA649F;
   --berry:      #972956;
@@ -2294,7 +2294,7 @@ footer {
         <ul class="sub-card-list">
           <li>One complete set, posted to your door</li>
           <li>New theme every month, no repeats</li>
-          <li>Shipping <em>included</em> — EU &amp; USA for now</li>
+          <li>Shipping <em>included</em> — Europe &amp; USA for now</li>
         </ul>
         <button class="btn btn-filled sub-card-btn" disabled aria-disabled="true">Opening later this year</button>
       </div>
@@ -2381,7 +2381,7 @@ footer {
         <div class="field">
           <label for="saddress_country">Country</label>
           <input type="text" id="saddress_country" name="addressCountry" required placeholder="Netherlands" />
-          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">For now, we ship to addresses in the EU and the USA.</span>
+          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">For now, we ship to addresses in Europe and the USA.</span>
         </div>
         <div class="field">
           <label for="snote">Anything we should know? <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
@@ -2389,7 +2389,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="325a575e5e5d725e5746465740415d5442405741575c51571c515d5f">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7018151c1c1f301c1504041502031f1600021503151e13155e131f1d">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your place is <em>reserved.</em></h4>
@@ -2596,47 +2596,85 @@ footer {
       note:           document.getElementById('snote').value.trim(),
     };
 
-    // Build a real form element and POST it through a hidden iframe.
-    // This is the only reliable way to talk to Google Forms from the browser
-    // because their endpoint blocks cross-origin fetch.
-    const hidden = document.createElement('form');
-    hidden.action = GOOGLE_FORM.url;
-    hidden.method = 'POST';
-    hidden.target = 'summer-hidden-iframe';
+    // ── Honest validation ──────────────────────────────────────────────
+    //    If a required field is blank or the email is malformed, Google
+    //    silently REJECTS the whole submission (records nothing). Catch it
+    //    here so the user gets a clear message instead of a fake "success".
+    const requiredKeys = ['firstName','lastName','email','phone','addressStreet','addressPostal','addressCity','addressCountry'];
+    const missing = requiredKeys.filter(k => !data[k]);
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+    if (missing.length || !emailOk) {
+      errorEl.textContent = (!missing.length && !emailOk)
+        ? 'That email address doesn’t look right — please check it and try again.'
+        : 'Please fill in every required field before submitting.';
+      errorEl.classList.add('visible');
+      return false;
+    }
+
+    // Map the data onto the Google Form entry IDs.
+    const fd = new FormData();
     Object.keys(data).forEach(k => {
       const entryId = GOOGLE_FORM.fields[k];
-      if (!entryId) return;
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = entryId;
-      input.value = data[k];
-      hidden.appendChild(input);
+      if (entryId && data[k]) fd.append(entryId, data[k]);
     });
-    document.body.appendChild(hidden);
 
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled = true;
 
-    // Google Forms returns an opaque response — we can't read it.
-    // Show success once the iframe finishes loading.
-    const iframe = document.getElementById('summer-hidden-iframe');
-    const onDone = () => {
-      iframe.removeEventListener('load', onDone);
+    const showSuccess = () => {
       form.style.display = 'none';
       success.classList.add('visible');
-      hidden.remove();
     };
-    iframe.addEventListener('load', onDone);
-    hidden.submit();
+    const showError = (msg) => {
+      submitBtn.textContent = 'Reserve my Summer Series';
+      submitBtn.disabled = false;
+      errorEl.textContent = msg || 'We couldn’t reach our sign-up service. This is usually a privacy browser, an ad-blocker/shield, or a restricted network blocking the request. Please turn off shields/extensions or try another network — or email hello@lettersofpresence.com.';
+      errorEl.classList.add('visible');
+    };
 
-    // Safety fallback if the iframe never fires (e.g. blocked by a browser extension)
-    setTimeout(() => {
-      if (!success.classList.contains('visible')) {
-        submitBtn.textContent = 'Reserve my Summer Series';
-        submitBtn.disabled = false;
-        errorEl.classList.add('visible');
-      }
-    }, 8000);
+    // ── Primary transport: no-cors fetch ───────────────────────────────
+    //    The request is still recorded by Google even though we can't read
+    //    the cross-origin response. Unlike the iframe trick, fetch REJECTS
+    //    when a browser/extension/network blocks the request — so a blocked
+    //    submission shows an honest error rather than a fake success.
+    fetch(GOOGLE_FORM.url, { method: 'POST', mode: 'no-cors', body: fd })
+      .then(showSuccess)
+      .catch(() => {
+        // ── Last-ditch fallback: hidden-iframe POST ─────────────────────
+        try {
+          const hidden = document.createElement('form');
+          hidden.action = GOOGLE_FORM.url;
+          hidden.method = 'POST';
+          hidden.target = 'summer-hidden-iframe';
+          Object.keys(data).forEach(k => {
+            const entryId = GOOGLE_FORM.fields[k];
+            if (!entryId || !data[k]) return;
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = entryId;
+            input.value = data[k];
+            hidden.appendChild(input);
+          });
+          document.body.appendChild(hidden);
+          const iframe = document.getElementById('summer-hidden-iframe');
+          let done = false;
+          const onLoad = () => {
+            if (done) return; done = true;
+            iframe.removeEventListener('load', onLoad);
+            hidden.remove();
+            showSuccess();
+          };
+          iframe.addEventListener('load', onLoad);
+          hidden.submit();
+          setTimeout(() => {
+            if (done) return; done = true;
+            hidden.remove();
+            showError();
+          }, 8000);
+        } catch (_) {
+          showError();
+        }
+      });
 
     return false;
   }
