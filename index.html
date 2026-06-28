@@ -2427,7 +2427,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6ded3dadad9f6dad3c2c2d3c4c5d9d0c6c4d3c5d3d8d5d398d5d9db">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc5c8c1c1c2edc1c8d9d9c8dfdec2cbdddfc8dec8c3cec883cec2c0">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your details are <em>saved.</em></h4>
@@ -2629,14 +2629,18 @@ footer {
       });
     });
 
-    // A saved manual choice wins; otherwise guess from timezone instantly,
-    // then refine with the IP lookup when it returns.
-    if (savedCurrency && SUPPORTED.indexOf(savedCurrency) !== -1) {
-      userPicked = true;
-      setCurrency(savedCurrency, {});
+    // There's no manual toggle any more, so detection has to be reliable on
+    // its own. The browser's timezone is the trustworthy signal: it pins
+    // Switzerland (CHF) and the US (USD) cleanly, works offline, and isn't
+    // fooled by the VPNs / carrier routing that make IP geolocation flip a
+    // Zurich visitor to USD. We only fall back to an IP lookup when the
+    // timezone tells us nothing — and we no longer honour an old saved pick,
+    // since without a toggle the visitor could never have changed it back.
+    const guess = currencyFromTimezone();
+    if (guess) {
+      setCurrency(guess, { auto: true });   // confident — don't let IP override it
     } else {
-      const guess = currencyFromTimezone();
-      setCurrency(guess || 'EUR', { auto: !!guess });
+      setCurrency('EUR', { auto: true });   // safe default while the lookup runs
       detectCurrencyByIP();
     }
   });
