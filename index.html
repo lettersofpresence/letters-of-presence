@@ -492,6 +492,21 @@ nav {
 
 .letter-preview p:last-child { margin-bottom: 0; }
 
+.letter-preview p.lp-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+}
+.lp-continues {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(75,42,82,.1);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--faint);
+  letter-spacing: .01em;
+}
+
 /* Numbers */
 .numbers-section {
   padding: 80px 52px;
@@ -1028,6 +1043,13 @@ nav {
   margin-left: 4px;
   opacity: .85;
 }
+.currency-auto-note {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--mauve);
+  line-height: 1.4;
+}
 
 /* ── SUBSCRIPTIONS SECTION ─────────────────────────────────── */
 .subs-divider {
@@ -1248,9 +1270,47 @@ nav {
 .subs-row.is-coming-soon .sub-card-btn:hover {
   opacity: 1;
 }
-/* The billing toggle stays interactive (so they can preview pricing),
-   but visually mute it so it doesn't compete with the Summer Series CTA */
-.billing-toggle { opacity: .85; }
+.billing-toggle { opacity: 1; }
+
+/* Two available product cards */
+.sub-card-featured {
+  background: var(--paper);
+  border-color: rgba(202,100,159,.42);
+  box-shadow: 0 18px 46px rgba(31,10,24,.07);
+}
+.sub-card-flag-rec {
+  color: var(--mauve);
+  border-color: rgba(202,100,159,.4);
+  background: rgba(255,255,255,.7);
+}
+.sub-card-annual-note {
+  display: none;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11.5px;
+  color: var(--mauve);
+  line-height: 1.6;
+  margin: -8px 0 18px;
+}
+.signup-hidden { display: none !important; }
+.sub-card.is-selected {
+  border-color: var(--mauve);
+  box-shadow: 0 0 0 2px var(--mauve), 0 18px 46px rgba(31,10,24,.08);
+}
+.signup-change {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  cursor: pointer;
+}
+.signup-change:hover { text-decoration: underline; }
 
 /* ── SUMMER SERIES FEATURED ────────────────────────────────── */
 .summer-feature {
@@ -2018,19 +2078,19 @@ footer {
       <div class="letter-left">
         <span class="eyebrow" style="color:var(--rose);">Preview of the July 2026 letter</span>
         <h2>A letter worth reading slowly.</h2>
-        <p>A passage from the July letter, focusing on Nadi Shodhana — the breath that balances. The Summer Series also includes a practice card guiding alternate nostril breathing, and journal prompts around the theme so you have room to reflect across the month.</p>
-        <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Join the Summer Series</button>
+        <p>The opening of July's letter, on Nadi Shodhana — the breath that balances. Each month's envelope also includes a practice card guiding alternate nostril breathing, and journal prompts around the theme so you have room to reflect across the month.</p>
+        <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Start your subscription</button>
       </div>
       <div class="letter-right">
         <div class="letter-preview">
           <div class="letter-preview-header">
-            <div class="lp-eyebrow">Letters of Presence · July 2026</div>
+            <div class="lp-eyebrow">Letters of Presence · July 2026 · Excerpt</div>
             <h4>Nadi Shodhana — The Breath That Balances</h4>
             <div class="lp-date">Pranayama series · Vol. 01</div>
           </div>
-          <p>While reading these first few words, you have most likely passed two cycles of breath. You didn't decide to breathe. You didn't remind yourself. It simply happened — as it has roughly 20,000 times today alone.</p>
-          <p>Now try something. Take one slow, deliberate inhalation. Then a full exhalation. Feel the difference? That small shift — from unconscious to conscious — is the entire territory of this month's practice.</p>
-          <p>We know a great deal about the breath. We know it carries oxygen, regulates our nervous system, and responds to stress. And yet most of us spend our lives barely touching it. We inhale shallowly. We hold our breath without noticing. We exhale before we're ready. The breath is the most intimate thing happening inside us, and it is almost entirely invisible to us.</p>
+          <p>While reading these first few words, you have most likely passed two cycles of breath. Our day-to-day breathing stays mostly unconscious, and that's natural, since on average we breathe around 20,000 times a day. Imagine noticing all those cycles consciously! Let's try something simpler: take one deep inhalation… and a slow exhalation. What do you notice within your body?</p>
+          <p class="lp-fade">In the yogic tradition, breath is not simply air moving through a body. It is prana: vital energy. When you breathe consciously, you are not just oxygenating your blood. You are directing energy. Pranayama is the practice of consciously regulating the breath to purify the energy channels of the body, because a disturbed breath creates a disturbed mind, and a steady breath creates a steady mind.</p>
+          <div class="lp-continues">This is only the opening — the full letter continues in your envelope.</div>
         </div>
       </div>
     </div>
@@ -2069,8 +2129,8 @@ footer {
 <div id="page-themes" class="page">
 
   <div class="themes-header">
-    <span class="eyebrow">The Summer Series · 2026</span>
-    <h2>Three themes. One season.<br>Three live gatherings.</h2>
+    <span class="eyebrow">Upcoming themes · 2026</span>
+    <h2>A new theme<br>every month.</h2>
     <p>Each set is created by a qualified yoga therapist and a long-term teacher and practitioner of yoga — two lifelong friends, writing from direct practice. No two months cover the same ground. Each is a complete invitation to slow down, deepen, and integrate.</p>
   </div>
 
@@ -2078,7 +2138,7 @@ footer {
 
     <div class="theme-card">
       <div class="theme-card-header" style="background:var(--purple);">
-        <span class="theme-card-meta">July 2026 · Set 01</span>
+        <span class="theme-card-meta">July 2026</span>
         <h3>Nadi Shodhana</h3>
         <div class="sanskrit">The Breath That Balances</div>
       </div>
@@ -2091,7 +2151,7 @@ footer {
 
     <div class="theme-card">
       <div class="theme-card-header" style="background:var(--navy);">
-        <span class="theme-card-meta">August 2026 · Set 02</span>
+        <span class="theme-card-meta">August 2026</span>
         <h3>Svadhyaya</h3>
         <div class="sanskrit">The Practice of Turning Inward</div>
       </div>
@@ -2104,7 +2164,7 @@ footer {
 
     <div class="theme-card">
       <div class="theme-card-header" style="background:var(--orange);">
-        <span class="theme-card-meta">September 2026 · Set 03</span>
+        <span class="theme-card-meta">September 2026</span>
         <h3>Asana</h3>
         <div class="sanskrit">The Body as a Place to Begin</div>
       </div>
@@ -2122,11 +2182,11 @@ footer {
     <div class="themes-closing-inner">
       <div>
         <span class="themes-closing-meta">Each month · Live on Zoom</span>
-        <h3>Three live <em>gatherings</em></h3>
-        <div class="sanskrit-closing">One per theme · July, August, September</div>
+        <h3>A live <em>gathering</em> every month</h3>
+        <div class="sanskrit-closing">Included with the Envelope + Live Class plan</div>
       </div>
       <div>
-        <p>Alongside the printed sets, we gather on Zoom once a month — a guided yoga and breathing practice rooted in that month's theme, followed by an open community chat. A chance to land what the cards have built, and to share what surfaced with the people who walked the same season.</p>
+        <p>Alongside the printed set, we gather on Zoom once a month — a guided yoga and breathing practice rooted in that month's theme, followed by an open community chat. A chance to land what the cards have built, and to share what surfaced with others practising the same theme.</p>
         <p class="themes-closing-note">Dates and times confirmed by email closer to each session.</p>
       </div>
     </div>
@@ -2209,9 +2269,9 @@ footer {
 <div id="page-subscribe" class="page">
 
   <div class="subscribe-header">
-    <span class="eyebrow">A summer of practice</span>
-    <h2>The Summer Series.</h2>
-    <p>Three months. Three themes. One envelope at the start of each — July, August, September. One payment.</p>
+    <span class="eyebrow">Choose your practice</span>
+    <h2>Subscribe.</h2>
+    <p>One envelope a month — on its own, or paired with a live class. Pay monthly, or pay annually and get two months free.</p>
 
     <!-- Currency toggle — controls every price on this page -->
     <div class="currency-row">
@@ -2221,53 +2281,15 @@ footer {
         <button type="button" class="seg" data-currency="CHF" role="tab" aria-selected="false">CHF</button>
         <button type="button" class="seg" data-currency="USD" role="tab" aria-selected="false">USD $</button>
       </div>
+      <span class="currency-auto-note" id="currency-auto-note" hidden>Set from your location · change anytime</span>
     </div>
   </div>
 
   <div class="pricing-wrapper">
 
-    <!-- Summer Series featured -->
-    <div class="summer-feature">
-      <div class="summer-left">
-        <span class="summer-eyebrow">Summer Series · 2026</span>
-        <h3>Three months of practice,<br><em>one envelope at a time.</em></h3>
-        <p class="summer-lede">A complete summer of presence — three curated sets arriving in July, August, and September, each paired with a live Zoom gathering to practise together. Cool the body, steady the breath, end summer more settled than you began.</p>
-        <div class="summer-months">
-          <div class="summer-month">
-            <div class="sm-num">July</div>
-            <div class="sm-theme">Nadi Shodhana</div>
-            <div class="sm-label">Set 01 <span class="sm-live">+ Live Zoom</span></div>
-          </div>
-          <div class="summer-month">
-            <div class="sm-num">August</div>
-            <div class="sm-theme">Svadhyaya</div>
-            <div class="sm-label">Set 02 <span class="sm-live">+ Live Zoom</span></div>
-          </div>
-          <div class="summer-month">
-            <div class="sm-num">September</div>
-            <div class="sm-theme">Asana</div>
-            <div class="sm-label">Set 03 <span class="sm-live">+ Live Zoom</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="summer-right">
-        <div class="price-label">One payment</div>
-        <div class="price" data-price="summer">€39</div>
-        <span class="price-per">three months · all in</span>
-        <div class="price-divider"></div>
-        <p class="price-includes">Three printed sets, posted to your door — we currently ship to addresses in the <em>EU</em> and the <em>USA.</em> Plus three live <em>Zoom sessions</em> with us: one per month, each pairing a guided yoga &amp; breathing practice with an open community chat. Shipping <em>included.</em> No renewal, no auto-charge.</p>
-        <button class="btn btn-summer" onclick="openSummerForm()">Reserve your place</button>
-      </div>
-    </div>
-
-    <!-- Continuing subscriptions: Envelope + Zoom -->
-    <div class="subs-divider">
-      <span class="subs-divider-label">— Or continue beyond the series —</span>
-    </div>
-
     <div class="subs-intro">
-      <h3>One envelope a month. One live class to match.</h3>
-      <p>Two separate subscriptions — take either, or both. Opening later this year.</p>
+      <h3>Two ways to practise.</h3>
+      <p>Take the Envelope on its own, or pair it with a live monthly class. Pay monthly, or annually for two months free.</p>
 
       <div class="billing-row">
         <span class="billing-label">Billing</span>
@@ -2280,10 +2302,9 @@ footer {
       </div>
     </div>
 
-    <div class="subs-row is-coming-soon">
+    <div class="subs-row">
 
-      <div class="sub-card" aria-disabled="true">
-        <span class="sub-card-flag">Coming soon</span>
+      <div class="sub-card">
         <span class="sub-card-meta">Subscription · paper</span>
         <h4>The Envelope</h4>
         <p class="sub-card-desc">A handcrafted set arrives at the start of every month — long letter, folded reflection card, practice card. Shipped flat, sealed with care.</p>
@@ -2291,53 +2312,58 @@ footer {
           <span class="sub-card-amount" data-price="envelope">€14</span>
           <span class="sub-card-per" data-per>per month</span>
         </div>
+        <div class="sub-card-annual-note" data-annual-note>Billed once a year — you pay for ten months, two are free.</div>
         <ul class="sub-card-list">
           <li>One complete set, posted to your door</li>
           <li>New theme every month, no repeats</li>
           <li>Shipping <em>included</em> — Europe &amp; USA for now</li>
         </ul>
-        <button class="btn btn-filled sub-card-btn" disabled aria-disabled="true">Opening later this year</button>
+        <button class="btn btn-filled sub-card-btn" data-plan="envelope" onclick="openSignup('envelope')">Subscribe</button>
       </div>
 
-      <div class="sub-card sub-card-zoom" aria-disabled="true">
-        <span class="sub-card-flag">Coming soon</span>
-        <span class="sub-card-meta">Subscription · live</span>
-        <h4>The Zoom Class</h4>
-        <p class="sub-card-desc">A live yoga and breathing class for each month's theme, taught by Anna and Isabella. Replay sent the next day if you can't be there.</p>
+      <div class="sub-card sub-card-featured">
+        <span class="sub-card-flag sub-card-flag-rec">Most complete</span>
+        <span class="sub-card-meta">Subscription · paper + live</span>
+        <h4>Envelope + Live Class</h4>
+        <p class="sub-card-desc">Everything in the Envelope, plus a live monthly yoga and breathing class for that month's theme — taught by Anna and Isabella.</p>
         <div class="sub-card-price">
-          <span class="sub-card-amount" data-price="zoom">€12</span>
+          <span class="sub-card-amount" data-price="envelopeLive">€24</span>
           <span class="sub-card-per" data-per>per month</span>
         </div>
+        <div class="sub-card-annual-note" data-annual-note>Billed once a year — you pay for ten months, two are free.</div>
         <ul class="sub-card-list">
-          <li>One live session each month</li>
-          <li>Guided practice, then quiet Q&amp;A</li>
-          <li>Replay link the following day</li>
+          <li>The complete monthly envelope, posted to you</li>
+          <li>One live class each month, with replay the next day</li>
+          <li>Guided practice, then an open community chat</li>
         </ul>
-        <button class="btn btn-filled sub-card-btn" disabled aria-disabled="true">Opening later this year</button>
+        <button class="btn btn-filled sub-card-btn" data-plan="envelopeLive" onclick="openSignup('envelopeLive')">Subscribe</button>
       </div>
 
     </div>
 
-    <p class="subs-foot">For now, the Summer Series above is the way in. We'll email when monthly &amp; annual plans open.</p>
+    <p class="subs-foot">Pay monthly, or choose annual for two months free. Cancel whenever you like.</p>
   </div>
 
-  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+  <hr class="section-divider signup-hidden" id="signup-divider" style="max-width:1200px;margin:0 auto;" />
 
-  <!-- Summer Series signup form -->
-  <div class="summer-form-section" id="summer-form">
+  <!-- Subscription signup form (revealed when a plan's Subscribe is clicked) -->
+  <div class="summer-form-section signup-hidden" id="summer-form">
     <div class="summer-form-context">
-      <span class="eyebrow">Reserve your place</span>
-      <h3>Begin in <em>July.</em></h3>
+      <span class="eyebrow">Start your subscription</span>
+      <h3>Begin this <em>month.</em></h3>
       <p>Leave your details below and we'll prepare your first envelope. Once we've received your sign-up, we'll send you a payment link by email to complete your subscription.</p>
       <div class="summer-detail">
-        <div class="sd-eyebrow">What you'll receive</div>
-        <h4>Three sets + three live Zooms · <span data-price="summer">€39</span> · shipping included</h4>
-        <div class="sd-sub">July, August, September 2026 — shipped at the beginning of each month. A live Zoom gathering follows each set, with dates and times confirmed by email closer to each session.</div>
+        <div class="sd-eyebrow">You're signing up for</div>
+        <h4 id="signup-summary-title">The Envelope · <span id="signup-summary-price">€14</span> per month</h4>
+        <div class="sd-sub" id="signup-summary-includes">One printed set, posted to your door at the start of every month. Shipping included.</div>
       </div>
+      <button type="button" class="signup-change" onclick="scrollToPlans()">← Choose a different plan</button>
     </div>
 
     <div>
-      <form class="sub-form" id="summer-form-el" onsubmit="return submitSummerForm(event)">
+      <form class="sub-form" id="summer-form-el" onsubmit="return submitSubscribeForm(event)">
+        <input type="hidden" name="plan" id="signup-plan-input" value="The Envelope (monthly)" />
+        <input type="hidden" name="billing" id="signup-billing-input" value="monthly" />
         <div class="form-row">
           <div class="field">
             <label for="sfname">First name</label>
@@ -2387,13 +2413,13 @@ footer {
           <label for="snote">Anything we should know? <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
           <textarea id="snote" name="note" placeholder="Accessibility needs, a delivery instruction, a note about why you're joining — anything at all."></textarea>
         </div>
-        <button type="submit" class="btn btn-summer" id="summer-submit">Reserve my Summer Series</button>
-        <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">You'll receive a payment link by email shortly after signing up.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f9f4fdfdfed1fdf4e5e5f4e3e2fef7e1e3f4e2f4fff2f4bff2fefc">[email&#160;protected]</a>.</span>
+        <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
+        <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573f323b3b38173b322323322524383127253224323934327934383a">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
-        <h4>Your place is <em>reserved.</em></h4>
-        <p>We've received your details. A <strong style="font-weight:400;color:var(--berry);">payment link</strong> will arrive in your inbox shortly — once it's settled, your first envelope ships at the beginning of July.</p>
+        <h4>Your details are <em>saved.</em></h4>
+        <p>Thank you — we've got your shipping details. Our secure <strong style="font-weight:400;color:var(--berry);">checkout</strong> is being finalised; we'll email you a payment link to complete your subscription shortly.</p>
       </div>
       <iframe name="summer-hidden-iframe" id="summer-hidden-iframe" style="display:none;"></iframe>
     </div>
@@ -2456,19 +2482,12 @@ footer {
      Three currencies × monthly/annual for the two subscriptions,
      plus a fixed Summer Series price per currency.
      ─────────────────────────────────────────────────────────── */
+  // Monthly base price per currency. Annual = pay for 10 months (2 free).
   const PRICES = {
-    envelope: {
-      CHF: { monthly: 18, annual: 180 },
-      USD: { monthly: 19, annual: 190 },
-      EUR: { monthly: 14, annual: 140 },
-    },
-    zoom: {
-      CHF: { monthly: 14, annual: 140 },
-      USD: { monthly: 14, annual: 140 },
-      EUR: { monthly: 12, annual: 120 },
-    },
-    summer: { CHF: 45, USD: 45, EUR: 39 },
+    envelope:     { CHF: 18, USD: 19, EUR: 14 },
+    envelopeLive: { CHF: 32, USD: 33, EUR: 24 },
   };
+  const ANNUAL_MONTHS_PAID = 10;
   // Symbol & placement per currency — €/$ lead, CHF trails (Swiss convention).
   function formatPrice(amount, currency) {
     if (currency === 'EUR') return '€' + amount;
@@ -2479,18 +2498,15 @@ footer {
   let currentCurrency = 'EUR';
   let currentBilling  = 'monthly';
 
-  function applyPrices() {
-    // Summer Series — always a single payment, currency only
-    document.querySelectorAll('[data-price="summer"]').forEach(el => {
-      el.textContent = formatPrice(PRICES.summer[currentCurrency], currentCurrency);
-      pulse(el);
-    });
+  function priceFor(product) {
+    const monthly = PRICES[product][currentCurrency];
+    return currentBilling === 'monthly' ? monthly : monthly * ANNUAL_MONTHS_PAID;
+  }
 
-    // Envelope + Zoom — currency × billing
-    ['envelope', 'zoom'].forEach(product => {
+  function applyPrices() {
+    ['envelope', 'envelopeLive'].forEach(product => {
       document.querySelectorAll('[data-price="' + product + '"]').forEach(el => {
-        const amount = PRICES[product][currentCurrency][currentBilling];
-        el.textContent = formatPrice(amount, currentCurrency);
+        el.textContent = formatPrice(priceFor(product), currentCurrency);
         pulse(el);
       });
     });
@@ -2499,6 +2515,14 @@ footer {
     document.querySelectorAll('[data-per]').forEach(el => {
       el.textContent = currentBilling === 'monthly' ? 'per month' : 'per year';
     });
+
+    // Annual-only notes on the cards
+    document.querySelectorAll('[data-annual-note]').forEach(el => {
+      el.style.display = currentBilling === 'annual' ? 'block' : 'none';
+    });
+
+    // Keep the signup form summary in sync
+    if (typeof updateSignupSummary === 'function') updateSignupSummary();
   }
 
   function pulse(el) {
@@ -2508,19 +2532,75 @@ footer {
     el.classList.add('price-pulse');
   }
 
-  // Wire up the segmented toggles
+  // ── Auto-currency: detect the visitor's currency, with manual override ──
+  let userPicked = false;
+  const SUPPORTED = ['EUR', 'CHF', 'USD'];
+  const savedCurrency = (function () {
+    try { return localStorage.getItem('lop-currency'); } catch (e) { return null; }
+  })();
+
+  // Only CHF & USD are special; everywhere else we ship defaults to EUR.
+  function currencyFromCountry(code) {
+    if (!code) return null;
+    code = String(code).toUpperCase();
+    if (code === 'CH' || code === 'LI') return 'CHF';
+    if (code === 'US') return 'USD';
+    return 'EUR';
+  }
+
+  // Instant, offline guess so prices localise before any network call returns.
+  function currencyFromTimezone() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (tz === 'Europe/Zurich' || tz === 'Europe/Vaduz') return 'CHF';
+      if (tz.indexOf('America/') === 0) return 'USD';
+      if (tz.indexOf('Europe/') === 0 || tz.indexOf('Atlantic/') === 0) return 'EUR';
+    } catch (e) {}
+    return null;
+  }
+
+  function setCurrency(c, opts) {
+    opts = opts || {};
+    if (SUPPORTED.indexOf(c) === -1) return;
+    currentCurrency = c;
+    document.querySelectorAll('.currency-toggle .seg').forEach(b => {
+      const on = b.dataset.currency === c;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const note = document.getElementById('currency-auto-note');
+    if (note) note.hidden = !opts.auto;
+    applyPrices();
+    if (opts.persist) { try { localStorage.setItem('lop-currency', c); } catch (e) {} }
+  }
+
+  // Refine the guess with an IP-based lookup (free, no key, HTTPS + CORS).
+  function detectCurrencyByIP() {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    fetch('https://ipwho.is/?fields=success,country_code', { signal: controller.signal })
+      .then(r => r.json())
+      .then(d => {
+        clearTimeout(timer);
+        if (userPicked) return; // don't override a manual choice mid-flight
+        const cur = currencyFromCountry(d && d.country_code);
+        if (cur) setCurrency(cur, { auto: true });
+      })
+      .catch(() => clearTimeout(timer));
+  }
+
+  // Wire up the segmented toggles + run currency detection
   window.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.currency-toggle .seg').forEach(btn => {
       btn.addEventListener('click', function () {
+        userPicked = true;
         const c = this.dataset.currency;
-        if (c === currentCurrency) return;
-        currentCurrency = c;
-        document.querySelectorAll('.currency-toggle .seg').forEach(b => {
-          const on = b.dataset.currency === c;
-          b.classList.toggle('active', on);
-          b.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        applyPrices();
+        if (c === currentCurrency) {
+          const note = document.getElementById('currency-auto-note');
+          if (note) note.hidden = true;
+          return;
+        }
+        setCurrency(c, { persist: true });
       });
     });
     document.querySelectorAll('.billing-toggle .seg').forEach(btn => {
@@ -2536,7 +2616,17 @@ footer {
         applyPrices();
       });
     });
-    applyPrices();
+
+    // A saved manual choice wins; otherwise guess from timezone instantly,
+    // then refine with the IP lookup when it returns.
+    if (savedCurrency && SUPPORTED.indexOf(savedCurrency) !== -1) {
+      userPicked = true;
+      setCurrency(savedCurrency, {});
+    } else {
+      const guess = currencyFromTimezone();
+      setCurrency(guess || 'EUR', { auto: !!guess });
+      detectCurrencyByIP();
+    }
   });
 </script>
 
@@ -2568,18 +2658,114 @@ footer {
   //    See google-apps-script.gs for the one-time setup steps.
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbfhVHoYgeyw7rW7PyHorgBrwgVINZWOEnaKkRcWNwFO8zqJUCJeVF1fde_iGqqyVMsA/exec';
 
-  function openSummerForm() {
+  const PLAN_META = {
+    envelope: {
+      key: 'envelope',
+      label: 'The Envelope',
+      includes: 'One printed set, posted to your door at the start of every month. Shipping included.',
+    },
+    envelopeLive: {
+      key: 'envelopeLive',
+      label: 'Envelope + Live Class',
+      includes: 'One printed set each month, plus a live monthly yoga & breathing class for that month\u2019s theme. Shipping included.',
+    },
+  };
+  let selectedPlan = 'envelope';
+
+  function updateSignupSummary() {
+    const meta = PLAN_META[selectedPlan] || PLAN_META.envelope;
+    const titleEl   = document.getElementById('signup-summary-title');
+    const incEl     = document.getElementById('signup-summary-includes');
+    const planInput = document.getElementById('signup-plan-input');
+    const billInput = document.getElementById('signup-billing-input');
+    if (titleEl) {
+      const price = formatPrice(priceFor(meta.key), currentCurrency);
+      const per   = currentBilling === 'monthly' ? 'per month' : 'per year';
+      titleEl.innerHTML = meta.label + ' \u00b7 <span id="signup-summary-price">' + price + '</span> ' + per;
+    }
+    if (incEl) incEl.textContent = meta.includes;
+    if (planInput) planInput.value = meta.label + (currentBilling === 'annual' ? ' (annual)' : ' (monthly)');
+    if (billInput) billInput.value = currentBilling;
+  }
+
+  function markSelectedCard() {
+    document.querySelectorAll('.subs-row .sub-card').forEach(card => {
+      const btn = card.querySelector('.sub-card-btn');
+      const plan = btn && btn.getAttribute('data-plan');
+      const on = plan === selectedPlan;
+      card.classList.toggle('is-selected', on);
+      if (btn) btn.textContent = on ? 'Selected · details below ↓' : 'Subscribe';
+    });
+  }
+
+  function scrollToPlans() {
+    const el = document.querySelector('.subs-row');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+
+  function openSignup(plan) {
+    if (plan && PLAN_META[plan]) selectedPlan = plan;
+    updateSignupSummary();
+    markSelectedCard();
+    const region = document.getElementById('summer-form');
+    const divider = document.getElementById('signup-divider');
+    if (region) region.classList.remove('signup-hidden');
+    if (divider) divider.classList.remove('signup-hidden');
     showPage('subscribe');
     setTimeout(() => {
-      const el = document.getElementById('summer-form');
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      if (region) {
+        const top = region.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     }, 60);
   }
 
-  function submitSummerForm(e) {
+  // ── STRIPE CHECKOUT LINKS ───────────────────────────────────────────
+  //    Paste your Stripe Payment Link URLs below. Two ways to fill each one:
+  //      • a single URL string  — simplest; let the Stripe price handle
+  //        currency, e.g. 'https://buy.stripe.com/xxxxxxxx'
+  //      • a per-currency object — { EUR: '…', CHF: '…', USD: '…' }
+  //    Leave a value as '' and the form will save the lead and show a
+  //    "checkout coming soon" confirmation instead of redirecting.
+  const STRIPE_LINKS = {
+    envelope: {
+      monthly: '',
+      annual:  '',
+    },
+    envelopeLive: {
+      monthly: '',
+      annual:  '',
+    },
+  };
+
+  function stripeUrlFor(plan, billing, currency) {
+    const node = STRIPE_LINKS[plan] && STRIPE_LINKS[plan][billing];
+    if (!node) return '';
+    if (typeof node === 'string') return node;     // single multi-currency link
+    return node[currency] || node.EUR || '';       // per-currency links
+  }
+
+  // Save the lead to the Google Sheet and confirm it landed BEFORE we move
+  // on. The shipping address lives in the Sheet — we don't rely on Stripe
+  // for it. Returns a promise resolving to { ok, error }.
+  function saveLead(params) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 9000);
+    return fetch(APPS_SCRIPT_URL, { method: 'POST', body: params, signal: controller.signal })
+      .then(r => r.json())
+      .then(res => { clearTimeout(timer); return { ok: !!(res && res.ok), error: res && res.error }; })
+      .catch(err => {
+        clearTimeout(timer);
+        // A timeout still means the row was written the moment the POST
+        // arrived, so treat it as saved. A real network error is a failure.
+        return { ok: !!(err && err.name === 'AbortError') };
+      });
+  }
+
+  function submitSubscribeForm(e) {
     e.preventDefault();
     const form = document.getElementById('summer-form-el');
     const success = document.getElementById('summer-form-success');
@@ -2599,65 +2785,57 @@ footer {
       addressRegion:  document.getElementById('saddress_region').value.trim(),
       addressCountry: document.getElementById('saddress_country').value.trim(),
       note:           document.getElementById('snote').value.trim(),
+      plan:           (document.getElementById('signup-plan-input') || {}).value || '',
+      billing:        (document.getElementById('signup-billing-input') || {}).value || '',
+      currency:       currentCurrency,
     };
 
-    // ── Honest validation ──────────────────────────────────────────────
-    //    If a required field is blank or the email is malformed, Google
-    //    silently REJECTS the whole submission (records nothing). Catch it
-    //    here so the user gets a clear message instead of a fake "success".
+    // Validate before handing anyone to checkout.
     const requiredKeys = ['firstName','lastName','email','phone','addressStreet','addressPostal','addressCity','addressCountry'];
     const missing = requiredKeys.filter(k => !data[k]);
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
     if (missing.length || !emailOk) {
       errorEl.textContent = (!missing.length && !emailOk)
         ? 'That email address doesn’t look right — please check it and try again.'
-        : 'Please fill in every required field before submitting.';
+        : 'Please fill in every required field before continuing.';
       errorEl.classList.add('visible');
       return false;
     }
 
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = 'Saving…';
     submitBtn.disabled = true;
 
-    const showSuccess = () => {
-      form.style.display = 'none';
-      success.classList.add('visible');
-    };
-    const showError = (msg) => {
-      submitBtn.textContent = 'Reserve my Summer Series';
-      submitBtn.disabled = false;
-      errorEl.textContent = msg || 'Something went wrong sending your sign-up. Please try again in a moment, or email hello@lettersofpresence.com.';
-      errorEl.classList.add('visible');
-    };
-
-    // ── Reliable transport: Google Apps Script Web App ──────────────────
-    //    Unlike the Google Forms POST, this returns a REAL ok/error we can
-    //    read, so a submission either lands in the Sheet or shows an honest
-    //    error — no silent drops. Sent as URL-encoded form data so it stays
-    //    a "simple" CORS request (no preflight).
+    // Save the shipping details + chosen plan to the Sheet, and only continue
+    // once it's confirmed saved — the address never depends on Stripe.
     const params = new URLSearchParams();
     Object.keys(data).forEach(k => { if (data[k]) params.append(k, data[k]); });
 
-    // The script writes the row the moment the POST arrives. Reading its
-    // reply can stall (cold start + cross-origin redirect), so we cap the
-    // wait: a quick reply is honored (catches server-side errors); if it
-    // stalls, the row is already written, so we show success rather than
-    // leaving the button stuck on "Sending…".
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 9000);
+    saveLead(params).then(result => {
+      if (!result.ok) {
+        submitBtn.textContent = 'Continue to payment';
+        submitBtn.disabled = false;
+        errorEl.textContent = result.error ||
+          'We couldn’t save your details just now. Please try again in a moment, or email hello@lettersofpresence.com.';
+        errorEl.classList.add('visible');
+        return;
+      }
 
-    fetch(APPS_SCRIPT_URL, { method: 'POST', body: params, signal: controller.signal })
-      .then(r => r.json())
-      .then(res => {
-        clearTimeout(timer);
-        if (res && res.ok) showSuccess();
-        else showError(res && res.error ? res.error : null);
-      })
-      .catch(err => {
-        clearTimeout(timer);
-        if (err && err.name === 'AbortError') showSuccess();
-        else showError();
-      });
+      // Saved. Hand off to Stripe for the chosen plan + billing (+ currency).
+      const url = stripeUrlFor(selectedPlan, currentBilling, currentCurrency);
+      if (url) {
+        const sep = url.indexOf('?') === -1 ? '?' : '&';
+        const ref = (data.firstName + '-' + data.lastName + '-' + Date.now()).replace(/[^A-Za-z0-9_-]/g, '');
+        const extras = 'prefilled_email=' + encodeURIComponent(data.email) +
+                       '&client_reference_id=' + encodeURIComponent(ref);
+        submitBtn.textContent = 'Redirecting to payment…';
+        window.location.href = url + sep + extras;
+        return;
+      }
+
+      // No Stripe link wired up yet — confirm the details are saved.
+      form.style.display = 'none';
+      success.classList.add('visible');
+    });
 
     return false;
   }
