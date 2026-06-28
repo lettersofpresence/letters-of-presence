@@ -888,6 +888,15 @@ nav {
   margin-bottom: 12px;
 }
 
+.subscribe-lede-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--purple);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
 .subscribe-header p {
   color: var(--mute);
   max-width: 420px;
@@ -1100,6 +1109,20 @@ nav {
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--mute);
+}
+
+.subs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px 40px;
+  margin-top: 4px;
+}
+.control-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .subs-row {
@@ -1696,6 +1719,7 @@ nav {
   .summer-feature h3 { font-size: 34px; }
   .subs-row { grid-template-columns: 1fr; }
   .currency-row, .billing-row { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .subs-controls { flex-direction: column; gap: 14px; }
   .subs-intro { align-items: stretch; }
   .summer-form-section { grid-template-columns: 1fr; padding: 40px 28px 64px; gap: 32px; }
 }
@@ -2270,34 +2294,31 @@ footer {
 
   <div class="subscribe-header">
     <span class="eyebrow">Choose your practice</span>
-    <h2>Subscribe.</h2>
+    <h3 class="subscribe-lede-h">Two ways to practise.</h3>
     <p>One envelope a month — on its own, or paired with a live class. Pay monthly, or pay annually and get two months free.</p>
-
-    <!-- Currency toggle — controls every price on this page -->
-    <div class="currency-row">
-      <span class="currency-row-label">Show prices in</span>
-      <div class="currency-toggle" role="tablist" aria-label="Currency">
-        <button type="button" class="seg active" data-currency="EUR" role="tab" aria-selected="true">EUR €</button>
-        <button type="button" class="seg" data-currency="CHF" role="tab" aria-selected="false">CHF</button>
-        <button type="button" class="seg" data-currency="USD" role="tab" aria-selected="false">USD $</button>
-      </div>
-      <span class="currency-auto-note" id="currency-auto-note" hidden>Set from your location · change anytime</span>
-    </div>
   </div>
 
   <div class="pricing-wrapper">
 
     <div class="subs-intro">
-      <h3>Two ways to practise.</h3>
-      <p>Take the Envelope on its own, or pair it with a live monthly class. Pay monthly, or annually for two months free.</p>
-
-      <div class="billing-row">
-        <span class="billing-label">Billing</span>
-        <div class="billing-toggle" role="tablist" aria-label="Billing period">
-          <button type="button" class="seg active" data-billing="monthly" role="tab" aria-selected="true">Monthly</button>
-          <button type="button" class="seg" data-billing="annual" role="tab" aria-selected="false">
-            Annual <span class="seg-aside">· 2 months free</span>
-          </button>
+      <div class="subs-controls">
+        <div class="control-group">
+          <span class="billing-label">Billing</span>
+          <div class="billing-toggle" role="tablist" aria-label="Billing period">
+            <button type="button" class="seg active" data-billing="monthly" role="tab" aria-selected="true">Monthly</button>
+            <button type="button" class="seg" data-billing="annual" role="tab" aria-selected="false">
+              Annual <span class="seg-aside">· 2 months free</span>
+            </button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="billing-label">Currency</span>
+          <div class="currency-toggle" role="tablist" aria-label="Currency">
+            <button type="button" class="seg active" data-currency="EUR" role="tab" aria-selected="true">EUR €</button>
+            <button type="button" class="seg" data-currency="CHF" role="tab" aria-selected="false">CHF</button>
+            <button type="button" class="seg" data-currency="USD" role="tab" aria-selected="false">USD $</button>
+          </div>
+          <span class="currency-auto-note" id="currency-auto-note" hidden>Set from your location · change anytime</span>
         </div>
       </div>
     </div>
@@ -2415,7 +2436,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573f323b3b38173b322323322524383127253224323934327934383a">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ec8489808083ac80899898899e9f838a9c9e899f89828f89c28f8381">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your details are <em>saved.</em></h4>
