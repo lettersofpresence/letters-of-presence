@@ -2427,7 +2427,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc5c8c1c1c2edc1c8d9d9c8dfdec2cbdddfc8dec8c3cec883cec2c0">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4129242d2d2e012d2435352433322e2731332432242f22246f222e2c">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your details are <em>saved.</em></h4>
@@ -2495,10 +2495,15 @@ footer {
      plus a fixed Summer Series price per currency.
      ─────────────────────────────────────────────────────────── */
   // Monthly base price per currency. Annual = pay for 10 months (2 free).
+  // Keyed by REGION, not raw currency: the US pays a higher amount but still
+  // sees the € symbol, so it needs its own price bucket separate from the EU.
   const PRICES = {
-    envelope:     { CHF: 18, USD: 19, EUR: 14 },
-    envelopeLive: { CHF: 32, USD: 33, EUR: 24 },
+    envelope:     { EU: 14, US: 18, CH: 18 },
+    envelopeLive: { EU: 24, US: 34, CH: 32 },
   };
+  // Which currency symbol each region displays. US shows € (like the EU) but
+  // draws its numbers from the US column above.
+  const REGION_CURRENCY = { EU: 'EUR', US: 'EUR', CH: 'CHF' };
   const ANNUAL_MONTHS_PAID = 10;
   // Symbol & placement per currency — €/$ lead, CHF trails (Swiss convention).
   function formatPrice(amount, currency) {
@@ -2507,11 +2512,12 @@ footer {
     return amount + '\u202F' + 'CHF'; // narrow no-break space
   }
 
-  let currentCurrency = 'EUR';
+  let currentRegion   = 'EU';           // 'EU' | 'US' | 'CH' — drives price + Stripe link
+  let currentCurrency = 'EUR';          // display currency, derived from region
   let currentBilling  = 'monthly';
 
   function priceFor(product) {
-    const monthly = PRICES[product][currentCurrency];
+    const monthly = PRICES[product][currentRegion];
     return currentBilling === 'monthly' ? monthly : monthly * ANNUAL_MONTHS_PAID;
   }
 
@@ -2544,46 +2550,47 @@ footer {
     el.classList.add('price-pulse');
   }
 
-  // ── Auto-currency: detect the visitor's currency, with manual override ──
+  // ── Auto-region: detect the visitor's pricing region (EU / US / CH) ──
   let userPicked = false;
-  const SUPPORTED = ['EUR', 'CHF', 'USD'];
+  const SUPPORTED = ['EU', 'US', 'CH'];
   const savedCurrency = (function () {
     try { return localStorage.getItem('lop-currency'); } catch (e) { return null; }
   })();
 
-  // Only CHF & USD are special; everywhere else we ship defaults to EUR.
-  function currencyFromCountry(code) {
+  // Only CH & US are special; everywhere else falls into the EU bucket.
+  function regionFromCountry(code) {
     if (!code) return null;
     code = String(code).toUpperCase();
-    if (code === 'CH' || code === 'LI') return 'CHF';
-    if (code === 'US') return 'USD';
-    return 'EUR';
+    if (code === 'CH' || code === 'LI') return 'CH';
+    if (code === 'US') return 'US';
+    return 'EU';
   }
 
   // Instant, offline guess so prices localise before any network call returns.
-  function currencyFromTimezone() {
+  function regionFromTimezone() {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-      if (tz === 'Europe/Zurich' || tz === 'Europe/Vaduz') return 'CHF';
-      if (tz.indexOf('America/') === 0) return 'USD';
-      if (tz.indexOf('Europe/') === 0 || tz.indexOf('Atlantic/') === 0) return 'EUR';
+      if (tz === 'Europe/Zurich' || tz === 'Europe/Vaduz') return 'CH';
+      if (tz.indexOf('America/') === 0) return 'US';
+      if (tz.indexOf('Europe/') === 0 || tz.indexOf('Atlantic/') === 0) return 'EU';
     } catch (e) {}
     return null;
   }
 
-  function setCurrency(c, opts) {
+  function setRegion(r, opts) {
     opts = opts || {};
-    if (SUPPORTED.indexOf(c) === -1) return;
-    currentCurrency = c;
+    if (SUPPORTED.indexOf(r) === -1) return;
+    currentRegion   = r;
+    currentCurrency = REGION_CURRENCY[r];   // e.g. US region → € symbol
     document.querySelectorAll('.currency-toggle .seg').forEach(b => {
-      const on = b.dataset.currency === c;
+      const on = b.dataset.currency === currentCurrency;
       b.classList.toggle('active', on);
       b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
     const note = document.getElementById('currency-auto-note');
     if (note) note.hidden = !opts.auto;
     applyPrices();
-    if (opts.persist) { try { localStorage.setItem('lop-currency', c); } catch (e) {} }
+    if (opts.persist) { try { localStorage.setItem('lop-region', r); } catch (e) {} }
   }
 
   // Refine the guess with an IP-based lookup (free, no key, HTTPS + CORS).
@@ -2595,8 +2602,8 @@ footer {
       .then(d => {
         clearTimeout(timer);
         if (userPicked) return; // don't override a manual choice mid-flight
-        const cur = currencyFromCountry(d && d.country_code);
-        if (cur) setCurrency(cur, { auto: true });
+        const region = regionFromCountry(d && d.country_code);
+        if (region) setRegion(region, { auto: true });
       })
       .catch(() => clearTimeout(timer));
   }
@@ -2606,13 +2613,14 @@ footer {
     document.querySelectorAll('.currency-toggle .seg').forEach(btn => {
       btn.addEventListener('click', function () {
         userPicked = true;
-        const c = this.dataset.currency;
-        if (c === currentCurrency) {
+        const CUR_TO_REGION = { EUR: 'EU', CHF: 'CH', USD: 'US' };
+        const r = CUR_TO_REGION[this.dataset.currency] || 'EU';
+        if (r === currentRegion) {
           const note = document.getElementById('currency-auto-note');
           if (note) note.hidden = true;
           return;
         }
-        setCurrency(c, { persist: true });
+        setRegion(r, { persist: true });
       });
     });
     document.querySelectorAll('.billing-toggle .seg').forEach(btn => {
@@ -2636,11 +2644,11 @@ footer {
     // Zurich visitor to USD. We only fall back to an IP lookup when the
     // timezone tells us nothing — and we no longer honour an old saved pick,
     // since without a toggle the visitor could never have changed it back.
-    const guess = currencyFromTimezone();
+    const guess = regionFromTimezone();
     if (guess) {
-      setCurrency(guess, { auto: true });   // confident — don't let IP override it
+      setRegion(guess, { auto: true });     // confident — don't let IP override it
     } else {
-      setCurrency('EUR', { auto: true });   // safe default while the lookup runs
+      setRegion('EU', { auto: true });      // safe default while the lookup runs
       detectCurrencyByIP();
     }
   });
@@ -2746,22 +2754,29 @@ footer {
   //      • a per-currency object — { EUR: '…', CHF: '…', USD: '…' }
   //    Leave a value as '' and the form will save the lead and show a
   //    "checkout coming soon" confirmation instead of redirecting.
+  //    One Payment Link per product × region × billing = 12 links.
+  //    Region: EU / US / CH.  Billing: monthly / annual.
+  //    (If you ever let Stripe handle the interval, replace a region's
+  //     { monthly, annual } object with a single '…' string — stripeUrlFor
+  //     accepts either.)
   const STRIPE_LINKS = {
     envelope: {
-      monthly: '',
-      annual:  '',
+      EU: { monthly: 'https://buy.stripe.com/bJecN53k469KdDr4BNenS00',  annual: 'https://buy.stripe.com/4gMdR9f2M55GeHv0lxenS03' },   // €14 / mo · €140 / yr
+      US: { monthly: 'https://buy.stripe.com/00w00jdYIdCcczn6JVenS02',  annual: 'https://buy.stripe.com/14AfZhcUE0Pq2YNgkvenS05' },   // €18 / mo · €180 / yr
+      CH: { monthly: 'https://buy.stripe.com/4gM3cv1bW7dO1UJ2tFenS01',  annual: 'https://buy.stripe.com/3cI4gzcUEdCcfLzfgrenS04' },   // 18 CHF / mo · 180 CHF / yr
     },
     envelopeLive: {
-      monthly: '',
-      annual:  '',
+      EU: { monthly: '',  annual: '' },   // €24 / mo · €240 / yr
+      US: { monthly: '',  annual: '' },   // €34 / mo · €340 / yr
+      CH: { monthly: '',  annual: '' },   // 32 CHF / mo · 320 CHF / yr
     },
   };
 
-  function stripeUrlFor(plan, billing, currency) {
-    const node = STRIPE_LINKS[plan] && STRIPE_LINKS[plan][billing];
+  function stripeUrlFor(plan, region, billing) {
+    const node = STRIPE_LINKS[plan] && STRIPE_LINKS[plan][region];
     if (!node) return '';
-    if (typeof node === 'string') return node;     // single multi-currency link
-    return node[currency] || node.EUR || '';       // per-currency links
+    if (typeof node === 'string') return node;          // one link handles billing
+    return node[billing] || node.monthly || '';         // split monthly/annual
   }
 
   // Save the lead to the Google Sheet and confirm it landed BEFORE we move
@@ -2804,6 +2819,7 @@ footer {
       plan:           (document.getElementById('signup-plan-input') || {}).value || '',
       billing:        (document.getElementById('signup-billing-input') || {}).value || '',
       currency:       currentCurrency,
+      region:         currentRegion,
     };
 
     // Validate before handing anyone to checkout.
@@ -2837,7 +2853,7 @@ footer {
       }
 
       // Saved. Hand off to Stripe for the chosen plan + billing (+ currency).
-      const url = stripeUrlFor(selectedPlan, currentBilling, currentCurrency);
+      const url = stripeUrlFor(selectedPlan, currentRegion, currentBilling);
       if (url) {
         const sep = url.indexOf('?') === -1 ? '?' : '&';
         const ref = (data.firstName + '-' + data.lastName + '-' + Date.now()).replace(/[^A-Za-z0-9_-]/g, '');
