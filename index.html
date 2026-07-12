@@ -2391,10 +2391,6 @@ footer {
           <input type="email" id="semail" name="email" required placeholder="anna@example.com" />
         </div>
         <div class="field">
-          <label for="sphone">Phone number</label>
-          <input type="tel" id="sphone" name="phone" required placeholder="+31 6 12 34 56 78" />
-        </div>
-        <div class="field">
           <label for="saddress_street">Street &amp; number</label>
           <input type="text" id="saddress_street" name="addressStreet" required placeholder="Prinsengracht 263" />
         </div>
@@ -2427,7 +2423,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ff7faf3f3f0dff3faebebfaedecf0f9efedfaecfaf1fcfab1fcf0f2">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="38505d54545778545d4c4c5d4a4b575e484a5d4b5d565b5d165b5755">[email&#160;protected]</a>.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your details are <em>saved.</em></h4>
@@ -2666,7 +2662,6 @@ footer {
       firstName:      'entry.1126220411',
       lastName:       'entry.9673159',
       email:          'entry.436095380',
-      phone:          'entry.488768750',
       addressStreet:  'entry.1571242677',
       addressApt:     'entry.391596614',
       addressPostal:  'entry.1664215609',
@@ -2808,7 +2803,6 @@ footer {
       firstName:      document.getElementById('sfname').value.trim(),
       lastName:       document.getElementById('slname').value.trim(),
       email:          document.getElementById('semail').value.trim(),
-      phone:          document.getElementById('sphone').value.trim(),
       addressStreet:  document.getElementById('saddress_street').value.trim(),
       addressApt:     document.getElementById('saddress_apt').value.trim(),
       addressPostal:  document.getElementById('saddress_postal').value.trim(),
@@ -2823,7 +2817,7 @@ footer {
     };
 
     // Validate before handing anyone to checkout.
-    const requiredKeys = ['firstName','lastName','email','phone','addressStreet','addressPostal','addressCity','addressCountry'];
+    const requiredKeys = ['firstName','lastName','email','addressStreet','addressPostal','addressCity','addressCountry'];
     const missing = requiredKeys.filter(k => !data[k]);
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
     if (missing.length || !emailOk) {
