@@ -7,6 +7,18 @@
 <link rel="shortcut icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" href="favicon.png" />
 <title>Letters of Presence — One month. One practice.</title>
+<meta name="description" content="A handcrafted card set arrives through your letterbox every month — built around one practice. No app. No notifications. Just paper." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Letters of Presence — One month. One practice." />
+<meta property="og:description" content="A handcrafted card set arrives through your letterbox every month — built around one practice. No app. No notifications. Just paper." />
+<meta property="og:image" content="https://lettersofpresence.com/assets/hero-envelope.jpg" />
+<meta property="og:url" content="https://lettersofpresence.com/" />
+<meta property="og:site_name" content="Letters of Presence" />
+<meta property="og:image:alt" content="A Letters of Presence envelope with three printed cards emerging from it" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Letters of Presence — One month. One practice." />
+<meta name="twitter:description" content="A handcrafted card set arrives through your letterbox every month — built around one practice. No app. No notifications. Just paper." />
+<meta name="twitter:image" content="https://lettersofpresence.com/assets/hero-envelope.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -85,7 +97,7 @@ img { display: block; max-width: 100%; }
 .btn:hover { opacity: .82; }
 
 .btn-filled {
-  background: var(--mauve);
+  background: var(--purple);
   color: #fff;
   border-color: var(--mauve);
 }
@@ -222,17 +234,38 @@ nav {
 
 /* Hero */
 .hero {
-  padding: 80px 52px;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  position: relative;
+  display: block;
+  padding: 52px 52px 24px;
 }
+.hero-left { max-width: 960px; width: 100%; margin: 0 auto; text-align: center; }
+.hero-tiles { max-width: 1100px; margin: 28px auto 0; padding: 0 52px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+.hero-tiles-plus { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--purple); }
+.hero-tile { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 2px; background: var(--apricot); cursor: pointer; }
+.hero-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-tile-label { position: absolute; left: 16px; bottom: 16px; background: rgba(255,255,255,.92); padding: 8px 14px; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--purple); }
+.hero-image { position: relative; height: 620px; overflow: hidden; background: var(--apricot); }
+.hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+
+.letter-photo { margin-top: 32px; border-radius: 2px; overflow: hidden; aspect-ratio: 4 / 3; }
+.letter-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.next-theme { max-width: 1200px; margin: 0 auto; padding: 40px 52px; }
+.next-theme-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.next-theme h3 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 2.4vw, 32px); font-weight: 400; color: var(--purple); margin-top: 10px; line-height: 1.25; }
+.next-theme h3 em { font-style: italic; color: var(--mauve); }
+.next-theme p { font-size: 14.5px; color: var(--mid); line-height: 1.9; margin-bottom: 18px; max-width: 460px; }
+
+.home-sub-cta { max-width: 1200px; margin: 0 auto; padding: 64px 52px; }
+.home-sub-cta-inner { background: var(--paper); border: 0.5px solid rgba(75,42,82,.14); border-radius: 2px; padding: 44px 48px; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.home-sub-cta-inner h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; color: var(--purple); margin: 8px 0 10px; }
+.home-sub-cta-inner p { font-size: 14px; color: var(--mid); line-height: 1.7; max-width: 420px; }
+.home-sub-cta-price { text-align: right; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.home-sub-cta-amount { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--berry); }
+.home-sub-cta-per { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); margin-bottom: 12px; }
+.home-sub-cta-price .btn { margin-top: 10px; }
 
 .hero-left h1 {
-  font-size: clamp(36px, 4vw, 54px);
+  font-size: clamp(26px, 3.4vw, 44px);
   line-height: 1.15;
   margin-bottom: 24px;
   color: var(--ink);
@@ -251,10 +284,12 @@ nav {
   line-height: 2;
 }
 
+.btn-filled { white-space: nowrap; }
 .hero-btns {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-right {
@@ -283,6 +318,12 @@ nav {
   background: #E89050;
   bottom: -30px; left: -30px;
 }
+
+.hero-photo { min-height: 520px; align-items: stretch; justify-content: stretch; }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo-caption { position: absolute; left: 20px; right: 20px; bottom: 20px; background: rgba(255,255,255,.92); padding: 16px 18px; border-radius: 2px; }
+.hero-photo-caption strong { display: block; font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; color: var(--purple); margin-top: 6px; }
+.hero-photo-caption strong em { font-style: italic; }
 
 .hero-card {
   background: #fff;
@@ -350,6 +391,7 @@ nav {
   text-align: center;
 }
 
+.dark-strip.dark-strip-overlap { position: relative; z-index: 3; margin-top: -92px; }
 .dark-strip p {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
@@ -359,7 +401,7 @@ nav {
 
 /* What's inside */
 .whats-inside {
-  padding: 80px 52px;
+  padding: 80px 52px 32px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -382,13 +424,7 @@ nav {
   border-radius: 2px;
   padding: 32px 28px;
   border: 0.5px solid rgba(75,42,82,.08);
-}
-
-.inside-swatch {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  border-left: 3px solid var(--purple);
 }
 
 .inside-card h3 {
@@ -425,7 +461,7 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .letter-left .eyebrow { color: var(--rose); }
@@ -447,7 +483,13 @@ nav {
   border: 1px solid rgba(212,176,192,.4);
 }
 
+.letter-right { position: relative; min-height: 420px; }
 .letter-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: #fff;
   border-radius: 2px;
   padding: 36px 32px;
@@ -493,10 +535,12 @@ nav {
 .letter-preview p:last-child { margin-bottom: 0; }
 
 .letter-preview p.lp-fade {
-  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  -webkit-mask-image: none;
+  mask-image: none;
 }
-.lp-continues {
+.lp-body { flex: 1 1 auto; min-height: 0; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
+.letter-preview .lp-continues { flex: 0 0 auto; }
+.lp-continues-x, .lp-continues {
   margin-top: 18px;
   padding-top: 14px;
   border-top: 1px solid rgba(75,42,82,.1);
@@ -587,6 +631,21 @@ nav {
   gap: 24px;
 }
 
+.themes-grid.grid-upcoming { grid-template-columns: minmax(0, 560px); justify-content: center; }
+.themes-grid.grid-past { grid-template-columns: repeat(2, 1fr); max-width: 880px; gap: 20px; }
+.grid-past .theme-photo { aspect-ratio: 16 / 10; }
+.grid-past .theme-card-header { padding: 18px 20px; }
+.grid-past .theme-card-header h3 { font-size: 20px; }
+.grid-past .theme-card-body { padding: 18px 20px 20px; }
+.grid-past .theme-card-body p { font-size: 12.5px; line-height: 1.75; }
+.grid-past .theme-photo-placeholder { font-size: 10px; }
+.past-header { padding: 8px 52px 20px; max-width: 1200px; margin: 0 auto; }
+.past-header h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--purple); font-weight: 400; margin: 6px 0 8px; }
+.past-header p { font-size: 14px; color: var(--mid); max-width: 620px; }
+.theme-photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper); }
+.theme-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.theme-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--purple); padding: 24px; border: 0.5px dashed rgba(75,42,82,.25); }
+
 .theme-card {
   border-radius: 2px;
   overflow: hidden;
@@ -656,10 +715,10 @@ nav {
   border-left: 3px solid var(--berry);
   border-radius: 2px;
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 36px;
-  padding: 36px 36px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 36px;
+  align-items: center;
 }
 .themes-closing-meta {
   font-size: 9px;
@@ -778,6 +837,14 @@ nav {
   align-items: center;
   gap: 28px;
 }
+
+.about-photo {
+  border-radius: 2px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 420px;
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .about-logo-lockup {
   display: flex;
@@ -1296,6 +1363,7 @@ nav {
 .billing-toggle { opacity: 1; }
 
 /* Two available product cards */
+.subs-row-single { grid-template-columns: 1fr !important; max-width: 640px; margin: 0 auto; }
 .sub-card-featured {
   background: var(--paper);
   border-color: rgba(202,100,159,.42);
@@ -1989,14 +2057,26 @@ footer {
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .letter-right { position: static; min-height: 0; }
+  .letter-preview { position: static; inset: auto; }
   .hero, .letter-inner, .numbers-section, .about-section,
   .form-section, .inside-grid, .themes-grid, .values-grid,
   .stats-grid, .footer-inner {
     grid-template-columns: 1fr;
   }
-  .themes-closing-inner { grid-template-columns: 1fr; padding: 28px; gap: 14px; }
-  .hero { padding: 52px 28px; gap: 40px; }
+  .themes-closing-inner { grid-template-columns: 1fr; padding: 28px; gap: 18px; }
+  .hero { padding: 44px 28px 48px; }
+  .hero-left { max-width: none; margin: 0; }
+  .hero-image { height: auto; aspect-ratio: 5 / 4; }
+  .next-theme-inner { grid-template-columns: 1fr; gap: 16px; }
+  .next-theme { padding: 32px 28px; }
   .hero-right { min-height: 320px; }
+  .themes-grid.grid-past, .themes-grid.grid-upcoming { grid-template-columns: 1fr; }
+  .past-header { padding-left: 28px; padding-right: 28px; }
+  .hero-photo { min-height: 420px; }
+  .home-sub-cta { padding: 44px 28px; }
+  .home-sub-cta-inner { flex-direction: column; align-items: flex-start; padding: 32px 28px; }
+  .home-sub-cta-price { align-items: flex-start; text-align: left; }
   nav .nav-inner, .dark-strip, .whats-inside,
   .letter-section, .themes-header, .themes-grid, .themes-closing,
   .subscribe-header, .pricing-wrapper, .form-section,
@@ -2038,33 +2118,31 @@ footer {
   <!-- Hero -->
   <section class="hero">
     <div class="hero-left">
-      <span class="eyebrow">Monthly physical mail</span>
-      <h1>A monthly practice,<br><em>delivered by post.</em></h1>
-      <p>A handcrafted card set arrives through your letterbox every month — built around one practice, written by two lifelong friends: a qualified yoga therapist and a long-term teacher and practitioner of yoga. No app. No notifications. Just paper.</p>
+      <span class="eyebrow">Yoga Mail Club</span>
+      <h1>Monthly physical mail for yoga practitioners <em>and curious humans.</em></h1>
       <div class="hero-btns">
-        <button class="btn btn-filled" onclick="showPage('subscribe')">Start receiving</button>
-        <button class="btn btn-ghost" onclick="showPage('themes')">See the themes</button>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="hero-card">
-        <div class="hero-card-eyebrow">Next theme</div>
-        <div class="hero-card-date">July 2026</div>
-        <h3>Nadi Shodhana —<br><em>The Breath That Balances</em></h3>
-        <div class="hero-card-divider"></div>
-        <p>Alternate nostril breathing as a daily anchor. Three pieces of printed practice, sent to your door.</p>
+        <button class="btn btn-filled" onclick="showPage('subscribe')">Choose your subscription</button>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
+  <div class="hero-tiles">
+    <div class="hero-tile" onclick="showPage('subscribe')">
+      <img src="assets/hero-envelope-crop.jpg" alt="A Letters of Presence envelope with three printed cards emerging from it" />
+      <span class="hero-tile-label">The Envelope</span>
+    </div>
+    <span class="hero-tiles-plus">+</span>
+    <div class="hero-tile" onclick="showPage('subscribe')">
+      <img src="assets/live-class-v3.jpg" alt="A live Letters of Presence class on screen" style="object-position: left top;" />
+      <span class="hero-tile-label">Live Class</span>
+    </div>
+  </div>
 
   <!-- Dark strip -->
   <div class="dark-strip">
     <p>One practice. One month.</p>
   </div>
+
 
   <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
 
@@ -2073,135 +2151,22 @@ footer {
     <span class="eyebrow">What arrives in your envelope</span>
     <h2>Three pieces. One practice.</h2>
     <div class="inside-grid">
-      <div class="inside-card">
-        <div class="inside-swatch" style="background:var(--orange);"></div>
-        <h3>A4 Letter</h3>
-        <span class="size-label">21 × 29.7 cm</span>
-        <p>A long-form letter written directly to you. The history, the anatomy, the lived experience of this month's theme — in full, unhurried prose.</p>
+      <div class="inside-card" style="border-color:rgba(239,103,21,.22);border-left-color:var(--orange);">
+        <h3>The Letter</h3>
+        <p>A long-form letter written directly to you, exploring the month's theme — its history, its meaning — alongside a personal story from our own practice.</p>
       </div>
-      <div class="inside-card">
-        <div class="inside-swatch" style="background:var(--periwinkle);"></div>
-        <h3>A6 Folded Reflection Card</h3>
-        <span class="size-label">10.5 × 14.8 cm · opens to A5</span>
-        <p>A folded card with prompts printed inside, leaving room to write your own answers on the page. Questions to return to across the month, with space to observe what arises.</p>
+      <div class="inside-card" style="border-color:rgba(75,42,82,.22);border-left-color:var(--purple);">
+        <h3>The Practice</h3>
+        <p>An exercise related to the theme, guided step by step: a self-reflection, a breathing practice, an asana. Prop it on your mat, your windowsill, your bedside table.</p>
       </div>
-      <div class="inside-card">
-        <div class="inside-swatch" style="background:var(--purple);"></div>
-        <h3>A6 Practice Card</h3>
-        <span class="size-label">10.5 × 14.8 cm</span>
-        <p>Step-by-step guidance for the practice itself. Prop it on your mat, your windowsill, your bedside table.</p>
+      <div class="inside-card" style="border-color:rgba(75,42,82,.16);border-left-color:var(--periwinkle);">
+        <h3>Something Extra</h3>
+        <p>A third piece that changes with the theme — a folded reflection card, a postcard to send to someone, a guided exercise, a small card deck. A surprise each time.</p>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider" />
-
-  <!-- Letter section -->
-  <section class="letter-section">
-    <div class="letter-inner">
-      <div class="letter-left">
-        <span class="eyebrow" style="color:var(--rose);">Preview of the July 2026 letter</span>
-        <h2>A letter worth reading slowly.</h2>
-        <p>The opening of July's letter, on Nadi Shodhana — the breath that balances. Each month's envelope also includes a practice card guiding alternate nostril breathing, and journal prompts around the theme so you have room to reflect across the month.</p>
-        <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Start your subscription</button>
-      </div>
-      <div class="letter-right">
-        <div class="letter-preview">
-          <div class="letter-preview-header">
-            <div class="lp-eyebrow">Letters of Presence · July 2026 · Excerpt</div>
-            <h4>Nadi Shodhana — The Breath That Balances</h4>
-            <div class="lp-date">Pranayama series · Vol. 01</div>
-          </div>
-          <p>While reading these first few words, you have most likely passed two cycles of breath. Our day-to-day breathing stays mostly unconscious, and that's natural, since on average we breathe around 20,000 times a day. Imagine noticing all those cycles consciously! Let's try something simpler: take one deep inhalation… and a slow exhalation. What do you notice within your body?</p>
-          <p class="lp-fade">In the yogic tradition, breath is not simply air moving through a body. It is prana: vital energy. When you breathe consciously, you are not just oxygenating your blood. You are directing energy. Pranayama is the practice of consciously regulating the breath to purify the energy channels of the body, because a disturbed breath creates a disturbed mind, and a steady breath creates a steady mind.</p>
-          <div class="lp-continues">This is only the opening — the full letter continues in your envelope.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Numbers -->
-  <section class="numbers-section">
-    <div class="numbers-left">
-      <span class="eyebrow">The shape of the subscription</span>
-      <h2>Curious beginners. Seasoned practitioners.<br>A monthly practice in <em style="font-style:italic;color:var(--mauve);">integration.</em></h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Themes per year, each fully explored.</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">03</div>
-        <div class="stat-label">Pieces per envelope, every month.</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">01</div>
-        <div class="stat-label">Live Zoom gathering per month.<br>Yoga, breath &amp; community.</div>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /page-home -->
-
-
-<!-- ══════════════════════════════════════════════════════════════
-     THEMES PAGE
-═══════════════════════════════════════════════════════════════ -->
-<div id="page-themes" class="page">
-
-  <div class="themes-header">
-    <span class="eyebrow">Upcoming themes · 2026</span>
-    <h2>A new theme<br>every month.</h2>
-    <p>Each set is created by a qualified yoga therapist and a long-term teacher and practitioner of yoga — two lifelong friends, writing from direct practice. No two months cover the same ground. Each is a complete invitation to slow down, deepen, and integrate.</p>
-  </div>
-
-  <div class="themes-grid">
-
-    <div class="theme-card">
-      <div class="theme-card-header" style="background:var(--purple);">
-        <span class="theme-card-meta">July 2026</span>
-        <h3>Nadi Shodhana</h3>
-        <div class="sanskrit">The Breath That Balances</div>
-      </div>
-      <div class="theme-card-body">
-        <p>Nadi Shodhana — literally “channel cleansing” — is among the oldest and most steadying practices of the pranayama tradition. The left nostril cools; the right warms. To move between them deliberately is to learn that balance is not a fixed point, but a continuous, conscious returning.</p>
-        <p>Across July you'll receive a long letter on the practice and its lineage, a folded reflection card with prompts to return to throughout the month, and a practice card guiding five quiet minutes each morning.</p>
-        <span class="theme-badge" style="background:rgba(75,42,82,.08);color:var(--purple);">Shipping July 2026</span>
-      </div>
-    </div>
-
-    <div class="theme-card">
-      <div class="theme-card-header" style="background:var(--navy);">
-        <span class="theme-card-meta">August 2026</span>
-        <h3>Svadhyaya</h3>
-        <div class="sanskrit">The Practice of Turning Inward</div>
-      </div>
-      <div class="theme-card-body">
-        <p>Svadhyaya — literally “one's own study” — is the quiet observation of what is already here. Not analysis, not self-improvement. The patient noticing of how you meet your day: what you reach for, what you avoid, what arrives unbidden.</p>
-        <p>Across August you'll receive a long letter on svadhyaya in the yogic tradition, a folded reflection card with prompts to observe across the month, and a practice card for a short evening sit — five minutes, eyes closed, simply listening.</p>
-        <span class="theme-badge" style="background:rgba(31,42,74,.08);color:var(--navy);">Shipping August 2026</span>
-      </div>
-    </div>
-
-    <div class="theme-card">
-      <div class="theme-card-header" style="background:var(--orange);">
-        <span class="theme-card-meta">September 2026</span>
-        <h3>Asana</h3>
-        <div class="sanskrit">The Body as a Place to Begin</div>
-      </div>
-      <div class="theme-card-body">
-        <p>Long before yoga became a posture practice, asana meant “seat” — a place steady enough to settle into. The body is the most immediate ground we have. To return to it, again and again, is to come back to the only moment we ever practise in.</p>
-        <p>September approaches asana as it was first meant — not a sequence to perfect, but a way of arriving. You'll receive a letter on the roots and intention of the posture, a folded card to follow the body's responses across the month, and a practice card for three quiet shapes to return to each morning.</p>
-        <span class="theme-badge" style="background:rgba(239,103,21,.1);color:var(--orange);">Shipping September 2026</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Three live Zoom gatherings — one for each theme -->
+  <!-- Live monthly gathering -->
   <div class="themes-closing">
     <div class="themes-closing-inner">
       <div>
@@ -2214,6 +2179,120 @@ footer {
         <p class="themes-closing-note">Dates and times confirmed by email closer to each session.</p>
       </div>
     </div>
+  </div>
+
+  <hr class="section-divider" />
+  <section class="letter-section">
+    <div class="letter-inner">
+      <div class="letter-left">
+        <span class="eyebrow" style="color:var(--rose);">From a past letter · July 2026</span>
+        <h2>A letter worth reading slowly.</h2>
+        <p>The opening of the July letter, on Nadi Shodhana — the breath that balances. Every month follows the same shape: a letter exploring the theme with a personal story, a guided practice, and something extra to keep or to send.</p>
+        <button class="btn btn-ghost btn-ghost-light" onclick="showPage('subscribe')" style="margin-top: 8px;">Start your subscription</button>
+        <div class="letter-photo"><img src="assets/letter-detail.jpg" alt="A Letters of Presence letter resting on a table beside a salt lamp" /></div>
+      </div>
+      <div class="letter-right">
+        <div class="letter-preview">
+          <div class="letter-preview-header">
+            <div class="lp-eyebrow">Letters of Presence · July 2026 · Excerpt</div>
+            <h4>Nadi Shodhana — The Breath That Balances</h4>
+            <div class="lp-date">Pranayama series · Vol. 01</div>
+          </div>
+          <div class="lp-body"><p>While reading these first few words, you have most likely passed two cycles of breath. Our day-to-day breathing stays mostly unconscious, and that's natural, since on average we breathe around 20,000 times a day. Imagine noticing all those cycles consciously! Let's try something simpler: take one deep inhalation… and a slow exhalation. What do you notice within your body?</p>
+          <p>In the yogic tradition, breath is not simply air moving through a body. It is prana: vital energy. When you breathe consciously, you are not just oxygenating your blood. You are directing energy. Pranayama is the practice of consciously regulating the breath to purify the energy channels of the body, because a disturbed breath creates a disturbed mind, and a steady breath creates a steady mind.</p>
+          <p>Here is something your body is already doing: right now, you are breathing more through one nostril than the other. In roughly two-hour cycles, your body naturally shifts dominance from left to right and back again — a phenomenon called the nasal cycle. Science has shown that this rhythm is directly connected to your autonomic nervous system, quietly influencing your heart rate, blood pressure, and mental state throughout the day. What if you could work consciously with this rhythm that is already yours?</p>
+          <p class="lp-fade">Nadi Shodhana, also known as alternate nostril breathing, takes this unconscious cycle and makes it intentional. Nadi means channel. Shodhana means purification. The practice involves gently closing one nostril while breathing through the other, alternating in a slow, steady rhythm. Research across dozens of clinical trials confirms what yogis have known for centuries: this simple practice lowers cortisol, reduces anxiety, improves heart rate variability, sharpens cognition, and brings the two hemispheres of the brain into greater harmony.</p></div>
+          <div class="lp-continues">This is only the opening — the full letter continues in your envelope.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Subscription CTA -->
+  <section class="home-sub-cta">
+    <div class="home-sub-cta-inner">
+      <div>
+        <span class="eyebrow">Yoga Mail Club</span>
+        <h3>Envelope + Live Class</h3>
+        <p>One printed envelope every month, plus a live monthly yoga and breathing class.</p>
+      </div>
+      <div class="home-sub-cta-price">
+        <span class="home-sub-cta-amount">€22</span><span class="home-sub-cta-per">per month</span>
+        <a href="#" class="btn btn-filled" onclick="showPage('subscribe');return false;">Go to Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     THEMES PAGE
+═══════════════════════════════════════════════════════════════ -->
+<div id="page-themes" class="page">
+
+  <div class="themes-header">
+    <span class="eyebrow">Upcoming theme · September 2026</span>
+    <h2>A new theme<br>every month.</h2>
+    <p>Each set is created by a qualified yoga therapist and a long-term teacher and practitioner of yoga — two lifelong friends, writing from direct practice. No two months cover the same ground. Each is a complete invitation to slow down, deepen, and integrate.</p>
+  </div>
+
+  <div class="themes-grid grid-upcoming">
+
+    <div class="theme-card">
+      <div class="theme-card-header" style="background:var(--orange);">
+        <span class="theme-card-meta">September 2026</span>
+        <h3>Asana</h3>
+        <div class="sanskrit">The Body as a Place to Begin</div>
+      </div>
+      <div class="theme-card-body">
+        <p>Long before yoga became a posture practice, asana meant “seat” — a place steady enough to settle into. The body is the most immediate ground we have. To return to it, again and again, is to come back to the only moment we ever practise in.</p>
+        <p>September approaches asana as it was first meant — not a sequence to perfect, but a way of arriving. You'll receive a letter on the roots and intention of the posture, a guided practice of three quiet shapes to return to each morning, and something extra to carry the theme through the month.</p>
+        <span class="theme-badge" style="background:rgba(239,103,21,.1);color:var(--orange);">Shipping September 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="past-header">
+    <span class="eyebrow">Previously sent</span>
+    <h3>Past themes</h3>
+    <p>Each month's set is printed once and sent once. Here is what has already travelled through our subscribers' letterboxes.</p>
+  </div>
+
+  <div class="themes-grid grid-past">
+
+    <div class="theme-card">
+      <div class="theme-photo"><img src="assets/theme-nadi-shodhana.jpg" alt="The Nadi Shodhana set: letter, reflection card and practice card" /></div>
+      <div class="theme-card-header" style="background:var(--purple);">
+        <span class="theme-card-meta">July 2026</span>
+        <h3>Nadi Shodhana</h3>
+        <div class="sanskrit">The Breath That Balances</div>
+      </div>
+      <div class="theme-card-body">
+        <p>Nadi Shodhana — literally “channel cleansing” — is among the oldest and most steadying practices of the pranayama tradition. The left nostril cools; the right warms. To move between them deliberately is to learn that balance is not a fixed point, but a continuous, conscious returning.</p>
+        <span class="theme-badge" style="background:rgba(75,42,82,.08);color:var(--purple);">Sent July 2026</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <div class="theme-photo"><div class="theme-photo-placeholder">Photograph of the Svadhyaya set — coming soon</div></div>
+      <div class="theme-card-header" style="background:var(--navy);">
+        <span class="theme-card-meta">August 2026</span>
+        <h3>Svadhyaya</h3>
+        <div class="sanskrit">The Practice of Turning Inward</div>
+      </div>
+      <div class="theme-card-body">
+        <p>Svadhyaya — literally “one's own study” — is the quiet observation of what is already here. Not analysis, not self-improvement. The patient noticing of how you meet your day: what you reach for, what you avoid, what arrives unbidden.</p>
+        <span class="theme-badge" style="background:rgba(31,42,74,.08);color:var(--navy);">Sent August 2026</span>
+      </div>
+    </div>
+
   </div>
 
 </div><!-- /page-themes -->
@@ -2234,15 +2313,8 @@ footer {
       <p class="about-signature">— Anna &amp; Isabella</p>
     </div>
     <div class="about-right">
-      <div class="about-right-box">
-        <div class="about-logo-lockup">
-          <div class="about-avatar"><img src="logo-L.png" alt="L" /></div>
-          <div class="about-wordmark">
-            <div class="sub">Monthly physical mail</div>
-            <div class="name">Letters of <em>Presence</em></div>
-          </div>
-          <div class="about-tagline">One month. One practice.</div>
-        </div>
+      <div class="about-photo">
+        <img src="assets/about-founders.jpg" alt="Anna and Isabella, founders of Letters of Presence, outside the print shop" />
       </div>
     </div>
   </section>
@@ -2293,9 +2365,9 @@ footer {
 <div id="page-subscribe" class="page">
 
   <div class="subscribe-header">
-    <span class="eyebrow">Choose your practice</span>
-    <h3 class="subscribe-lede-h">Two ways to practise.</h3>
-    <p>One envelope a month — on its own, or paired with a live class. Pay monthly, or pay annually and get two months free.</p>
+    <span class="eyebrow">Yoga Mail Club</span>
+    <h3 class="subscribe-lede-h">One subscription.</h3>
+    <p>The monthly envelope plus a live class. Pay monthly, or pay annually and get two months free.</p>
   </div>
 
   <div class="pricing-wrapper">
@@ -2314,41 +2386,24 @@ footer {
       </div>
     </div>
 
-    <div class="subs-row">
-
-      <div class="sub-card">
-        <span class="sub-card-meta">Subscription · paper</span>
-        <h4>The Envelope</h4>
-        <p class="sub-card-desc">A handcrafted set arrives at the start of every month — long letter, folded reflection card, practice card. Shipped flat, sealed with care.</p>
-        <div class="sub-card-price">
-          <span class="sub-card-amount" data-price="envelope">€14</span>
-          <span class="sub-card-per" data-per>per month</span>
-        </div>
-        <div class="sub-card-annual-note" data-annual-note>Billed once a year — you pay for ten months, two are free.</div>
-        <ul class="sub-card-list">
-          <li>One complete set, posted to your door</li>
-          <li>New theme every month, no repeats</li>
-          <li>Shipping <em>included</em> — Europe &amp; USA for now</li>
-        </ul>
-        <button class="btn btn-filled sub-card-btn" data-plan="envelope" onclick="openSignup('envelope')">Subscribe</button>
-      </div>
+    <div class="subs-row subs-row-single">
 
       <div class="sub-card sub-card-featured">
-        <span class="sub-card-flag sub-card-flag-rec">Most complete</span>
         <span class="sub-card-meta">Subscription · paper + live</span>
         <h4>Envelope + Live Class</h4>
-        <p class="sub-card-desc">Everything in the Envelope, plus a live monthly yoga and breathing class for that month's theme — taught by Anna and Isabella.</p>
+        <p class="sub-card-desc">One printed envelope every month — the letter, a guided practice, something extra — plus a live monthly yoga and breathing class for that month's theme.</p>
         <div class="sub-card-price">
-          <span class="sub-card-amount" data-price="envelopeLive">€24</span>
+          <span class="sub-card-amount" data-price="full">€22</span>
           <span class="sub-card-per" data-per>per month</span>
         </div>
         <div class="sub-card-annual-note" data-annual-note>Billed once a year — you pay for ten months, two are free.</div>
         <ul class="sub-card-list">
-          <li>The complete monthly envelope, posted to you</li>
+          <li>One complete envelope, posted to your door every month</li>
+          <li>New theme every month, no repeats</li>
           <li>One live class each month, with replay the next day</li>
-          <li>Guided practice, then an open community chat</li>
+          <li>Shipping <em>included</em> — Europe &amp; USA for now</li>
         </ul>
-        <button class="btn btn-filled sub-card-btn" data-plan="envelopeLive" onclick="openSignup('envelopeLive')">Subscribe</button>
+        <button class="btn btn-filled sub-card-btn" data-plan="full" onclick="openSignup('full')">Subscribe</button>
       </div>
 
     </div>
@@ -2366,15 +2421,15 @@ footer {
       <p>Leave your details below and we'll prepare your first envelope. Once we've received your sign-up, we'll send you a payment link by email to complete your subscription.</p>
       <div class="summer-detail">
         <div class="sd-eyebrow">You're signing up for</div>
-        <h4 id="signup-summary-title">The Envelope · <span id="signup-summary-price">€14</span> per month</h4>
-        <div class="sd-sub" id="signup-summary-includes">One printed set, posted to your door at the start of every month. Shipping included.</div>
+        <h4 id="signup-summary-title">Envelope + Live Class · <span id="signup-summary-price">€22</span> per month</h4>
+        <div class="sd-sub" id="signup-summary-includes">One printed set each month, plus a live monthly yoga &amp; breathing class. Shipping included.</div>
       </div>
       <button type="button" class="signup-change" onclick="scrollToPlans()">← Choose a different plan</button>
     </div>
 
     <div>
       <form class="sub-form" id="summer-form-el" onsubmit="return submitSubscribeForm(event)">
-        <input type="hidden" name="plan" id="signup-plan-input" value="The Envelope (monthly)" />
+        <input type="hidden" name="plan" id="signup-plan-input" value="Envelope + Live Class (monthly)" />
         <input type="hidden" name="billing" id="signup-billing-input" value="monthly" />
         <div class="form-row">
           <div class="field">
@@ -2423,7 +2478,7 @@ footer {
         </div>
         <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
         <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="38505d54545778545d4c4c5d4a4b575e484a5d4b5d565b5d165b5755">[email&#160;protected]</a>.</span>
+        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email hello@lettersofpresence.com.</span>
       </form>
       <div class="form-success" id="summer-form-success">
         <h4>Your details are <em>saved.</em></h4>
@@ -2485,7 +2540,7 @@ footer {
 </footer>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ── PRICING TABLE ──────────────────────────────────────────────────────────
      Three currencies × monthly/annual for the two subscriptions,
      plus a fixed Summer Series price per currency.
@@ -2494,12 +2549,10 @@ footer {
   // Keyed by REGION, not raw currency: the US pays a higher amount but still
   // sees the € symbol, so it needs its own price bucket separate from the EU.
   const PRICES = {
-    envelope:     { EU: 14, US: 18, CH: 18 },
-    envelopeLive: { EU: 24, US: 34, CH: 32 },
+    full: { EU: 22, US: 28, CH: 28 },
   };
-  // Which currency symbol each region displays. US shows € (like the EU) but
-  // draws its numbers from the US column above.
-  const REGION_CURRENCY = { EU: 'EUR', US: 'EUR', CH: 'CHF' };
+  // Which currency symbol each region displays.
+  const REGION_CURRENCY = { EU: 'EUR', US: 'USD', CH: 'CHF' };
   const ANNUAL_MONTHS_PAID = 10;
   // Symbol & placement per currency — €/$ lead, CHF trails (Swiss convention).
   function formatPrice(amount, currency) {
@@ -2518,7 +2571,7 @@ footer {
   }
 
   function applyPrices() {
-    ['envelope', 'envelopeLive'].forEach(product => {
+    ['full'].forEach(product => {
       document.querySelectorAll('[data-price="' + product + '"]').forEach(el => {
         el.textContent = formatPrice(priceFor(product), currentCurrency);
         pulse(el);
@@ -2678,18 +2731,13 @@ footer {
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbfhVHoYgeyw7rW7PyHorgBrwgVINZWOEnaKkRcWNwFO8zqJUCJeVF1fde_iGqqyVMsA/exec';
 
   const PLAN_META = {
-    envelope: {
-      key: 'envelope',
-      label: 'The Envelope',
-      includes: 'One printed set, posted to your door at the start of every month. Shipping included.',
-    },
-    envelopeLive: {
-      key: 'envelopeLive',
+    full: {
+      key: 'full',
       label: 'Envelope + Live Class',
       includes: 'One printed set each month, plus a live monthly yoga & breathing class for that month\u2019s theme. Shipping included.',
     },
   };
-  let selectedPlan = 'envelope';
+  let selectedPlan = 'full';
 
   function updateSignupSummary() {
     const meta = PLAN_META[selectedPlan] || PLAN_META.envelope;
@@ -2755,15 +2803,10 @@ footer {
   //     { monthly, annual } object with a single '…' string — stripeUrlFor
   //     accepts either.)
   const STRIPE_LINKS = {
-    envelope: {
-      EU: { monthly: 'https://buy.stripe.com/bJecN53k469KdDr4BNenS00',  annual: 'https://buy.stripe.com/4gMdR9f2M55GeHv0lxenS03' },   // €14 / mo · €140 / yr
-      US: { monthly: 'https://buy.stripe.com/00w00jdYIdCcczn6JVenS02',  annual: 'https://buy.stripe.com/14AfZhcUE0Pq2YNgkvenS05' },   // €18 / mo · €180 / yr
-      CH: { monthly: 'https://buy.stripe.com/4gM3cv1bW7dO1UJ2tFenS01',  annual: 'https://buy.stripe.com/3cI4gzcUEdCcfLzfgrenS04' },   // 18 CHF / mo · 180 CHF / yr
-    },
-    envelopeLive: {
-      EU: { monthly: 'https://buy.stripe.com/4gMbJ1aMw41C7f33xJenS06',  annual: 'https://buy.stripe.com/bJe4gzdYIaq042R4BNenS09' },   // €24 / mo · €240 / yr
-      US: { monthly: 'https://buy.stripe.com/7sYfZh1bWbu4gPDb0benS08',  annual: 'https://buy.stripe.com/dRm3cv07SgOoeHvgkvenS0b' },   // €34 / mo · €340 / yr
-      CH: { monthly: 'https://buy.stripe.com/9B65kDf2M0Pq0QFc4fenS07',  annual: 'https://buy.stripe.com/00w6oHaMw7dO1UJfgrenS0a' },   // 32 CHF / mo · 320 CHF / yr
+    full: {
+      EU: { monthly: 'https://buy.stripe.com/dRm7sL6wgbu4fLz2tFenS0f',  annual: 'https://buy.stripe.com/dRm5kD3k48hSarfb0benS0h' },   // €22 / mo · €220 / yr
+      US: { monthly: 'https://buy.stripe.com/3cI14nbQA55G9nb4BNenS0e',  annual: 'https://buy.stripe.com/5kQeVd6wg41C8j71pBenS0i' },   // $28 / mo · $280 / yr (charged in EUR)
+      CH: { monthly: 'https://buy.stripe.com/8x24gz4o80Pq8j78S3enS0d',  annual: 'https://buy.stripe.com/cNi8wP6wgdCcfLz6JVenS0g' },   // 28 CHF / mo · 280 CHF / yr
     },
   };
 
