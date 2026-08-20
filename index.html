@@ -2549,7 +2549,7 @@ footer {
   // Keyed by REGION, not raw currency: the US pays a higher amount but still
   // sees the € symbol, so it needs its own price bucket separate from the EU.
   const PRICES = {
-    full: { EU: 22, US: 28, CH: 28 },
+    full: { EU: 22, US: 28, CH: 26 },
   };
   // Which currency symbol each region displays.
   const REGION_CURRENCY = { EU: 'EUR', US: 'USD', CH: 'CHF' };
@@ -2806,7 +2806,7 @@ footer {
     full: {
       EU: { monthly: 'https://buy.stripe.com/dRm7sL6wgbu4fLz2tFenS0f',  annual: 'https://buy.stripe.com/dRm5kD3k48hSarfb0benS0h' },   // €22 / mo · €220 / yr
       US: { monthly: 'https://buy.stripe.com/3cI14nbQA55G9nb4BNenS0e',  annual: 'https://buy.stripe.com/5kQeVd6wg41C8j71pBenS0i' },   // $28 / mo · $280 / yr (charged in EUR)
-      CH: { monthly: 'https://buy.stripe.com/8x24gz4o80Pq8j78S3enS0d',  annual: 'https://buy.stripe.com/cNi8wP6wgdCcfLz6JVenS0g' },   // 28 CHF / mo · 280 CHF / yr
+      CH: { monthly: 'https://buy.stripe.com/8x24gz4o80Pq8j78S3enS0d',  annual: 'https://buy.stripe.com/cNi8wP6wgdCcfLz6JVenS0g' },   // 26 CHF / mo · 260 CHF / yr
     },
   };
 
