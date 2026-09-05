@@ -2629,7 +2629,7 @@ footer {
 
   function goToCheckout(plan) {
     const url = stripeUrlFor(plan || 'full', currentRegion);
-    if (url) window.location.href = url;
+    if (url) window.open(url, '_blank', 'noopener');
   }
 
   function showPage(name, opts) {
