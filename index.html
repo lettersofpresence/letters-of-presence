@@ -384,6 +384,34 @@ nav {
   font-weight: 400;
 }
 
+/* ── DARK HERO ──────────────────────────────────────────────── */
+.hero-dark{background:var(--warm-white);padding:52px}
+.hero-dark-inner{max-width:1200px;margin:0 auto;background:#E7D8E1;border:1px solid rgba(75,42,82,.16);border-radius:2px;padding:56px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-dark-eyebrow{color:var(--berry)}
+.hero-dark-copy h1{font-size:clamp(30px,3.5vw,50px);line-height:1.12;color:var(--purple);margin-bottom:22px;text-wrap:pretty}
+.hero-dark-copy h1 em{font-style:italic;color:var(--berry)}
+.hero-dark-lede{font-size:15px;line-height:1.95;color:var(--mid);max-width:430px;margin-bottom:32px}
+.hero-dark-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(75,42,82,.18);border-bottom:1px solid rgba(75,42,82,.18);margin-bottom:34px}
+.hero-dark-item{display:flex;align-items:baseline;gap:14px;padding:20px 24px 20px 0}
+.hero-dark-item+.hero-dark-item{border-left:1px solid rgba(75,42,82,.18);padding-left:24px}
+.hero-dark-item .hd-num{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:.08em;color:var(--berry);flex:0 0 auto}
+.hero-dark-item strong{display:block;font-family:'Playfair Display',serif;font-weight:400;font-size:18px;color:var(--purple);line-height:1.3}
+.hero-dark-item span:not(.hd-num){display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+.hero-dark-btns{display:flex;flex-wrap:wrap;gap:12px}
+.hero-dark-btn{background:var(--purple);color:#fff;border-color:var(--mauve);font-weight:400;padding:15px 30px}
+.hero-dark-btn:hover{opacity:.9}
+.hero-dark-art{display:flex;flex-direction:column;gap:0}
+.hero-dark-shot{position:relative;margin:0;overflow:hidden;border-radius:2px}
+.hero-dark-shot img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-dark-shot figcaption{position:absolute;left:0;bottom:0;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:8px 14px}
+.hero-dark-shot-main{aspect-ratio:4/3}
+.hero-dark-plus{font-family:'Playfair Display',serif;font-size:26px;color:var(--berry);text-align:center;padding:14px 0 12px;line-height:1}
+.hero-dark-live{border:1px solid rgba(75,42,82,.22);border-radius:2px;padding:22px 26px;display:flex;flex-direction:column;gap:5px;text-align:center;align-items:center}
+.hdl-eyebrow{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.hero-dark-live strong{font-family:'Playfair Display',serif;font-weight:400;font-size:26px;color:var(--purple);line-height:1.1}
+.hdl-note{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--berry)}
+@media (max-width:900px){.hero-dark-inner{padding:32px 26px;gap:34px}.hero-dark-pair{grid-template-columns:1fr}.hero-dark-item+.hero-dark-item{border-left:none;border-top:1px solid rgba(75,42,82,.18);padding-left:0}.hero-dark{padding:28px}.hero-dark-inner{grid-template-columns:1fr;gap:40px}.hero-dark-lede{max-width:none}.hero-dark-live{padding:20px 22px}}
+
 /* Dark strip */
 .dark-strip {
   background: var(--purple);
@@ -2116,32 +2144,32 @@ footer {
 <div id="page-home" class="page active">
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-left">
-      <span class="eyebrow">Yoga Mail Club</span>
-      <h1>Monthly physical mail for yoga practitioners <em>and curious humans.</em></h1>
-      <div class="hero-btns">
-        <button class="btn btn-filled" onclick="showPage('subscribe')">Choose your subscription</button>
-      </div>
-    </div>
-  </section>
+<section class="hero-dark">
+<div class="hero-dark-inner">
+<div class="hero-dark-copy">
+<span class="eyebrow hero-dark-eyebrow">Yoga Mail Club</span>
+<h1>Monthly physical mail for yoga practitioners <em>and curious humans.</em></h1>
+<p class="hero-dark-lede">One theme a month, printed and posted to your door — a letter, a guided practice, something extra. Plus one live class to practise it together.</p>
+<div class="hero-dark-pair">
+<div class="hero-dark-item"><span class="hd-num">01</span><div><strong>The Envelope</strong><span>Posted monthly</span></div></div>
+<div class="hero-dark-item"><span class="hd-num">02</span><div><strong>The Live Class</strong><span>On Google Meet</span></div></div>
+</div>
+<div class="hero-dark-btns">
+<a href="#" class="btn btn-filled hero-dark-btn" onclick="goToCheckout();return false;">Subscribe · €22 / month</a>
+</div>
+</div>
+<div class="hero-dark-art">
+<figure class="hero-dark-shot hero-dark-shot-main"><img src="hero-envelope-crop.jpg" alt="A Letters of Presence envelope with three printed cards emerging from it" /><figcaption>The Envelope</figcaption></figure>
+<div class="hero-dark-plus" aria-hidden="true">+</div>
+<div class="hero-dark-live">
+<span class="hdl-eyebrow">Once a month · on Google Meet</span>
+<strong>Live Class</strong>
+<span class="hdl-note">Recording included</span>
+</div>
+</div>
+</div>
+</section>
 
-  <div class="hero-tiles">
-    <div class="hero-tile" onclick="showPage('subscribe')">
-      <img src="hero-envelope-crop.jpg" alt="A Letters of Presence envelope with three printed cards emerging from it" />
-      <span class="hero-tile-label">The Envelope</span>
-    </div>
-    <span class="hero-tiles-plus">+</span>
-    <div class="hero-tile" onclick="showPage('subscribe')">
-      <img src="live-class-v3.jpg" alt="A live Letters of Presence class on screen" style="object-position: left top;" />
-      <span class="hero-tile-label">Live Class</span>
-    </div>
-  </div>
-
-  <!-- Dark strip -->
-  <div class="dark-strip">
-    <p>One practice. One month.</p>
-  </div>
 
 
   <hr class="section-divider" style="max-width:1200px;margin:0 auto;" />
@@ -2170,12 +2198,12 @@ footer {
   <div class="themes-closing">
     <div class="themes-closing-inner">
       <div>
-        <span class="themes-closing-meta">Each month · Live on Zoom</span>
+        <span class="themes-closing-meta">Each month · Live on Google Meet</span>
         <h3>A live <em>gathering</em> every month</h3>
         <div class="sanskrit-closing">Included with the Envelope + Live Class plan</div>
       </div>
       <div>
-        <p>Alongside the printed set, we gather on Zoom once a month — a guided yoga and breathing practice rooted in that month's theme, followed by an open community chat. A chance to land what the cards have built, and to share what surfaced with others practising the same theme.</p>
+        <p>Alongside the printed set, we gather on Google Meet once a month — a guided yoga and breathing practice rooted in that month's theme, followed by an open community chat. A chance to land what the cards have built, and to share what surfaced with others practising the same theme.</p>
         <p class="themes-closing-note">Dates and times confirmed by email closer to each session.</p>
       </div>
     </div>
@@ -2219,8 +2247,8 @@ footer {
         <p>One printed envelope every month, plus a live monthly yoga and breathing class.</p>
       </div>
       <div class="home-sub-cta-price">
-        <span class="home-sub-cta-amount">€22</span><span class="home-sub-cta-per">per month</span>
-        <a href="#" class="btn btn-filled" onclick="showPage('subscribe');return false;">Go to Subscribe</a>
+        <span class="home-sub-cta-amount" data-price="full">€22</span><span class="home-sub-cta-per">per month</span>
+        <a href="#" class="btn btn-filled" onclick="goToCheckout();return false;">Subscribe</a>
       </div>
     </div>
   </section>
@@ -2337,7 +2365,7 @@ footer {
       <div class="value-dot" style="background:var(--periwinkle);"></div>
       <div>
         <h4>Offline by design</h4>
-        <p data-comment-anchor="fa4c3e02-p">There is no app, no member portal, no push notifications. A letter arrives, you open it — that is the practice. The one exception: a live Zoom gathering each month of the Series, because integration and community are worth meeting for.</p>
+        <p data-comment-anchor="fa4c3e02-p">There is no app, no member portal, no push notifications. A letter arrives, you open it — that is the practice. The one exception: a live Google Meet gathering each month of the Series, because integration and community are worth meeting for.</p>
       </div>
     </div>
     <div class="value-card">
@@ -2367,24 +2395,10 @@ footer {
   <div class="subscribe-header">
     <span class="eyebrow">Yoga Mail Club</span>
     <h3 class="subscribe-lede-h">One subscription.</h3>
-    <p>The monthly envelope plus a live class. Pay monthly, or pay annually and get two months free.</p>
+    <p>The monthly envelope plus a live class, billed monthly. Cancel whenever you like.</p>
   </div>
 
   <div class="pricing-wrapper">
-
-    <div class="subs-intro">
-      <div class="subs-controls">
-        <div class="control-group">
-          <span class="billing-label">Billing</span>
-          <div class="billing-toggle" role="tablist" aria-label="Billing period">
-            <button type="button" class="seg active" data-billing="monthly" role="tab" aria-selected="true">Monthly</button>
-            <button type="button" class="seg" data-billing="annual" role="tab" aria-selected="false">
-              Annual <span class="seg-aside">· 2 months free</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="subs-row subs-row-single">
 
@@ -2396,99 +2410,21 @@ footer {
           <span class="sub-card-amount" data-price="full">€22</span>
           <span class="sub-card-per" data-per>per month</span>
         </div>
-        <div class="sub-card-annual-note" data-annual-note>Billed once a year — you pay for ten months, two are free.</div>
         <ul class="sub-card-list">
           <li>One complete envelope, posted to your door every month</li>
           <li>New theme every month, no repeats</li>
           <li>One live class each month, with replay the next day</li>
           <li>Shipping <em>included</em> — Europe &amp; USA for now</li>
         </ul>
-        <button class="btn btn-filled sub-card-btn" data-plan="full" onclick="openSignup('full')">Subscribe</button>
+        <a href="#" class="btn btn-filled sub-card-btn" data-plan="full" onclick="goToCheckout();return false;">Subscribe</a>
       </div>
 
     </div>
 
-    <p class="subs-foot">Pay monthly, or choose annual for two months free. Cancel whenever you like.</p>
+    <p class="subs-foot">You'll enter your name, email and shipping address at our secure Stripe checkout. Cancel whenever you like.</p>
   </div>
 
-  <hr class="section-divider signup-hidden" id="signup-divider" style="max-width:1200px;margin:0 auto;" />
-
-  <!-- Subscription signup form (revealed when a plan's Subscribe is clicked) -->
-  <div class="summer-form-section signup-hidden" id="summer-form">
-    <div class="summer-form-context">
-      <span class="eyebrow">Start your subscription</span>
-      <h3>Begin this <em>month.</em></h3>
-      <p>Leave your details below and we'll prepare your first envelope. Once we've received your sign-up, we'll send you a payment link by email to complete your subscription.</p>
-      <div class="summer-detail">
-        <div class="sd-eyebrow">You're signing up for</div>
-        <h4 id="signup-summary-title">Envelope + Live Class · <span id="signup-summary-price">€22</span> per month</h4>
-        <div class="sd-sub" id="signup-summary-includes">One printed set each month, plus a live monthly yoga &amp; breathing class. Shipping included.</div>
-      </div>
-      <button type="button" class="signup-change" onclick="scrollToPlans()">← Choose a different plan</button>
-    </div>
-
-    <div>
-      <form class="sub-form" id="summer-form-el" onsubmit="return submitSubscribeForm(event)">
-        <input type="hidden" name="plan" id="signup-plan-input" value="Envelope + Live Class (monthly)" />
-        <input type="hidden" name="billing" id="signup-billing-input" value="monthly" />
-        <div class="form-row">
-          <div class="field">
-            <label for="sfname">First name</label>
-            <input type="text" id="sfname" name="firstName" required placeholder="Anna" />
-          </div>
-          <div class="field">
-            <label for="slname">Last name</label>
-            <input type="text" id="slname" name="lastName" required placeholder="Müller" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="semail">Email address</label>
-          <input type="email" id="semail" name="email" required placeholder="anna@example.com" />
-        </div>
-        <div class="field">
-          <label for="saddress_street">Street &amp; number</label>
-          <input type="text" id="saddress_street" name="addressStreet" required placeholder="Prinsengracht 263" />
-        </div>
-        <div class="field">
-          <label for="saddress_apt">Apartment, floor, extra info <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
-          <input type="text" id="saddress_apt" name="addressApt" placeholder="Apt 3B · second floor · c/o…" />
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="saddress_postal">Postal code</label>
-            <input type="text" id="saddress_postal" name="addressPostal" required placeholder="1016 GV" />
-          </div>
-          <div class="field">
-            <label for="saddress_city">City</label>
-            <input type="text" id="saddress_city" name="addressCity" required placeholder="Amsterdam" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="saddress_region">Region or state <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(if applicable)</span></label>
-          <input type="text" id="saddress_region" name="addressRegion" placeholder="Noord-Holland" />
-        </div>
-        <div class="field">
-          <label for="saddress_country">Country</label>
-          <input type="text" id="saddress_country" name="addressCountry" required placeholder="Netherlands" />
-          <span style="font-size:11px;color:var(--mute);font-weight:300;margin-top:4px;">For now, we ship to addresses in Europe and the USA.</span>
-        </div>
-        <div class="field">
-          <label for="snote">Anything we should know? <span style="text-transform:none;letter-spacing:0;font-size:10px;color:var(--faint);">(optional)</span></label>
-          <textarea id="snote" name="note" placeholder="Accessibility needs, a delivery instruction, a note about why you're joining — anything at all."></textarea>
-        </div>
-        <button type="submit" class="btn btn-summer" id="summer-submit">Continue to payment</button>
-        <span style="font-size:11.5px;color:var(--mute);font-weight:300;line-height:1.7;text-align:center;display:block;margin-top:4px;">Your details are saved, then you'll continue to our secure checkout to complete payment.</span>
-        <span class="form-error" id="summer-form-error">Something went wrong sending your details. Please try again, or email hello@lettersofpresence.com.</span>
-      </form>
-      <div class="form-success" id="summer-form-success">
-        <h4>Your details are <em>saved.</em></h4>
-        <p>Thank you — we've got your shipping details. Our secure <strong style="font-weight:400;color:var(--berry);">checkout</strong> is being finalised; we'll email you a payment link to complete your subscription shortly.</p>
-      </div>
-      <iframe name="summer-hidden-iframe" id="summer-hidden-iframe" style="display:none;"></iframe>
-    </div>
-  </div>
-
-</div><!-- /page-subscribe -->
+  </div><!-- /page-subscribe -->
 
 
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
@@ -2496,7 +2432,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="fb-name">Letters of <em>Presence</em></span>
-      <p>Monthly physical mail for yoga practitioners and curious humans. One month. One practice. Three pieces of paper, sent with care.</p>
+      <p>Monthly physical mail for yoga practitioners and curious humans. One month. One practice.</p>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/letters-of-presence/" target="_blank" rel="noopener noreferrer" aria-label="Letters of Presence on LinkedIn" title="LinkedIn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2542,10 +2478,8 @@ footer {
 
 <script>
   /* ── PRICING TABLE ──────────────────────────────────────────────────────────
-     Three currencies × monthly/annual for the two subscriptions,
-     plus a fixed Summer Series price per currency.
+     Monthly price per region for the one subscription.
      ─────────────────────────────────────────────────────────── */
-  // Monthly base price per currency. Annual = pay for 10 months (2 free).
   // Keyed by REGION, not raw currency: the US pays a higher amount but still
   // sees the € symbol, so it needs its own price bucket separate from the EU.
   const PRICES = {
@@ -2553,7 +2487,6 @@ footer {
   };
   // Which currency symbol each region displays.
   const REGION_CURRENCY = { EU: 'EUR', US: 'USD', CH: 'CHF' };
-  const ANNUAL_MONTHS_PAID = 10;
   // Symbol & placement per currency — €/$ lead, CHF trails (Swiss convention).
   function formatPrice(amount, currency) {
     if (currency === 'EUR') return '€' + amount;
@@ -2563,11 +2496,9 @@ footer {
 
   let currentRegion   = 'EU';           // 'EU' | 'US' | 'CH' — drives price + Stripe link
   let currentCurrency = 'EUR';          // display currency, derived from region
-  let currentBilling  = 'monthly';
 
   function priceFor(product) {
-    const monthly = PRICES[product][currentRegion];
-    return currentBilling === 'monthly' ? monthly : monthly * ANNUAL_MONTHS_PAID;
+    return PRICES[product][currentRegion];
   }
 
   function applyPrices() {
@@ -2578,18 +2509,6 @@ footer {
       });
     });
 
-    // Per-label ("per month" / "per year")
-    document.querySelectorAll('[data-per]').forEach(el => {
-      el.textContent = currentBilling === 'monthly' ? 'per month' : 'per year';
-    });
-
-    // Annual-only notes on the cards
-    document.querySelectorAll('[data-annual-note]').forEach(el => {
-      el.style.display = currentBilling === 'annual' ? 'block' : 'none';
-    });
-
-    // Keep the signup form summary in sync
-    if (typeof updateSignupSummary === 'function') updateSignupSummary();
   }
 
   function pulse(el) {
@@ -2672,19 +2591,7 @@ footer {
         setRegion(r, { persist: true });
       });
     });
-    document.querySelectorAll('.billing-toggle .seg').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const b = this.dataset.billing;
-        if (b === currentBilling) return;
-        currentBilling = b;
-        document.querySelectorAll('.billing-toggle .seg').forEach(el => {
-          const on = el.dataset.billing === b;
-          el.classList.toggle('active', on);
-          el.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        applyPrices();
-      });
-    });
+
 
     // There's no manual toggle any more, so detection has to be reliable on
     // its own. The browser's timezone is the trustworthy signal: it pins
@@ -2704,209 +2611,25 @@ footer {
 </script>
 
 <script>
-  /* ── GOOGLE FORM CONFIG ─────────────────────────────────────────────────────────
-     Submissions are POSTed to a Google Form via a hidden iframe.
-     The Form has "Send responses to Sheet" enabled, so each submission
-     auto-appends a row to the linked Google Sheet.
-     ─────────────────────────────────────────────────────────── */
-  const GOOGLE_FORM = {
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLScdq0C56qpW6zvbHTE8G-ZIWc3IBM_F-qOAYzfw8ZbejKPtag/formResponse',
-    fields: {
-      firstName:      'entry.1126220411',
-      lastName:       'entry.9673159',
-      email:          'entry.436095380',
-      addressStreet:  'entry.1571242677',
-      addressApt:     'entry.391596614',
-      addressPostal:  'entry.1664215609',
-      addressCity:    'entry.942854070',
-      addressRegion:  'entry.1021023417',
-      addressCountry: 'entry.47026378',
-      note:           'entry.1034122484',
-    },
-  };
-
-  // ── Reliable endpoint (Google Apps Script Web App) ──────────────────
-  //    Paste your deployed Web App URL here (it ends in /exec).
-  //    See google-apps-script.gs for the one-time setup steps.
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbfhVHoYgeyw7rW7PyHorgBrwgVINZWOEnaKkRcWNwFO8zqJUCJeVF1fde_iGqqyVMsA/exec';
-
-  const PLAN_META = {
-    full: {
-      key: 'full',
-      label: 'Envelope + Live Class',
-      includes: 'One printed set each month, plus a live monthly yoga & breathing class for that month\u2019s theme. Shipping included.',
-    },
-  };
-  let selectedPlan = 'full';
-
-  function updateSignupSummary() {
-    const meta = PLAN_META[selectedPlan] || PLAN_META.envelope;
-    const titleEl   = document.getElementById('signup-summary-title');
-    const incEl     = document.getElementById('signup-summary-includes');
-    const planInput = document.getElementById('signup-plan-input');
-    const billInput = document.getElementById('signup-billing-input');
-    if (titleEl) {
-      const price = formatPrice(priceFor(meta.key), currentCurrency);
-      const per   = currentBilling === 'monthly' ? 'per month' : 'per year';
-      titleEl.innerHTML = meta.label + ' \u00b7 <span id="signup-summary-price">' + price + '</span> ' + per;
-    }
-    if (incEl) incEl.textContent = meta.includes;
-    if (planInput) planInput.value = meta.label + (currentBilling === 'annual' ? ' (annual)' : ' (monthly)');
-    if (billInput) billInput.value = currentBilling;
-  }
-
-  function markSelectedCard() {
-    document.querySelectorAll('.subs-row .sub-card').forEach(card => {
-      const btn = card.querySelector('.sub-card-btn');
-      const plan = btn && btn.getAttribute('data-plan');
-      const on = plan === selectedPlan;
-      card.classList.toggle('is-selected', on);
-      if (btn) btn.textContent = on ? 'Selected · details below ↓' : 'Subscribe';
-    });
-  }
-
-  function scrollToPlans() {
-    const el = document.querySelector('.subs-row');
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 90;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  }
-
-  function openSignup(plan) {
-    if (plan && PLAN_META[plan]) selectedPlan = plan;
-    updateSignupSummary();
-    markSelectedCard();
-    const region = document.getElementById('summer-form');
-    const divider = document.getElementById('signup-divider');
-    if (region) region.classList.remove('signup-hidden');
-    if (divider) divider.classList.remove('signup-hidden');
-    showPage('subscribe');
-    setTimeout(() => {
-      if (region) {
-        const top = region.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    }, 60);
-  }
-
   // ── STRIPE CHECKOUT LINKS ───────────────────────────────────────────
-  //    Paste your Stripe Payment Link URLs below. Two ways to fill each one:
-  //      • a single URL string  — simplest; let the Stripe price handle
-  //        currency, e.g. 'https://buy.stripe.com/xxxxxxxx'
-  //      • a per-currency object — { EUR: '…', CHF: '…', USD: '…' }
-  //    Leave a value as '' and the form will save the lead and show a
-  //    "checkout coming soon" confirmation instead of redirecting.
-  //    One Payment Link per product × region × billing = 12 links.
-  //    Region: EU / US / CH.  Billing: monthly / annual.
-  //    (If you ever let Stripe handle the interval, replace a region's
-  //     { monthly, annual } object with a single '…' string — stripeUrlFor
-  //     accepts either.)
+  //    One monthly Payment Link per region. Name, email and shipping address
+  //    are collected by Stripe at checkout — no form on this site.
   const STRIPE_LINKS = {
     full: {
-      EU: { monthly: 'https://buy.stripe.com/dRm7sL6wgbu4fLz2tFenS0f',  annual: 'https://buy.stripe.com/dRm5kD3k48hSarfb0benS0h' },   // €22 / mo · €220 / yr
-      US: { monthly: 'https://buy.stripe.com/3cI14nbQA55G9nb4BNenS0e',  annual: 'https://buy.stripe.com/5kQeVd6wg41C8j71pBenS0i' },   // $28 / mo · $280 / yr (charged in EUR)
-      CH: { monthly: 'https://buy.stripe.com/8x24gz4o80Pq8j78S3enS0d',  annual: 'https://buy.stripe.com/cNi8wP6wgdCcfLz6JVenS0g' },   // 26 CHF / mo · 260 CHF / yr
+      EU: 'https://buy.stripe.com/dRm7sL6wgbu4fLz2tFenS0f',   // €22 / mo
+      US: 'https://buy.stripe.com/3cI14nbQA55G9nb4BNenS0e',   // $28 / mo (charged in EUR)
+      CH: 'https://buy.stripe.com/8x24gz4o80Pq8j78S3enS0d',   // 26 CHF / mo
     },
   };
 
-  function stripeUrlFor(plan, region, billing) {
+  function stripeUrlFor(plan, region) {
     const node = STRIPE_LINKS[plan] && STRIPE_LINKS[plan][region];
-    if (!node) return '';
-    if (typeof node === 'string') return node;          // one link handles billing
-    return node[billing] || node.monthly || '';         // split monthly/annual
+    return typeof node === 'string' ? node : '';
   }
 
-  // Save the lead to the Google Sheet and confirm it landed BEFORE we move
-  // on. The shipping address lives in the Sheet — we don't rely on Stripe
-  // for it. Returns a promise resolving to { ok, error }.
-  function saveLead(params) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 9000);
-    return fetch(APPS_SCRIPT_URL, { method: 'POST', body: params, signal: controller.signal })
-      .then(r => r.json())
-      .then(res => { clearTimeout(timer); return { ok: !!(res && res.ok), error: res && res.error }; })
-      .catch(err => {
-        clearTimeout(timer);
-        // A timeout still means the row was written the moment the POST
-        // arrived, so treat it as saved. A real network error is a failure.
-        return { ok: !!(err && err.name === 'AbortError') };
-      });
-  }
-
-  function submitSubscribeForm(e) {
-    e.preventDefault();
-    const form = document.getElementById('summer-form-el');
-    const success = document.getElementById('summer-form-success');
-    const errorEl = document.getElementById('summer-form-error');
-    const submitBtn = document.getElementById('summer-submit');
-    errorEl.classList.remove('visible');
-
-    const data = {
-      firstName:      document.getElementById('sfname').value.trim(),
-      lastName:       document.getElementById('slname').value.trim(),
-      email:          document.getElementById('semail').value.trim(),
-      addressStreet:  document.getElementById('saddress_street').value.trim(),
-      addressApt:     document.getElementById('saddress_apt').value.trim(),
-      addressPostal:  document.getElementById('saddress_postal').value.trim(),
-      addressCity:    document.getElementById('saddress_city').value.trim(),
-      addressRegion:  document.getElementById('saddress_region').value.trim(),
-      addressCountry: document.getElementById('saddress_country').value.trim(),
-      note:           document.getElementById('snote').value.trim(),
-      plan:           (document.getElementById('signup-plan-input') || {}).value || '',
-      billing:        (document.getElementById('signup-billing-input') || {}).value || '',
-      currency:       currentCurrency,
-      region:         currentRegion,
-    };
-
-    // Validate before handing anyone to checkout.
-    const requiredKeys = ['firstName','lastName','email','addressStreet','addressPostal','addressCity','addressCountry'];
-    const missing = requiredKeys.filter(k => !data[k]);
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-    if (missing.length || !emailOk) {
-      errorEl.textContent = (!missing.length && !emailOk)
-        ? 'That email address doesn’t look right — please check it and try again.'
-        : 'Please fill in every required field before continuing.';
-      errorEl.classList.add('visible');
-      return false;
-    }
-
-    submitBtn.textContent = 'Saving…';
-    submitBtn.disabled = true;
-
-    // Save the shipping details + chosen plan to the Sheet, and only continue
-    // once it's confirmed saved — the address never depends on Stripe.
-    const params = new URLSearchParams();
-    Object.keys(data).forEach(k => { if (data[k]) params.append(k, data[k]); });
-
-    saveLead(params).then(result => {
-      if (!result.ok) {
-        submitBtn.textContent = 'Continue to payment';
-        submitBtn.disabled = false;
-        errorEl.textContent = result.error ||
-          'We couldn’t save your details just now. Please try again in a moment, or email hello@lettersofpresence.com.';
-        errorEl.classList.add('visible');
-        return;
-      }
-
-      // Saved. Hand off to Stripe for the chosen plan + billing (+ currency).
-      const url = stripeUrlFor(selectedPlan, currentRegion, currentBilling);
-      if (url) {
-        const sep = url.indexOf('?') === -1 ? '?' : '&';
-        const ref = (data.firstName + '-' + data.lastName + '-' + Date.now()).replace(/[^A-Za-z0-9_-]/g, '');
-        const extras = 'prefilled_email=' + encodeURIComponent(data.email) +
-                       '&client_reference_id=' + encodeURIComponent(ref);
-        submitBtn.textContent = 'Redirecting to payment…';
-        window.location.href = url + sep + extras;
-        return;
-      }
-
-      // No Stripe link wired up yet — confirm the details are saved.
-      form.style.display = 'none';
-      success.classList.add('visible');
-    });
-
-    return false;
+  function goToCheckout(plan) {
+    const url = stripeUrlFor(plan || 'full', currentRegion);
+    if (url) window.location.href = url;
   }
 
   function showPage(name, opts) {
